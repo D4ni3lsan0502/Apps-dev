@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>River Raid Clone</title>
+<link rel="stylesheet" href="style.css">
+<style>
+#controls{position:fixed;bottom:10px;left:0;right:0;height:100px;display:flex;justify-content:space-around;align-items:center;pointer-events:none;}
+.btn{width:60px;height:60px;background:rgba(255,255,255,0.3);border-radius:50%;pointer-events:auto;display:flex;justify-content:center;align-items:center;font-size:24px;color:white;user-select:none;}
+</style>
+</head>
+<body>
+<canvas id="gameCanvas"></canvas>
+<div id="controls">
+  <div id="leftBtn" class="btn">◀️</div>
+  <div id="shootBtn" class="btn">🔫</div>
+  <div id="rightBtn" class="btn">▶️</div>
+</div>
+<script src="game.js"></script>
+</body>
+</html>
