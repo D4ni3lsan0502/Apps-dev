@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Perfil do Barbeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="cliente-dashboard.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Usuário" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700">João Silva</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Barbeiro Profile -->
+        <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+            <div class="relative h-64 bg-gradient-to-r from-blue-500 to-blue-700">
+                <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Barbearia" class="w-full h-full object-cover opacity-50">
+                <div class="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <div class="flex items-end">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-24 h-24 rounded-full border-4 border-white">
+                        <div class="ml-4">
+                            <h1 class="text-3xl font-bold">Carlos Silva</h1>
+                            <div class="flex items-center mt-1">
+                                <div class="flex text-yellow-300">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="ml-2">4.5 (48 avaliações)</span>
+                            </div>
+                        </div>
+                        <div class="ml-auto">
+                            <button class="bg-white text-blue-600 px-4 py-2 rounded-full font-medium hover:bg-blue-50 transition duration-300">
+                                <i class="far fa-heart mr-1"></i> Favoritar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="p-6">
+                <div class="flex flex-wrap gap-3 mb-4">
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded flex items-center">
+                        <i class="fas fa-map-marker-alt mr-1"></i> Bela Vista, São Paulo - SP
+                    </span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded flex items-center">
+                        <i class="fas fa-cut mr-1"></i> Especialista em Corte, Barba, Degradê
+                    </span>
+                    <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-1 rounded flex items-center">
+                        <i class="fas fa-building mr-1"></i> Atende na barbearia
+                    </span>
+                    <span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-1 rounded flex items-center">
+                        <i class="fas fa-home mr-1"></i> Atende a domicílio
+                    </span>
+                </div>
+                <p class="text-gray-700 mb-4">
+                    Barbeiro profissional com mais de 8 anos de experiência. Especializado em cortes modernos, degradê e barba. Atendimento personalizado para cada cliente, buscando sempre a satisfação e o melhor resultado.
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center text-sm">
+                        <i class="fab fa-instagram mr-1"></i> @carlosbarber
+                    </a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center text-sm">
+                        <i class="fab fa-facebook mr-1"></i> /carlosbarbeiro
+                    </a>
+                    <a href="#" class="text-blue-600 hover:text-blue-800 flex items-center text-sm">
+                        <i class="fab fa-whatsapp mr-1"></i> Whatsapp
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8">
+                    <a href="#" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Serviços
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Horários
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Avaliações
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Localização
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Services Section -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Services List -->
+            <div class="md:col-span-2">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">Serviços Oferecidos</h2>
+                
+                <div class="space-y-4">
+                    <!-- Service 1 -->
+                    <div class="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Corte Masculino</h3>
+                                <p class="text-sm text-gray-500 mt-1">Corte tradicional com tesoura ou máquina, finalizado com produtos de qualidade.</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">30 min</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">R$ 40,00</p>
+                                <button class="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 2 -->
+                    <div class="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Barba</h3>
+                                <p class="text-sm text-gray-500 mt-1">Modelagem completa com toalha quente, navalha e produtos para barba.</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">20 min</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">R$ 30,00</p>
+                                <button class="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 3 -->
+                    <div class="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Corte + Barba</h3>
+                                <p class="text-sm text-gray-500 mt-1">Combo com corte masculino e modelagem completa de barba.</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">45 min</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">R$ 65,00</p>
+                                <button class="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 4 -->
+                    <div class="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Corte Degradê</h3>
+                                <p class="text-sm text-gray-500 mt-1">Corte com técnica de degradê, transição suave entre diferentes comprimentos.</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">30 min</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">R$ 45,00</p>
+                                <button class="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Service 5 -->
+                    <div class="bg-white rounded-lg shadow p-4 cursor-pointer hover:shadow-md transition duration-300">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-lg font-medium text-gray-900">Sobrancelha</h3>
+                                <p class="text-sm text-gray-500 mt-1">Modelagem e design de sobrancelha masculina com pinça e navalha.</p>
+                                <div class="flex items-center mt-2">
+                                    <span class="text-xs bg-gray-100 text-gray-800 px-2 py-1 rounded">15 min</span>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="text-lg font-semibold text-gray-900">R$ 20,00</p>
+                                <button class="mt-2 bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700 transition duration-300">Selecionar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Booking Section -->
+            <div class="md:col-span-1">
+                <div class="bg-white rounded-lg shadow p-4 sticky top-4">
+                    <h2 class="text-xl font-semibold text-gray-900 mb-4">Agendar Serviço</h2>
+                    
+                    <div id="selected-services" class="mb-4">
+                        <p class="text-sm text-gray-500 mb-2">Nenhum serviço selecionado</p>
+                        <div id="service-list" class="space-y-2 hidden">
+                            <!-- Selected services will be added here -->
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                        <input type="date" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Horário</label>
+                        <div class="grid grid-cols-3 gap-2">
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">09:00</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">09:30</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">10:00</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">10:30</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">11:00</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">11:30</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">14:00</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">14:30</button>
+                            <button class="time-slot text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">15:00</button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Local</label>
+                        <div class="grid grid-cols-2 gap-2">
+                            <button class="location-option text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">
+                                <i class="fas fa-building mr-1"></i> Na barbearia
+                            </button>
+                            <button class="location-option text-center py-2 rounded-md text-sm border border-gray-300 hover:bg-blue-50 hover:border-blue-500">
+                                <i class="fas fa-home mr-1"></i> A domicílio
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Forma de Pagamento</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Selecione</option>
+                            <option value="dinheiro">Dinheiro</option>
+                            <option value="pix">PIX</option>
+                            <option value="credito">Cartão de Crédito</option>
+                            <option value="debito">Cartão de Débito</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Momento do Pagamento</label>
+                        <select class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="">Selecione</option>
+                            <option value="antecipado_50">50% antecipado</option>
+                            <option value="antecipado_100">100% antecipado</option>
+                            <option value="no_atendimento">No momento do atendimento</option>
+                        </select>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Observações (opcional)</label>
+                        <textarea class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" rows="2"></textarea>
+                    </div>
+                    
+                    <div class="mb-4 p-3 bg-gray-50 rounded-md">
+                        <div class="flex justify-between mb-2">
+                            <span class="text-sm text-gray-700">Subtotal:</span>
+                            <span class="text-sm font-medium text-gray-900" id="subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="flex justify-between mb-2" id="delivery-fee-container" style="display: none;">
+                            <span class="text-sm text-gray-700">Taxa de deslocamento:</span>
+                            <span class="text-sm font-medium text-gray-900" id="delivery-fee">R$ 10,00</span>
+                        </div>
+                        <div class="flex justify-between font-medium">
+                            <span class="text-gray-700">Total:</span>
+                            <span class="text-gray-900" id="total">R$ 0,00</span>
+                        </div>
+                    </div>
+                    
+                    <button id="btn-agendar" class="w-full bg-blue-600 text-white py-3 rounded-md font-medium hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                        Agendar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Confirmation Modal -->
+    <div id="booking-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-check-circle text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">Agendamento Confirmado!</h3>
+                    <p class="text-gray-600 mt-2">Seu agendamento foi realizado com sucesso.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-md p-4 mb-6">
+                    <div class="flex items-center mb-3">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full">
+                        <div class="ml-3">
+                            <h4 class="text-md font-medium text-gray-900">Carlos Silva</h4>
+                            <p class="text-sm text-gray-600">Barbeiro</p>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Data:</span>
+                            <span class="text-sm font-medium text-gray-900" id="modal-date">28/05/2025</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Horário:</span>
+                            <span class="text-sm font-medium text-gray-900" id="modal-time">10:00</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Local:</span>
+                            <span class="text-sm font-medium text-gray-900" id="modal-location">Na barbearia</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Serviços:</span>
+                            <span class="text-sm font-medium text-gray-900" id="modal-services">Corte Masculino</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Total:</span>
+                            <span class="text-sm font-medium text-gray-900" id="modal-total">R$ 40,00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-sm text-gray-600 mb-4">Você receberá uma confirmação por email e SMS.</p>
+                    <button id="btn-close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
+                        Voltar para a página inicial
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Service selection
+            const serviceButtons = document.querySelectorAll('.bg-blue-600');
+            const selectedServices = document.getElementById('selected-services');
+            const serviceList = document.getElementById('service-list');
+            const subtotalElement = document.getElementById('subtotal');
+            const totalElement = document.getElementById('total');
+            const btnAgendar = document.getElementById('btn-agendar');
+            
+            let selectedServicesArray = [];
+            
+            serviceButtons.forEach((button, index) => {
+                if (index < 5) { // Only the first 5 buttons are service buttons
+                    button.addEventListener('click', function() {
+                        const serviceCard = this.closest('.bg-white');
+                        const serviceName = serviceCard.querySelector('h3').textContent;
+                        const servicePrice = serviceCard.querySelector('.text-lg.font-semibold').textContent;
+                        const serviceDuration = serviceCard.querySelector('.text-xs.bg-gray-100').textContent;
+                        
+                        // Check if service is already selected
+                        const existingService = selectedServicesArray.find(service => service.name === serviceName);
+                        
+                        if (!existingService) {
+                            // Add service to array
+                            selectedServicesArray.push({
+                                name: serviceName,
+                                price: servicePrice,
+                                duration: serviceDuration
+                            });
+                            
+                            // Update UI
+                            updateSelectedServices();
+                        }
+                    });
+                }
+            });
+            
+            function updateSelectedServices() {
+                if (selectedServicesArray.length > 0) {
+                    selectedServices.querySelector('p').classList.add('hidden');
+                    serviceList.classList.remove('hidden');
+                    
+                    // Clear service list
+                    serviceList.innerHTML = '';
+                    
+                    // Add each service to the list
+                    let subtotal = 0;
+                    
+                    selectedServicesArray.forEach(service => {
+                        const serviceItem = document.createElement('div');
+                        serviceItem.className = 'flex justify-between items-center bg-gray-50 p-2 rounded';
+                        
+                        const priceValue = parseFloat(service.price.replace('R$ ', '').replace(',', '.'));
+                        subtotal += priceValue;
+                        
+                        serviceItem.innerHTML = `
+                            <div>
+                                <p class="text-sm font-medium">${service.name}</p>
+                                <p class="text-xs text-gray-500">${service.duration}</p>
+                            </div>
+                            <div class="flex items-center">
+                                <span class="text-sm font-medium mr-2">${service.price}</span>
+                                <button class="text-red-500 hover:text-red-700" data-service="${service.name}">
+                                    <i class="fas fa-times-circle"></i>
+                                </button>
+                            </div>
+                        `;
+                        
+                        serviceList.appendChild(serviceItem);
+                        
+                        // Add remove button event
+                        const removeButton = serviceItem.querySelector(`button[data-service="${service.name}"]`);
+                        removeButton.addEventListener('click', function() {
+                            const serviceName = this.getAttribute('data-service');
+                            selectedServicesArray = selectedServicesArray.filter(service => service.name !== serviceName);
+                            updateSelectedServices();
+                        });
+                    });
+                    
+                    // Update subtotal and total
+                    subtotalElement.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                    totalElement.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                    
+                    // Enable booking button
+                    btnAgendar.disabled = false;
+                } else {
+                    selectedServices.querySelector('p').classList.remove('hidden');
+                    serviceList.classList.add('hidden');
+                    
+                    // Reset subtotal and total
+                    subtotalElement.textContent = 'R$ 0,00';
+                    totalElement.textContent = 'R$ 0,00';
+                    
+                    // Disable booking button
+                    btnAgendar.disabled = true;
+                }
+            }
+            
+            // Time slot selection
+            const timeSlots = document.querySelectorAll('.time-slot');
+            
+            timeSlots.forEach(slot => {
+                slot.addEventListener('click', function() {
+                    // Remove selected class from all time slots
+                    timeSlots.forEach(s => {
+                        s.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                    });
+                    
+                    // Add selected class to clicked time slot
+                    this.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+                });
+            });
+            
+            // Location selection
+            const locationOptions = document.querySelectorAll('.location-option');
+            const deliveryFeeContainer = document.getElementById('delivery-fee-container');
+            
+            locationOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    // Remove selected class from all location options
+                    locationOptions.forEach(o => {
+                        o.classList.remove('bg-blue-600', 'text-white', 'border-blue-600');
+                    });
+                    
+                    // Add selected class to clicked location option
+                    this.classList.add('bg-blue-600', 'text-white', 'border-blue-600');
+                    
+                    // Show/hide delivery fee
+                    if (this.textContent.includes('A domicílio')) {
+                        deliveryFeeContainer.style.display = 'flex';
+                        
+                        // Update total with delivery fee
+                        const subtotal = parseFloat(subtotalElement.textContent.replace('R$ ', '').replace(',', '.'));
+                        const deliveryFee = 10;
+                        totalElement.textContent = `R$ ${(subtotal + deliveryFee).toFixed(2).replace('.', ',')}`;
+                    } else {
+                        deliveryFeeContainer.style.display = 'none';
+                        
+                        // Update total without delivery fee
+                        const subtotal = parseFloat(subtotalElement.textContent.replace('R$ ', '').replace(',', '.'));
+                        totalElement.textContent = `R$ ${subtotal.toFixed(2).replace('.', ',')}`;
+                    }
+                });
+            });
+            
+            // Booking confirmation
+            const bookingModal = document.getElementById('booking-modal');
+            const btnCloseModal = document.getElementById('btn-close-modal');
+            
+            btnAgendar.addEventListener('click', function() {
+                // Get selected values
+                const selectedDate = document.querySelector('input[type="date"]').value;
+                const selectedTime = document.querySelector('.time-slot.bg-blue-600')?.textContent || '10:00';
+                const selectedLocation = document.querySelector('.location-option.bg-blue-600')?.textContent.trim() || 'Na barbearia';
+                
+                // Format date
+                const date = new Date(selectedDate);
+                const formattedDate = date.toLocaleDateString('pt-BR');
+                
+                // Update modal values
+                document.getElementById('modal-date').textContent = formattedDate || '28/05/2025';
+                document.getElementById('modal-time').textContent = selectedTime;
+                document.getElementById('modal-location').textContent = selectedLocation;
+                document.getElementById('modal-services').textContent = selectedServicesArray.map(service => service.name).join(', ');
+                document.getElementById('modal-total').textContent = totalElement.textContent;
+                
+                // Show modal
+                bookingModal.classList.remove('hidden');
+            });
+            
+            btnCloseModal.addEventListener('click', function() {
+                bookingModal.classList.add('hidden');
+                window.location.href = 'cliente-dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>

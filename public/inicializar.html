@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Inicialização</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <div class="p-6">
+                <div class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800">BarberPro</h1>
+                    <p class="text-gray-600 mt-2">Inicialização do Sistema</p>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="flex items-center justify-center mb-4">
+                        <div class="w-16 h-16 rounded-full bg-blue-600 flex items-center justify-center">
+                            <i class="fas fa-cut text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="text-center mb-6">
+                        <p class="text-gray-700">Preparando o ambiente do BarberPro...</p>
+                        <p class="text-sm text-gray-500 mt-1">Isso pode levar alguns segundos.</p>
+                    </div>
+                    
+                    <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
+                        <div id="progress-bar" class="bg-blue-600 h-2.5 rounded-full" style="width: 0%"></div>
+                    </div>
+                    
+                    <div id="status-message" class="text-center text-sm text-gray-500">
+                        Inicializando...
+                    </div>
+                </div>
+                
+                <div id="success-message" class="hidden">
+                    <div class="bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-6" role="alert">
+                        <p class="font-bold">Sistema inicializado com sucesso!</p>
+                        <p>O BarberPro está pronto para uso.</p>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <a href="index.html" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300">
+                            Ir para a página inicial
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- JavaScript -->
+    <script src="js/limpar-dados.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progress-bar');
+            const statusMessage = document.getElementById('status-message');
+            const successMessage = document.getElementById('success-message');
+            
+            // Simular progresso
+            let progress = 0;
+            const interval = setInterval(() => {
+                progress += 5;
+                progressBar.style.width = `${progress}%`;
+                
+                // Atualizar mensagem de status
+                if (progress < 30) {
+                    statusMessage.textContent = 'Limpando dados de exemplo...';
+                } else if (progress < 60) {
+                    statusMessage.textContent = 'Preparando ambiente...';
+                } else if (progress < 90) {
+                    statusMessage.textContent = 'Configurando sistema...';
+                } else {
+                    statusMessage.textContent = 'Finalizando...';
+                }
+                
+                // Quando completar
+                if (progress >= 100) {
+                    clearInterval(interval);
+                    setTimeout(() => {
+                        statusMessage.classList.add('hidden');
+                        successMessage.classList.remove('hidden');
+                    }, 500);
+                }
+            }, 100);
+            
+            // Limpar dados de exemplo
+            function limparDadosExemplo() {
+                // Lista de chaves que podem conter dados de exemplo
+                const chavesParaLimpar = [
+                    // Dados de barbeiros de exemplo
+                    'barberpro_barbeiros',
+                    'barberpro_barbeiro_atual',
+                    
+                    // Favoritos e agendamentos simulados
+                    'barberpro_favoritos_cliente_',
+                    'barberpro_agendamentos_cliente_',
+                    'barberpro_agendamentos_barbeiro_',
+                    
+                    // Avaliações simuladas
+                    'barberpro_avaliacoes_',
+                    
+                    // Histórico de navegação
+                    'barberpro_recent_searches',
+                    'barberpro_viewed_profiles'
+                ];
+                
+                // Limpar chaves específicas
+                chavesParaLimpar.forEach(chave => {
+                    // Chaves exatas
+                    if (!chave.endsWith('_')) {
+                        localStorage.removeItem(chave);
+                    } 
+                    // Chaves com prefixo (busca todas as chaves que começam com o prefixo)
+                    else {
+                        Object.keys(localStorage).forEach(key => {
+                            if (key.startsWith(chave)) {
+                                localStorage.removeItem(key);
+                            }
+                        });
+                    }
+                });
+                
+                console.log('Dados de exemplo removidos com sucesso!');
+            }
+            
+            // Executar limpeza ao carregar a página
+            limparDadosExemplo();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Agendamentos do Barbeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+        }
+        
+        .barber-card {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .status-badge.pending {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+        
+        .status-badge.confirmed {
+            background-color: #DCFCE7;
+            color: #166534;
+        }
+        
+        .status-badge.completed {
+            background-color: #DBEAFE;
+            color: #1E40AF;
+        }
+        
+        .status-badge.canceled {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen bg-gray-100">
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-slate-900 text-white">
+                <div class="flex items-center justify-center h-16 px-4 bg-slate-800">
+                    <h1 class="text-xl font-bold">BarberPro</h1>
+                </div>
+                <div class="flex flex-col flex-grow px-4 mt-5">
+                    <nav class="flex-1 space-y-1">
+                        <a href="barbeiro-dashboard.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-home mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="agendamentos-barbeiro.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md bg-slate-800">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            Agendamentos
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cut mr-3"></i>
+                            Serviços
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-users mr-3"></i>
+                            Clientes
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Relatórios
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cog mr-3"></i>
+                            Configurações
+                        </a>
+                    </nav>
+                    <div class="mt-auto pb-6">
+                        <div class="barber-card rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
+                                    <p class="text-xs text-gray-400">Barbeiro Master</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="login.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white p-4 flex items-center justify-between">
+            <h1 class="text-xl font-bold">BarberPro</h1>
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-4 border-b border-slate-800">
+                    <h1 class="text-xl font-bold">BarberPro</h1>
+                    <button id="close-menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto">
+                    <nav class="px-4 pt-4 space-y-1">
+                        <a href="barbeiro-dashboard.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-home mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="agendamentos-barbeiro.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md bg-slate-800">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            Agendamentos
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cut mr-3"></i>
+                            Serviços
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-users mr-3"></i>
+                            Clientes
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Relatórios
+                        </a>
+                        <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cog mr-3"></i>
+                            Configurações
+                        </a>
+                    </nav>
+                </div>
+                <div class="p-4 border-t border-slate-800">
+                    <div class="barber-card rounded-lg p-4 mb-4">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                            <div class="ml-3">
+                                <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
+                                <p class="text-xs text-gray-400">Barbeiro Master</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="login.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                        <i class="fas fa-sign-out-alt mr-3"></i>
+                        Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <main class="flex-1 overflow-y-auto pt-16 md:pt-0 pb-4 px-4 md:px-6 bg-gray-100">
+                <!-- Agendamentos Content -->
+                <div class="py-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-900 titulo-pagina">Agendamentos</h2>
+                        <button class="mt-3 md:mt-0 inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 btn-voltar">
+                            <i class="fas fa-arrow-left mr-2"></i> Voltar ao Dashboard
+                        </button>
+                    </div>
+
+                    <!-- Filtros -->
+                    <div class="bg-white shadow rounded-lg p-4 mb-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-4">Filtros</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="filtro-status" class="block text-sm font-medium text-gray-700 mb-1">Status</label>
+                                <select id="filtro-status" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                    <option value="todos">Todos</option>
+                                    <option value="pendente">Pendente</option>
+                                    <option value="confirmado">Confirmado</option>
+                                    <option value="concluido">Concluído</option>
+                                    <option value="cancelado">Cancelado</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="filtro-data" class="block text-sm font-medium text-gray-700 mb-1">Data</label>
+                                <input type="date" id="filtro-data" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Agendamentos -->
+                    <div class="bg-white shadow rounded-lg overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Horário</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Local</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Valor</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200 tabela-agendamentos">
+                                    <!-- Agendamentos serão carregados dinamicamente aqui -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div class="notificacao fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full"></div>
+
+    <!-- Scripts -->
+    <script src="src/js/agendamento-storage.js"></script>
+    <script src="src/js/agendamentos-barbeiro.js"></script>
+</body>
+</html>

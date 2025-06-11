@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Offline</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="description" content="Sistema de agendamento e gestão para barbearias">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BarberPro">
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="196x196" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-152x152.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-md mx-auto">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <img src="img/icons/icon-192x192.png" alt="BarberPro" class="w-24 h-24 mx-auto mb-4">
+                <h1 class="text-3xl font-bold text-gray-800">BarberPro</h1>
+                <p class="text-gray-600 mt-2">Sistema de agendamento e gestão para barbearias</p>
+            </div>
+            
+            <!-- Offline Message -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                <div class="p-6">
+                    <div class="text-center mb-6">
+                        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-blue-100 text-blue-600 mb-4">
+                            <i class="fas fa-wifi-slash text-3xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-semibold text-gray-800">Você está offline</h2>
+                        <p class="text-gray-600 mt-2">Não foi possível conectar à internet. Verifique sua conexão e tente novamente.</p>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-md p-4 mb-6">
+                        <h3 class="text-md font-medium text-gray-900 mb-2">O que você pode fazer:</h3>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5 mr-2"></i>
+                                <span>Verificar sua conexão Wi-Fi ou dados móveis</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5 mr-2"></i>
+                                <span>Acessar conteúdos salvos anteriormente</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-0.5 mr-2"></i>
+                                <span>Tentar novamente mais tarde</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button id="btn-retry" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
+                            Tentar Novamente
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 fixed bottom-0 w-full">
+        <div class="container mx-auto px-4 py-4">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        document.getElementById('btn-retry').addEventListener('click', function() {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Teste de Compatibilidade</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="description" content="Teste de compatibilidade do BarberPro">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BarberPro">
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="196x196" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-152x152.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+        .browser-info {
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <img src="img/icons/icon-192x192.png" alt="BarberPro" class="w-24 h-24 mx-auto mb-4">
+                <h1 class="text-3xl font-bold text-gray-800">BarberPro - Teste de Compatibilidade</h1>
+                <p class="text-gray-600 mt-2">Verificando compatibilidade com Safari/iOS</p>
+            </div>
+            
+            <!-- Teste de Service Worker -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Status do Service Worker</h2>
+                    
+                    <div id="sw-status" class="p-4 bg-gray-100 rounded-md">
+                        <p class="text-gray-600">Verificando status do Service Worker...</p>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <button id="btn-register-sw" class="bg-blue-600 text-white px-4 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
+                            Registrar Service Worker
+                        </button>
+                        <button id="btn-unregister-sw" class="ml-2 bg-red-600 text-white px-4 py-2 rounded-md font-medium hover:bg-red-700 transition duration-300">
+                            Desregistrar Service Worker
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Teste de Cache -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Teste de Cache</h2>
+                    
+                    <div class="mb-4">
+                        <button id="btn-cache-test" class="bg-green-600 text-white px-4 py-2 rounded-md font-medium hover:bg-green-700 transition duration-300">
+                            Testar Cache
+                        </button>
+                    </div>
+                    
+                    <div id="cache-status" class="p-4 bg-gray-100 rounded-md">
+                        <p class="text-gray-600">Clique no botão para testar o cache...</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Informações do Navegador -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Informações do Navegador</h2>
+                    
+                    <div class="browser-info p-4 bg-gray-100 rounded-md">
+                        <p id="user-agent" class="text-gray-600 break-words"></p>
+                        <p id="browser-type" class="text-gray-600 mt-2"></p>
+                        <p id="pwa-status" class="text-gray-600 mt-2"></p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Navegação -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Teste de Navegação</h2>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <a href="index.html" class="bg-blue-100 text-blue-800 p-4 rounded-md text-center hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-home text-2xl mb-2"></i>
+                            <p>Página Inicial</p>
+                        </a>
+                        <a href="login.html" class="bg-blue-100 text-blue-800 p-4 rounded-md text-center hover:bg-blue-200 transition duration-300">
+                            <i class="fas fa-sign-in-alt text-2xl mb-2"></i>
+                            <p>Login</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botão de Voltar -->
+            <div class="text-center">
+                <a href="index.html" class="inline-block bg-gray-800 text-white px-6 py-2 rounded-md font-medium hover:bg-gray-900 transition duration-300">
+                    Voltar para o Aplicativo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script>
+        // Elementos DOM
+        const swStatus = document.getElementById('sw-status');
+        const cacheStatus = document.getElementById('cache-status');
+        const userAgent = document.getElementById('user-agent');
+        const browserType = document.getElementById('browser-type');
+        const pwaStatus = document.getElementById('pwa-status');
+        const btnRegisterSW = document.getElementById('btn-register-sw');
+        const btnUnregisterSW = document.getElementById('btn-unregister-sw');
+        const btnCacheTest = document.getElementById('btn-cache-test');
+        
+        // Exibir informações do navegador
+        userAgent.textContent = `User Agent: ${navigator.userAgent}`;
+        
+        // Detectar navegador
+        function detectBrowser() {
+            const ua = navigator.userAgent;
+            let browserName = "Desconhecido";
+            
+            if (ua.match(/chrome|chromium|crios/i)) {
+                browserName = "Chrome";
+            } else if (ua.match(/firefox|fxios/i)) {
+                browserName = "Firefox";
+            } else if (ua.match(/safari/i) && !ua.match(/chrome|chromium|crios/i)) {
+                browserName = "Safari";
+            } else if (ua.match(/opr\//i)) {
+                browserName = "Opera";
+            } else if (ua.match(/edg/i)) {
+                browserName = "Edge";
+            }
+            
+            const isIOS = /iPad|iPhone|iPod/.test(ua);
+            const isAndroid = /Android/.test(ua);
+            const isMobile = isIOS || isAndroid;
+            
+            let deviceType = "Desktop";
+            if (isIOS) deviceType = "iOS";
+            if (isAndroid) deviceType = "Android";
+            
+            return { browserName, deviceType, isMobile, isIOS, isAndroid };
+        }
+        
+        const browser = detectBrowser();
+        browserType.textContent = `Navegador: ${browser.browserName} em ${browser.deviceType}`;
+        
+        // Verificar se está sendo executado como PWA
+        if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true) {
+            pwaStatus.textContent = "Status: Executando como PWA (instalado)";
+            pwaStatus.classList.add("text-green-600", "font-semibold");
+        } else {
+            pwaStatus.textContent = "Status: Executando no navegador (não instalado)";
+        }
+        
+        // Verificar suporte a Service Worker
+        if ('serviceWorker' in navigator) {
+            // Verificar se há um service worker registrado
+            navigator.serviceWorker.getRegistration()
+                .then(registration => {
+                    if (registration) {
+                        swStatus.innerHTML = `
+                            <p class="text-green-600 font-semibold">Service Worker registrado!</p>
+                            <p class="text-gray-600 mt-2">Escopo: ${registration.scope}</p>
+                            <p class="text-gray-600">Status: ${registration.active ? 'Ativo' : 'Inativo'}</p>
+                            <p class="text-gray-600">Atualização pendente: ${registration.waiting ? 'Sim' : 'Não'}</p>
+                        `;
+                    } else {
+                        swStatus.innerHTML = `
+                            <p class="text-yellow-600 font-semibold">Nenhum Service Worker registrado.</p>
+                            <p class="text-gray-600 mt-2">O navegador suporta Service Workers, mas nenhum está ativo para esta página.</p>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    swStatus.innerHTML = `
+                        <p class="text-red-600 font-semibold">Erro ao verificar Service Worker</p>
+                        <p class="text-gray-600 mt-2">${error.message}</p>
+                    `;
+                });
+        } else {
+            swStatus.innerHTML = `
+                <p class="text-red-600 font-semibold">Service Worker não suportado</p>
+                <p class="text-gray-600 mt-2">Este navegador não suporta Service Workers.</p>
+            `;
+            btnRegisterSW.disabled = true;
+            btnUnregisterSW.disabled = true;
+            btnRegisterSW.classList.add('opacity-50');
+            btnUnregisterSW.classList.add('opacity-50');
+        }
+        
+        // Registrar Service Worker
+        btnRegisterSW.addEventListener('click', () => {
+            if ('serviceWorker' in navigator) {
+                swStatus.innerHTML = `<p class="text-blue-600">Registrando Service Worker...</p>`;
+                
+                navigator.serviceWorker.register('/service-worker-fixed.js')
+                    .then(registration => {
+                        swStatus.innerHTML = `
+                            <p class="text-green-600 font-semibold">Service Worker registrado com sucesso!</p>
+                            <p class="text-gray-600 mt-2">Escopo: ${registration.scope}</p>
+                        `;
+                    })
+                    .catch(error => {
+                        swStatus.innerHTML = `
+                            <p class="text-red-600 font-semibold">Falha ao registrar Service Worker</p>
+                            <p class="text-gray-600 mt-2">${error.message}</p>
+                        `;
+                    });
+            }
+        });
+        
+        // Desregistrar Service Worker
+        btnUnregisterSW.addEventListener('click', () => {
+            if ('serviceWorker' in navigator) {
+                swStatus.innerHTML = `<p class="text-blue-600">Desregistrando Service Worker...</p>`;
+                
+                navigator.serviceWorker.getRegistration()
+                    .then(registration => {
+                        if (registration) {
+                            return registration.unregister();
+                        }
+                        return false;
+                    })
+                    .then(success => {
+                        if (success) {
+                            swStatus.innerHTML = `
+                                <p class="text-green-600 font-semibold">Service Worker desregistrado com sucesso!</p>
+                            `;
+                        } else {
+                            swStatus.innerHTML = `
+                                <p class="text-yellow-600 font-semibold">Nenhum Service Worker para desregistrar.</p>
+                            `;
+                        }
+                    })
+                    .catch(error => {
+                        swStatus.innerHTML = `
+                            <p class="text-red-600 font-semibold">Falha ao desregistrar Service Worker</p>
+                            <p class="text-gray-600 mt-2">${error.message}</p>
+                        `;
+                    });
+            }
+        });
+        
+        // Testar Cache
+        btnCacheTest.addEventListener('click', () => {
+            cacheStatus.innerHTML = `<p class="text-blue-600">Testando cache...</p>`;
+            
+            if ('caches' in window) {
+                caches.open('barberpro-v2')
+                    .then(cache => {
+                        return cache.add('/test-cache-item.json')
+                            .then(() => cache.match('/test-cache-item.json'));
+                    })
+                    .then(response => {
+                        if (response) {
+                            return response.json();
+                        }
+                        throw new Error('Item não encontrado no cache');
+                    })
+                    .then(data => {
+                        cacheStatus.innerHTML = `
+                            <p class="text-green-600 font-semibold">Cache funcionando corretamente!</p>
+                            <p class="text-gray-600 mt-2">Item de teste armazenado e recuperado com sucesso.</p>
+                        `;
+                    })
+                    .catch(error => {
+                        // Criar um item de teste para o cache
+                        const testData = { test: 'success', timestamp: Date.now() };
+                        const testResponse = new Response(JSON.stringify(testData), {
+                            headers: { 'Content-Type': 'application/json' }
+                        });
+                        
+                        caches.open('barberpro-v2')
+                            .then(cache => {
+                                return cache.put('/test-cache-item.json', testResponse.clone())
+                                    .then(() => cache.match('/test-cache-item.json'));
+                            })
+                            .then(response => {
+                                if (response) {
+                                    return response.json();
+                                }
+                                throw new Error('Falha ao armazenar item no cache');
+                            })
+                            .then(data => {
+                                cacheStatus.innerHTML = `
+                                    <p class="text-green-600 font-semibold">Cache funcionando corretamente!</p>
+                                    <p class="text-gray-600 mt-2">Item de teste criado e recuperado com sucesso.</p>
+                                `;
+                            })
+                            .catch(error => {
+                                cacheStatus.innerHTML = `
+                                    <p class="text-red-600 font-semibold">Erro no teste de cache</p>
+                                    <p class="text-gray-600 mt-2">${error.message}</p>
+                                `;
+                            });
+                    });
+            } else {
+                cacheStatus.innerHTML = `
+                    <p class="text-red-600 font-semibold">Cache API não suportada</p>
+                    <p class="text-gray-600 mt-2">Este navegador não suporta a Cache API.</p>
+                `;
+            }
+        });
+    </script>
+</body>
+</html>

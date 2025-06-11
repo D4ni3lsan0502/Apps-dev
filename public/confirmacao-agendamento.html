@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Confirmação de Agendamento</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="cliente-dashboard.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Usuário" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700">João Silva</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <!-- Confirmação de Agendamento -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="bg-green-500 p-6 text-white text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white text-green-500 mb-4">
+                        <i class="fas fa-check-circle text-3xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold">Agendamento Realizado!</h1>
+                    <p class="mt-2">Seu agendamento foi registrado com sucesso.</p>
+                </div>
+                
+                <div class="p-6">
+                    <div class="mb-6">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-4">Detalhes do Agendamento</h2>
+                        
+                        <div class="flex items-center mb-4">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                            <div class="ml-4">
+                                <h3 class="text-md font-medium text-gray-900">Carlos Silva</h3>
+                                <p class="text-sm text-gray-600">Barbeiro</p>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-gray-50 rounded-md p-4 mb-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <p class="text-sm text-gray-600 mb-1">Data:</p>
+                                    <p class="text-sm font-medium text-gray-900">28/05/2025</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600 mb-1">Horário:</p>
+                                    <p class="text-sm font-medium text-gray-900">10:00 - 11:00</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600 mb-1">Local:</p>
+                                    <p class="text-sm font-medium text-gray-900">Barbearia</p>
+                                </div>
+                                <div>
+                                    <p class="text-sm text-gray-600 mb-1">Endereço:</p>
+                                    <p class="text-sm font-medium text-gray-900">Rua Exemplo, 123 - Bela Vista, São Paulo - SP</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <h3 class="text-md font-medium text-gray-900 mb-2">Serviços Agendados</h3>
+                        <div class="bg-gray-50 rounded-md p-4 mb-4">
+                            <div class="space-y-3">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Corte Masculino</p>
+                                        <p class="text-xs text-gray-600">30 min</p>
+                                    </div>
+                                    <p class="text-sm font-medium text-gray-900">R$ 40,00</p>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <p class="text-sm font-medium text-gray-900">Barba</p>
+                                        <p class="text-xs text-gray-600">20 min</p>
+                                    </div>
+                                    <p class="text-sm font-medium text-gray-900">R$ 30,00</p>
+                                </div>
+                                <div class="border-t border-gray-200 pt-2 mt-2">
+                                    <div class="flex justify-between items-center">
+                                        <div>
+                                            <p class="text-sm font-medium text-gray-900">Tempo Total:</p>
+                                            <p class="text-xs text-gray-600">1h (30min + 30min adicional)</p>
+                                        </div>
+                                        <p class="text-sm font-medium text-gray-900">R$ 70,00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Informações de Pagamento -->
+                    <div class="mb-6" id="payment-info">
+                        <h2 class="text-lg font-semibold text-gray-900 mb-4">Informações de Pagamento</h2>
+                        
+                        <div class="bg-gray-50 rounded-md p-4 mb-4">
+                            <div class="mb-3">
+                                <p class="text-sm text-gray-600 mb-1">Forma de Pagamento:</p>
+                                <p class="text-sm font-medium text-gray-900">PIX</p>
+                            </div>
+                            <div class="mb-3">
+                                <p class="text-sm text-gray-600 mb-1">Momento do Pagamento:</p>
+                                <p class="text-sm font-medium text-gray-900">50% antecipado (R$ 35,00)</p>
+                            </div>
+                            
+                            <!-- Dados PIX -->
+                            <div id="pix-data" class="mb-3">
+                                <p class="text-sm text-gray-600 mb-1">Chave PIX (CPF):</p>
+                                <div class="flex items-center">
+                                    <p class="text-sm font-medium text-gray-900 mr-2">123.456.789-00</p>
+                                    <button class="text-blue-600 hover:text-blue-800 text-xs" id="copy-pix">
+                                        <i class="far fa-copy mr-1"></i> Copiar
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Carlos Silva</p>
+                            </div>
+                            
+                            <!-- QR Code PIX (exemplo) -->
+                            <div class="flex justify-center mb-3">
+                                <div class="bg-white p-3 rounded-md border border-gray-300 text-center">
+                                    <p class="text-xs font-medium mb-2">QR Code PIX</p>
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QR Code PIX" class="w-32 h-32 mx-auto">
+                                </div>
+                            </div>
+                            
+                            <div class="text-sm text-gray-600 mb-3">
+                                <p class="font-medium mb-1">Instruções:</p>
+                                <ol class="list-decimal pl-5 space-y-1 text-xs">
+                                    <li>Abra o aplicativo do seu banco</li>
+                                    <li>Escolha a opção PIX</li>
+                                    <li>Copie e cole a chave PIX ou escaneie o QR Code</li>
+                                    <li>Digite o valor de R$ 35,00</li>
+                                    <li>Confirme o pagamento</li>
+                                    <li>Envie o comprovante abaixo</li>
+                                </ol>
+                            </div>
+                        </div>
+                        
+                        <!-- Upload de Comprovante -->
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-md p-4 mb-4">
+                            <div class="flex items-start">
+                                <div class="flex-shrink-0 mt-0.5">
+                                    <i class="fas fa-exclamation-circle text-yellow-500"></i>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-medium text-yellow-800">Atenção: Seu agendamento será confirmado após o envio do comprovante</h3>
+                                    <div class="mt-2">
+                                        <div class="mb-3">
+                                            <label for="comprovante" class="block text-sm font-medium text-gray-700 mb-1">Enviar Comprovante de Pagamento</label>
+                                            <div class="flex items-center">
+                                                <input type="file" id="comprovante" class="hidden" accept="image/*,.pdf">
+                                                <label for="comprovante" class="cursor-pointer bg-white border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-50 mr-2">
+                                                    <i class="fas fa-upload mr-1"></i> Selecionar arquivo
+                                                </label>
+                                                <span id="file-name" class="text-xs text-gray-500">Nenhum arquivo selecionado</span>
+                                            </div>
+                                            <p class="text-xs text-gray-500 mt-1">Formatos aceitos: JPG, PNG, PDF. Tamanho máximo: 5MB</p>
+                                        </div>
+                                        <button id="btn-enviar-comprovante" class="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                                            Enviar Comprovante
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Botões de Ação -->
+                    <div class="flex flex-col md:flex-row space-y-3 md:space-y-0 md:space-x-3">
+                        <button class="bg-white border border-gray-300 text-gray-700 py-2 px-4 rounded-md font-medium hover:bg-gray-50 transition duration-300 flex-1">
+                            <i class="far fa-calendar-alt mr-1"></i> Ver Meus Agendamentos
+                        </button>
+                        <button class="bg-blue-600 text-white py-2 px-4 rounded-md font-medium hover:bg-blue-700 transition duration-300 flex-1">
+                            <i class="fas fa-home mr-1"></i> Voltar para a Página Inicial
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Confirmação de Envio Modal -->
+    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="text-center mb-6">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-check-circle text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900">Comprovante Enviado!</h3>
+                    <p class="text-gray-600 mt-2">Seu comprovante foi enviado com sucesso e está em análise.</p>
+                </div>
+                
+                <div class="bg-gray-50 rounded-md p-4 mb-6">
+                    <p class="text-sm text-gray-600 mb-2">O barbeiro irá verificar seu comprovante e confirmar seu agendamento em breve.</p>
+                    <p class="text-sm text-gray-600">Você receberá uma notificação assim que seu agendamento for confirmado.</p>
+                </div>
+                
+                <div class="text-center">
+                    <button id="btn-close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
+                        Entendi
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Copiar chave PIX
+            const copyPixButton = document.getElementById('copy-pix');
+            copyPixButton.addEventListener('click', function() {
+                const pixKey = '123.456.789-00';
+                navigator.clipboard.writeText(pixKey).then(() => {
+                    // Mudar texto do botão temporariamente
+                    const originalText = copyPixButton.innerHTML;
+                    copyPixButton.innerHTML = '<i class="fas fa-check mr-1"></i> Copiado!';
+                    setTimeout(() => {
+                        copyPixButton.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+            
+            // Upload de comprovante
+            const inputComprovante = document.getElementById('comprovante');
+            const fileNameElement = document.getElementById('file-name');
+            const btnEnviarComprovante = document.getElementById('btn-enviar-comprovante');
+            const confirmationModal = document.getElementById('confirmation-modal');
+            const btnCloseModal = document.getElementById('btn-close-modal');
+            
+            inputComprovante.addEventListener('change', function() {
+                if (this.files && this.files[0]) {
+                    const file = this.files[0];
+                    
+                    // Verificar tamanho do arquivo (máximo 5MB)
+                    const maxSize = 5 * 1024 * 1024; // 5MB em bytes
+                    if (file.size > maxSize) {
+                        alert('O arquivo excede o tamanho máximo de 5MB');
+                        this.value = '';
+                        fileNameElement.textContent = 'Nenhum arquivo selecionado';
+                        btnEnviarComprovante.disabled = true;
+                        return;
+                    }
+                    
+                    // Verificar tipo de arquivo
+                    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
+                    if (!allowedTypes.includes(file.type)) {
+                        alert('Formato de arquivo não suportado. Use JPG, PNG, GIF ou PDF');
+                        this.value = '';
+                        fileNameElement.textContent = 'Nenhum arquivo selecionado';
+                        btnEnviarComprovante.disabled = true;
+                        return;
+                    }
+                    
+                    // Atualizar nome do arquivo e habilitar botão
+                    fileNameElement.textContent = file.name;
+                    btnEnviarComprovante.disabled = false;
+                } else {
+                    fileNameElement.textContent = 'Nenhum arquivo selecionado';
+                    btnEnviarComprovante.disabled = true;
+                }
+            });
+            
+            btnEnviarComprovante.addEventListener('click', function() {
+                // Simular envio do comprovante
+                btnEnviarComprovante.disabled = true;
+                btnEnviarComprovante.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Enviando...';
+                
+                setTimeout(() => {
+                    // Mostrar modal de confirmação
+                    confirmationModal.classList.remove('hidden');
+                    
+                    // Resetar formulário
+                    inputComprovante.value = '';
+                    fileNameElement.textContent = 'Nenhum arquivo selecionado';
+                    btnEnviarComprovante.innerHTML = 'Enviar Comprovante';
+                    btnEnviarComprovante.disabled = true;
+                }, 2000);
+            });
+            
+            btnCloseModal.addEventListener('click', function() {
+                confirmationModal.classList.add('hidden');
+            });
+            
+            // Fechar modal ao clicar fora dele
+            confirmationModal.addEventListener('click', function(event) {
+                if (event.target === confirmationModal) {
+                    confirmationModal.classList.add('hidden');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

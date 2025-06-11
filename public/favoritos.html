@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Meus Favoritos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Leaflet CSS para o mapa -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+    <!-- Leaflet JavaScript para o mapa -->
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="cliente-dashboard.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Usuário" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700">João Silva</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <!-- Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8">
+                    <a href="cliente-dashboard.html" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Barbeiros
+                    </a>
+                    <a href="#" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Meus Agendamentos
+                    </a>
+                    <a href="#" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Favoritos
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Favoritos e Mapa -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <!-- Lista de Favoritos -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-lg shadow p-4 mb-4">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Meus Barbeiros Favoritos</h2>
+                    
+                    <div class="space-y-4" id="favoritos-lista">
+                        <!-- Barbeiro Favorito 1 -->
+                        <div class="flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer barbeiro-item" data-lat="-23.5505" data-lng="-46.6333" data-id="1">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                            <div class="ml-3 flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-md font-medium text-gray-900">Carlos Silva</h3>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <span class="text-gray-500 ml-1">(4.5)</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-red-500 hover:text-red-700 remove-favorito" data-id="1">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Bela Vista, São Paulo - SP</p>
+                                <p class="text-xs text-gray-600">A partir de R$ 40,00</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Barbeiro Favorito 2 -->
+                        <div class="flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer barbeiro-item" data-lat="-23.5630" data-lng="-46.6682" data-id="2">
+                            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                            <div class="ml-3 flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-md font-medium text-gray-900">Pedro Santos</h3>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <span class="text-gray-500 ml-1">(5.0)</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-red-500 hover:text-red-700 remove-favorito" data-id="2">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Pinheiros, São Paulo - SP</p>
+                                <p class="text-xs text-gray-600">A partir de R$ 45,00</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Barbeiro Favorito 3 -->
+                        <div class="flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer barbeiro-item" data-lat="-23.5868" data-lng="-46.6388" data-id="3">
+                            <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                            <div class="ml-3 flex-1">
+                                <div class="flex justify-between items-start">
+                                    <div>
+                                        <h3 class="text-md font-medium text-gray-900">Rafael Costa</h3>
+                                        <div class="flex text-yellow-400 text-xs">
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star-half-alt"></i>
+                                            <span class="text-gray-500 ml-1">(4.5)</span>
+                                        </div>
+                                    </div>
+                                    <button class="text-red-500 hover:text-red-700 remove-favorito" data-id="3">
+                                        <i class="fas fa-heart"></i>
+                                    </button>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">Moema, São Paulo - SP</p>
+                                <p class="text-xs text-gray-600">A partir de R$ 55,00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Mensagem quando não há favoritos -->
+                    <div id="sem-favoritos" class="hidden text-center py-8">
+                        <i class="far fa-heart text-gray-400 text-4xl mb-3"></i>
+                        <p class="text-gray-500">Você ainda não tem barbeiros favoritos</p>
+                        <a href="cliente-dashboard.html" class="text-blue-600 hover:text-blue-800 text-sm mt-2 inline-block">
+                            Encontrar barbeiros
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Busca por Localização -->
+                <div class="bg-white rounded-lg shadow p-4">
+                    <h2 class="text-lg font-semibold text-gray-900 mb-4">Encontrar Barbeiros Próximos</h2>
+                    
+                    <div class="mb-4">
+                        <label for="raio-busca" class="block text-sm font-medium text-gray-700 mb-1">Raio de Busca</label>
+                        <select id="raio-busca" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <option value="1">1 km</option>
+                            <option value="3" selected>3 km</option>
+                            <option value="5">5 km</option>
+                            <option value="10">10 km</option>
+                            <option value="20">20 km</option>
+                        </select>
+                    </div>
+                    
+                    <button id="btn-localizar" class="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 flex items-center justify-center">
+                        <i class="fas fa-location-arrow mr-2"></i> Usar Minha Localização
+                    </button>
+                    
+                    <div class="mt-4">
+                        <p class="text-xs text-gray-500">Ou busque por endereço:</p>
+                        <div class="flex mt-2">
+                            <input type="text" id="endereco-busca" placeholder="Digite um endereço..." class="flex-1 border border-gray-300 rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            <button id="btn-buscar-endereco" class="bg-blue-600 text-white px-3 py-2 rounded-r-md hover:bg-blue-700 transition duration-300">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mapa -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow overflow-hidden">
+                    <div class="p-4 border-b border-gray-200">
+                        <h2 class="text-lg font-semibold text-gray-900">Mapa de Barbeiros</h2>
+                    </div>
+                    <div id="map" class="h-[500px]"></div>
+                    <div class="p-4 bg-gray-50">
+                        <div id="barbeiros-proximos">
+                            <h3 class="text-md font-medium text-gray-900 mb-2">Barbeiros Próximos</h3>
+                            <div id="lista-proximos" class="space-y-2">
+                                <!-- Lista de barbeiros próximos será preenchida via JavaScript -->
+                                <p class="text-sm text-gray-500">Use sua localização para encontrar barbeiros próximos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Inicializar o mapa (centralizado em São Paulo)
+            const map = L.map('map').setView([-23.5505, -46.6333], 12);
+            
+            // Adicionar camada de mapa (OpenStreetMap)
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+            
+            // Dados dos barbeiros (em um ambiente real, viriam do banco de dados)
+            const barbeiros = [
+                {
+                    id: 1,
+                    nome: "Carlos Silva",
+                    foto: "https://randomuser.me/api/portraits/men/32.jpg",
+                    avaliacao: 4.5,
+                    endereco: "Bela Vista, São Paulo - SP",
+                    preco: 40,
+                    lat: -23.5505,
+                    lng: -46.6333,
+                    favorito: true
+                },
+                {
+                    id: 2,
+                    nome: "Pedro Santos",
+                    foto: "https://randomuser.me/api/portraits/men/22.jpg",
+                    avaliacao: 5.0,
+                    endereco: "Pinheiros, São Paulo - SP",
+                    preco: 45,
+                    lat: -23.5630,
+                    lng: -46.6682,
+                    favorito: true
+                },
+                {
+                    id: 3,
+                    nome: "Rafael Costa",
+                    foto: "https://randomuser.me/api/portraits/men/67.jpg",
+                    avaliacao: 4.5,
+                    endereco: "Moema, São Paulo - SP",
+                    preco: 55,
+                    lat: -23.5868,
+                    lng: -46.6388,
+                    favorito: true
+                },
+                {
+                    id: 4,
+                    nome: "Lucas Oliveira",
+                    foto: "https://randomuser.me/api/portraits/men/55.jpg",
+                    avaliacao: 4.0,
+                    endereco: "Vila Mariana, São Paulo - SP",
+                    preco: 50,
+                    lat: -23.5882,
+                    lng: -46.6346,
+                    favorito: false
+                },
+                {
+                    id: 5,
+                    nome: "André Souza",
+                    foto: "https://randomuser.me/api/portraits/men/78.jpg",
+                    avaliacao: 3.5,
+                    endereco: "Itaim Bibi, São Paulo - SP",
+                    preco: 40,
+                    lat: -23.5846,
+                    lng: -46.6842,
+                    favorito: false
+                },
+                {
+                    id: 6,
+                    nome: "Marcos Almeida",
+                    foto: "https://randomuser.me/api/portraits/men/91.jpg",
+                    avaliacao: 4.0,
+                    endereco: "Santana, São Paulo - SP",
+                    preco: 45,
+                    lat: -23.5055,
+                    lng: -46.6250,
+                    favorito: false
+                }
+            ];
+            
+            // Marcadores dos barbeiros no mapa
+            const marcadores = {};
+            
+            // Adicionar marcadores dos favoritos no mapa
+            function adicionarMarcadoresFavoritos() {
+                // Limpar marcadores existentes
+                Object.values(marcadores).forEach(marcador => map.removeLayer(marcador));
+                
+                // Adicionar marcadores dos favoritos
+                const favoritos = barbeiros.filter(b => b.favorito);
+                favoritos.forEach(barbeiro => {
+                    const marcador = L.marker([barbeiro.lat, barbeiro.lng])
+                        .addTo(map)
+                        .bindPopup(`
+                            <div class="text-center">
+                                <img src="${barbeiro.foto}" alt="${barbeiro.nome}" class="w-12 h-12 rounded-full mx-auto mb-2">
+                                <h3 class="font-medium">${barbeiro.nome}</h3>
+                                <div class="text-yellow-400 text-xs">
+                                    ${'★'.repeat(Math.floor(barbeiro.avaliacao))}${barbeiro.avaliacao % 1 >= 0.5 ? '½' : ''}
+                                    <span class="text-gray-500">(${barbeiro.avaliacao})</span>
+                                </div>
+                                <p class="text-xs text-gray-600 mt-1">${barbeiro.endereco}</p>
+                                <p class="text-xs text-gray-600">A partir de R$ ${barbeiro.preco},00</p>
+                                <a href="barbeiro-perfil.html" class="text-blue-600 hover:text-blue-800 text-xs mt-2 inline-block">Ver perfil</a>
+                            </div>
+                        `);
+                    
+                    marcadores[barbeiro.id] = marcador;
+                });
+                
+                // Ajustar visualização do mapa para mostrar todos os marcadores
+                if (favoritos.length > 0) {
+                    const grupo = L.featureGroup(Object.values(marcadores));
+                    map.fitBounds(grupo.getBounds(), { padding: [50, 50] });
+                }
+            }
+            
+            // Inicializar marcadores
+            adicionarMarcadoresFavoritos();
+            
+            // Remover favorito
+            const botoesFavorito = document.querySelectorAll('.remove-favorito');
+            botoesFavorito.forEach(botao => {
+                botao.addEventListener('click', function(e) {
+                    e.stopPropagation(); // Evitar que o clique propague para o item pai
+                    
+                    const id = parseInt(this.getAttribute('data-id'));
+                    const barbeiro = barbeiros.find(b => b.id === id);
+                    
+                    if (barbeiro) {
+                        barbeiro.favorito = false;
+                        
+                        // Remover da lista de favoritos
+                        const item = document.querySelector(`.barbeiro-item[data-id="${id}"]`);
+                        if (item) {
+                            item.remove();
+                        }
+                        
+                        // Remover marcador do mapa
+                        if (marcadores[id]) {
+                            map.removeLayer(marcadores[id]);
+                            delete marcadores[id];
+                        }
+                        
+                        // Verificar se ainda há favoritos
+                        const favoritos = barbeiros.filter(b => b.favorito);
+                        if (favoritos.length === 0) {
+                            document.getElementById('favoritos-lista').classList.add('hidden');
+                            document.getElementById('sem-favoritos').classList.remove('hidden');
+                        }
+                        
+                        // Ajustar visualização do mapa
+                        if (Object.keys(marcadores).length > 0) {
+                            const grupo = L.featureGroup(Object.values(marcadores));
+                            map.fitBounds(grupo.getBounds(), { padding: [50, 50] });
+                        }
+                    }
+                });
+            });
+            
+            // Clicar em um barbeiro na lista para centralizar no mapa
+            const itensBarbeiro = document.querySelectorAll('.barbeiro-item');
+            itensBarbeiro.forEach(item => {
+                item.addEventListener('click', function() {
+                    const lat = parseFloat(this.getAttribute('data-lat'));
+                    const lng = parseFloat(this.getAttribute('data-lng'));
+                    const id = parseInt(this.getAttribute('data-id'));
+                    
+                    map.setView([lat, lng], 15);
+                    
+                    if (marcadores[id]) {
+                        marcadores[id].openPopup();
+                    }
+                });
+            });
+            
+            // Usar localização atual
+            const btnLocalizar = document.getElementById('btn-localizar');
+            btnLocalizar.addEventListener('click', function() {
+                if (navigator.geolocation) {
+                    btnLocalizar.disabled = true;
+                    btnLocalizar.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Localizando...';
+                    
+                    navigator.geolocation.getCurrentPosition(
+                        function(position) {
+                            const lat = position.coords.latitude;
+                            const lng = position.coords.longitude;
+                            
+                            // Centralizar mapa na localização atual
+                            map.setView([lat, lng], 14);
+                            
+                            // Adicionar marcador da localização atual
+                            const userMarker = L.marker([lat, lng], {
+                                icon: L.divIcon({
+                                    className: 'user-location-marker',
+                                    html: '<div class="w-6 h-6 bg-blue-500 rounded-full border-2 border-white flex items-center justify-center"><i class="fas fa-user text-white text-xs"></i></div>',
+                                    iconSize: [24, 24],
+                                    iconAnchor: [12, 12]
+                                })
+                            }).addTo(map).bindPopup('Sua localização atual');
+                            
+                            // Encontrar barbeiros próximos
+                            encontrarBarbeirosProximos(lat, lng);
+                            
+                            btnLocalizar.disabled = false;
+                            btnLocalizar.innerHTML = '<i class="fas fa-location-arrow mr-2"></i> Usar Minha Localização';
+                        },
+                        function(error) {
+                            console.error('Erro ao obter localização:', error);
+                            alert('Não foi possível obter sua localização. Verifique as permissões do navegador.');
+                            
+                            btnLocalizar.disabled = false;
+                            btnLocalizar.innerHTML = '<i class="fas fa-location-arrow mr-2"></i> Usar Minha Localização';
+                        }
+                    );
+                } else {
+                    alert('Seu navegador não suporta geolocalização.');
+                }
+            });
+            
+            // Buscar por endereço
+            const btnBuscarEndereco = document.getElementById('btn-buscar-endereco');
+            const inputEndereco = document.getElementById('endereco-busca');
+            
+            btnBuscarEndereco.addEventListener('click', function() {
+                const endereco = inputEndereco.value.trim();
+                if (endereco) {
+                    buscarEndereco(endereco);
+                }
+            });
+            
+            inputEndereco.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    const endereco = inputEndereco.value.trim();
+                    if (endereco) {
+                        buscarEndereco(endereco);
+                    }
+                }
+            });
+            
+            // Função para buscar endereço usando Nominatim (OpenStreetMap)
+            function buscarEndereco(endereco) {
+                btnBuscarEndereco.disabled = true;
+                btnBuscarEndereco.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+                
+                // Adicionar "São Paulo" ao endereço para melhorar a precisão
+                const enderecoCompleto = `${endereco}, São Paulo, Brasil`;
+                
+                // Usar API Nominatim para geocodificação
+                fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(enderecoCompleto)}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data && data.length > 0) {
+                            const resultado = data[0];
+                            const lat = parseFloat(resultado.lat);
+                            const lng = parseFloat(resultado.lon);
+                            
+                            // Centralizar mapa no endereço encontrado
+                            map.setView([lat, lng], 14);
+                            
+                            // Adicionar marcador do endereço
+                            L.marker([lat, lng], {
+                                icon: L.divIcon({
+                                    className: 'address-marker',
+                                    html: '<div class="w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center"><i class="fas fa-map-marker-alt text-white text-xs"></i></div>',
+                                    iconSize: [24, 24],
+                                    iconAnchor: [12, 12]
+                                })
+                            }).addTo(map).bindPopup(`Endereço: ${resultado.display_name}`);
+                            
+                            // Encontrar barbeiros próximos
+                            encontrarBarbeirosProximos(lat, lng);
+                        } else {
+                            alert('Endereço não encontrado. Tente ser mais específico.');
+                        }
+                        
+                        btnBuscarEndereco.disabled = false;
+                        btnBuscarEndereco.innerHTML = '<i class="fas fa-search"></i>';
+                    })
+                    .catch(error => {
+                        console.error('Erro ao buscar endereço:', error);
+                        alert('Erro ao buscar endereço. Tente novamente mais tarde.');
+                        
+                        btnBuscarEndereco.disabled = false;
+                        btnBuscarEndereco.innerHTML = '<i class="fas fa-search"></i>';
+                    });
+            }
+            
+            // Função para encontrar barbeiros próximos
+            function encontrarBarbeirosProximos(lat, lng) {
+                const raio = parseFloat(document.getElementById('raio-busca').value);
+                const listaProximos = document.getElementById('lista-proximos');
+                
+                // Calcular distância entre dois pontos (fórmula de Haversine)
+                function calcularDistancia(lat1, lng1, lat2, lng2) {
+                    const R = 6371; // Raio da Terra em km
+                    const dLat = (lat2 - lat1) * Math.PI / 180;
+                    const dLng = (lng2 - lng1) * Math.PI / 180;
+                    const a = 
+                        Math.sin(dLat/2) * Math.sin(dLat/2) +
+                        Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) * 
+                        Math.sin(dLng/2) * Math.sin(dLng/2);
+                    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+                    return R * c;
+                }
+                
+                // Encontrar barbeiros dentro do raio
+                const barbeirosProximos = barbeiros
+                    .map(barbeiro => {
+                        const distancia = calcularDistancia(lat, lng, barbeiro.lat, barbeiro.lng);
+                        return { ...barbeiro, distancia };
+                    })
+                    .filter(barbeiro => barbeiro.distancia <= raio)
+                    .sort((a, b) => a.distancia - b.distancia);
+                
+                // Atualizar lista de barbeiros próximos
+                if (barbeirosProximos.length > 0) {
+                    listaProximos.innerHTML = '';
+                    
+                    barbeirosProximos.forEach(barbeiro => {
+                        const item = document.createElement('div');
+                        item.className = 'flex items-center p-2 bg-gray-50 rounded hover:bg-gray-100 transition cursor-pointer';
+                        item.innerHTML = `
+                            <img src="${barbeiro.foto}" alt="${barbeiro.nome}" class="w-8 h-8 rounded-full">
+                            <div class="ml-2 flex-1">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-sm font-medium text-gray-900">${barbeiro.nome}</h4>
+                                    <span class="text-xs text-gray-500">${barbeiro.distancia.toFixed(1)} km</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="text-yellow-400 text-xs">
+                                        ${'★'.repeat(Math.floor(barbeiro.avaliacao))}${barbeiro.avaliacao % 1 >= 0.5 ? '½' : ''}
+                                    </div>
+                                    <span class="text-xs text-gray-500 ml-2">R$ ${barbeiro.preco},00</span>
+                                </div>
+                            </div>
+                            ${!barbeiro.favorito ? `
+                                <button class="text-gray-400 hover:text-red-500 add-favorito ml-2" data-id="${barbeiro.id}">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            ` : `
+                                <button class="text-red-500 hover:text-red-700 ml-2" disabled>
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            `}
+                        `;
+                        
+                        // Adicionar evento para centralizar no mapa
+                        item.addEventListener('click', function() {
+                            map.setView([barbeiro.lat, barbeiro.lng], 15);
+                            
+                            // Abrir popup se existir marcador
+                            if (marcadores[barbeiro.id]) {
+                                marcadores[barbeiro.id].openPopup();
+                            } else {
+                                // Criar marcador temporário
+                                const marcador = L.marker([barbeiro.lat, barbeiro.lng])
+                                    .addTo(map)
+                                    .bindPopup(`
+                                        <div class="text-center">
+                                            <img src="${barbeiro.foto}" alt="${barbeiro.nome}" class="w-12 h-12 rounded-full mx-auto mb-2">
+                                            <h3 class="font-medium">${barbeiro.nome}</h3>
+                                            <div class="text-yellow-400 text-xs">
+                                                ${'★'.repeat(Math.floor(barbeiro.avaliacao))}${barbeiro.avaliacao % 1 >= 0.5 ? '½' : ''}
+                                                <span class="text-gray-500">(${barbeiro.avaliacao})</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 mt-1">${barbeiro.endereco}</p>
+                                            <p class="text-xs text-gray-600">A partir de R$ ${barbeiro.preco},00</p>
+                                            <a href="barbeiro-perfil.html" class="text-blue-600 hover:text-blue-800 text-xs mt-2 inline-block">Ver perfil</a>
+                                        </div>
+                                    `);
+                                marcador.openPopup();
+                            }
+                        });
+                        
+                        listaProximos.appendChild(item);
+                    });
+                    
+                    // Adicionar eventos para adicionar aos favoritos
+                    document.querySelectorAll('.add-favorito').forEach(botao => {
+                        botao.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Evitar que o clique propague para o item pai
+                            
+                            const id = parseInt(this.getAttribute('data-id'));
+                            const barbeiro = barbeiros.find(b => b.id === id);
+                            
+                            if (barbeiro) {
+                                barbeiro.favorito = true;
+                                
+                                // Adicionar à lista de favoritos
+                                const favoritosLista = document.getElementById('favoritos-lista');
+                                const semFavoritos = document.getElementById('sem-favoritos');
+                                
+                                // Esconder mensagem de sem favoritos se necessário
+                                if (semFavoritos.classList.contains('hidden') === false) {
+                                    semFavoritos.classList.add('hidden');
+                                    favoritosLista.classList.remove('hidden');
+                                }
+                                
+                                // Criar item de favorito
+                                const item = document.createElement('div');
+                                item.className = 'flex items-start p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition cursor-pointer barbeiro-item';
+                                item.setAttribute('data-lat', barbeiro.lat);
+                                item.setAttribute('data-lng', barbeiro.lng);
+                                item.setAttribute('data-id', barbeiro.id);
+                                item.innerHTML = `
+                                    <img src="${barbeiro.foto}" alt="${barbeiro.nome}" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                                    <div class="ml-3 flex-1">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <h3 class="text-md font-medium text-gray-900">${barbeiro.nome}</h3>
+                                                <div class="flex text-yellow-400 text-xs">
+                                                    ${'<i class="fas fa-star"></i>'.repeat(Math.floor(barbeiro.avaliacao))}
+                                                    ${barbeiro.avaliacao % 1 >= 0.5 ? '<i class="fas fa-star-half-alt"></i>' : ''}
+                                                    <span class="text-gray-500 ml-1">(${barbeiro.avaliacao})</span>
+                                                </div>
+                                            </div>
+                                            <button class="text-red-500 hover:text-red-700 remove-favorito" data-id="${barbeiro.id}">
+                                                <i class="fas fa-heart"></i>
+                                            </button>
+                                        </div>
+                                        <p class="text-xs text-gray-600 mt-1">${barbeiro.endereco}</p>
+                                        <p class="text-xs text-gray-600">A partir de R$ ${barbeiro.preco},00</p>
+                                    </div>
+                                `;
+                                
+                                favoritosLista.appendChild(item);
+                                
+                                // Adicionar evento para remover dos favoritos
+                                const botaoRemover = item.querySelector('.remove-favorito');
+                                botaoRemover.addEventListener('click', function(e) {
+                                    e.stopPropagation();
+                                    
+                                    const id = parseInt(this.getAttribute('data-id'));
+                                    const barbeiro = barbeiros.find(b => b.id === id);
+                                    
+                                    if (barbeiro) {
+                                        barbeiro.favorito = false;
+                                        
+                                        // Remover da lista de favoritos
+                                        item.remove();
+                                        
+                                        // Remover marcador do mapa
+                                        if (marcadores[id]) {
+                                            map.removeLayer(marcadores[id]);
+                                            delete marcadores[id];
+                                        }
+                                        
+                                        // Verificar se ainda há favoritos
+                                        const favoritos = barbeiros.filter(b => b.favorito);
+                                        if (favoritos.length === 0) {
+                                            favoritosLista.classList.add('hidden');
+                                            semFavoritos.classList.remove('hidden');
+                                        }
+                                    }
+                                });
+                                
+                                // Adicionar evento para centralizar no mapa
+                                item.addEventListener('click', function() {
+                                    const lat = parseFloat(this.getAttribute('data-lat'));
+                                    const lng = parseFloat(this.getAttribute('data-lng'));
+                                    const id = parseInt(this.getAttribute('data-id'));
+                                    
+                                    map.setView([lat, lng], 15);
+                                    
+                                    if (marcadores[id]) {
+                                        marcadores[id].openPopup();
+                                    }
+                                });
+                                
+                                // Adicionar marcador ao mapa
+                                const marcador = L.marker([barbeiro.lat, barbeiro.lng])
+                                    .addTo(map)
+                                    .bindPopup(`
+                                        <div class="text-center">
+                                            <img src="${barbeiro.foto}" alt="${barbeiro.nome}" class="w-12 h-12 rounded-full mx-auto mb-2">
+                                            <h3 class="font-medium">${barbeiro.nome}</h3>
+                                            <div class="text-yellow-400 text-xs">
+                                                ${'★'.repeat(Math.floor(barbeiro.avaliacao))}${barbeiro.avaliacao % 1 >= 0.5 ? '½' : ''}
+                                                <span class="text-gray-500">(${barbeiro.avaliacao})</span>
+                                            </div>
+                                            <p class="text-xs text-gray-600 mt-1">${barbeiro.endereco}</p>
+                                            <p class="text-xs text-gray-600">A partir de R$ ${barbeiro.preco},00</p>
+                                            <a href="barbeiro-perfil.html" class="text-blue-600 hover:text-blue-800 text-xs mt-2 inline-block">Ver perfil</a>
+                                        </div>
+                                    `);
+                                
+                                marcadores[barbeiro.id] = marcador;
+                                
+                                // Atualizar botão na lista de próximos
+                                this.innerHTML = '<i class="fas fa-heart"></i>';
+                                this.classList.remove('text-gray-400', 'hover:text-red-500', 'add-favorito');
+                                this.classList.add('text-red-500');
+                                this.disabled = true;
+                            }
+                        });
+                    });
+                } else {
+                    listaProximos.innerHTML = `
+                        <p class="text-sm text-gray-500">Nenhum barbeiro encontrado em um raio de ${raio} km.</p>
+                        <p class="text-sm text-gray-500">Tente aumentar o raio de busca ou escolher outra localização.</p>
+                    `;
+                }
+            }
+            
+            // Atualizar raio de busca
+            document.getElementById('raio-busca').addEventListener('change', function() {
+                // Se já tiver uma localização atual, refazer a busca
+                const center = map.getCenter();
+                if (center) {
+                    encontrarBarbeirosProximos(center.lat, center.lng);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

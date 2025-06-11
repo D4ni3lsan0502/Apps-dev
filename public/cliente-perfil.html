@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Perfil do Cliente</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold" id="user-avatar"></div>
+                            <span class="hidden md:block text-sm font-medium text-gray-700" id="user-name">Carregando...</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="cliente-perfil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="cliente-configuracoes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Meu Perfil</h2>
+                    
+                    <form id="profile-form">
+                        <div class="mb-6">
+                            <div class="flex items-center justify-center mb-4">
+                                <div class="w-24 h-24 rounded-full bg-blue-600 flex items-center justify-center text-white text-3xl font-bold" id="profile-avatar"></div>
+                            </div>
+                            <div class="text-center">
+                                <button type="button" class="text-blue-600 text-sm hover:underline">Alterar foto</button>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome completo</label>
+                                <input type="text" id="nome" name="nome" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" readonly>
+                            </div>
+                            
+                            <div>
+                                <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone</label>
+                                <input type="tel" id="telefone" name="telefone" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="(00) 00000-0000">
+                            </div>
+                            
+                            <div>
+                                <label for="data_nascimento" class="block text-sm font-medium text-gray-700 mb-1">Data de nascimento</label>
+                                <input type="date" id="data_nascimento" name="data_nascimento" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3">Endereço</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label for="cep" class="block text-sm font-medium text-gray-700 mb-1">CEP</label>
+                                    <input type="text" id="cep" name="cep" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="00000-000">
+                                </div>
+                                
+                                <div>
+                                    <label for="cidade" class="block text-sm font-medium text-gray-700 mb-1">Cidade</label>
+                                    <input type="text" id="cidade" name="cidade" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div>
+                                    <label for="bairro" class="block text-sm font-medium text-gray-700 mb-1">Bairro</label>
+                                    <input type="text" id="bairro" name="bairro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div>
+                                    <label for="estado" class="block text-sm font-medium text-gray-700 mb-1">Estado</label>
+                                    <select id="estado" name="estado" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                        <option value="">Selecione</option>
+                                        <option value="AC">Acre</option>
+                                        <option value="AL">Alagoas</option>
+                                        <option value="AP">Amapá</option>
+                                        <option value="AM">Amazonas</option>
+                                        <option value="BA">Bahia</option>
+                                        <option value="CE">Ceará</option>
+                                        <option value="DF">Distrito Federal</option>
+                                        <option value="ES">Espírito Santo</option>
+                                        <option value="GO">Goiás</option>
+                                        <option value="MA">Maranhão</option>
+                                        <option value="MT">Mato Grosso</option>
+                                        <option value="MS">Mato Grosso do Sul</option>
+                                        <option value="MG">Minas Gerais</option>
+                                        <option value="PA">Pará</option>
+                                        <option value="PB">Paraíba</option>
+                                        <option value="PR">Paraná</option>
+                                        <option value="PE">Pernambuco</option>
+                                        <option value="PI">Piauí</option>
+                                        <option value="RJ">Rio de Janeiro</option>
+                                        <option value="RN">Rio Grande do Norte</option>
+                                        <option value="RS">Rio Grande do Sul</option>
+                                        <option value="RO">Rondônia</option>
+                                        <option value="RR">Roraima</option>
+                                        <option value="SC">Santa Catarina</option>
+                                        <option value="SP">São Paulo</option>
+                                        <option value="SE">Sergipe</option>
+                                        <option value="TO">Tocantins</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="md:col-span-2">
+                                    <label for="endereco" class="block text-sm font-medium text-gray-700 mb-1">Endereço</label>
+                                    <input type="text" id="endereco" name="endereco" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Rua, Avenida, etc.">
+                                </div>
+                                
+                                <div>
+                                    <label for="numero" class="block text-sm font-medium text-gray-700 mb-1">Número</label>
+                                    <input type="text" id="numero" name="numero" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div>
+                                    <label for="complemento" class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
+                                    <input type="text" id="complemento" name="complemento" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Apto, Bloco, etc.">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-3">Preferências</h3>
+                            <div>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="notificacoes_email" name="notificacoes_email" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                    <span class="ml-2 text-sm text-gray-700">Receber notificações por email</span>
+                                </label>
+                            </div>
+                            <div class="mt-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="notificacoes_sms" name="notificacoes_sms" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                    <span class="ml-2 text-sm text-gray-700">Receber notificações por SMS</span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex justify-end">
+                            <button type="button" id="cancel-button" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2 hover:bg-gray-50 transition duration-300">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+                                Salvar alterações
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle user menu
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Logout functionality
+            document.getElementById('logout-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('barberpro_user');
+                window.location.href = 'login.html';
+            });
+            
+            // Cancel button
+            document.getElementById('cancel-button').addEventListener('click', function() {
+                window.location.href = 'cliente-dashboard.html';
+            });
+            
+            // Load user data
+            const userData = JSON.parse(localStorage.getItem('barberpro_user') || '{}');
+            if (!userData.id) {
+                // Redirect to login if not logged in
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Display user name
+            document.getElementById('user-name').textContent = userData.nome || 'Usuário';
+            
+            // Set avatar initials
+            const userInitial = (userData.nome || 'U').charAt(0).toUpperCase();
+            document.getElementById('user-avatar').textContent = userInitial;
+            document.getElementById('profile-avatar').textContent = userInitial;
+            
+            // Fill form with user data
+            document.getElementById('nome').value = userData.nome || '';
+            document.getElementById('email').value = userData.email || '';
+            document.getElementById('telefone').value = userData.telefone || '';
+            document.getElementById('data_nascimento').value = userData.data_nascimento || '';
+            
+            // Address fields
+            // ...código existente...
+
+// Após carregar os campos do usuário, adicione:
+const cepInput = document.getElementById('cep');
+const cidadeInput = document.getElementById('cidade');
+const bairroInput = document.getElementById('bairro');
+const estadoInput = document.getElementById('estado');
+const enderecoInput = document.getElementById('endereco');
+
+cepInput.addEventListener('blur', function() {
+    const cep = cepInput.value.replace(/\D/g, '');
+    if (cep.length === 8) {
+        fetch(`https://viacep.com.br/ws/${cep}/json/`)
+            .then(response => response.json())
+            .then(data => {
+                if (!data.erro) {
+                    enderecoInput.value = data.logradouro || '';
+                    bairroInput.value = data.bairro || '';
+                    cidadeInput.value = data.localidade || '';
+                    estadoInput.value = data.uf || '';
+                } else {
+                    alert('CEP não encontrado.');
+                }
+            })
+            .catch(() => {
+                alert('Erro ao buscar o CEP.');
+            });
+    }
+});
+            
+            // Preferences
+            document.getElementById('notificacoes_email').checked = userData.notificacoes_email || false;
+            document.getElementById('notificacoes_sms').checked = userData.notificacoes_sms || false;
+            
+            // Form submission
+            document.getElementById('profile-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Update user data
+                userData.nome = document.getElementById('nome').value;
+                userData.telefone = document.getElementById('telefone').value;
+                userData.data_nascimento = document.getElementById('data_nascimento').value;
+                
+                // Address
+                userData.cep = document.getElementById('cep').value;
+                userData.cidade = document.getElementById('cidade').value;
+                userData.bairro = document.getElementById('bairro').value;
+                userData.estado = document.getElementById('estado').value;
+                userData.endereco = document.getElementById('endereco').value;
+                userData.numero = document.getElementById('numero').value;
+                userData.complemento = document.getElementById('complemento').value;
+                
+                // Preferences
+                userData.notificacoes_email = document.getElementById('notificacoes_email').checked;
+                userData.notificacoes_sms = document.getElementById('notificacoes_sms').checked;
+                
+                // Save updated data
+                localStorage.setItem('barberpro_user', JSON.stringify(userData));
+                
+                // Show success message
+                alert('Perfil atualizado com sucesso!');
+                
+                // Redirect to dashboard
+                window.location.href = 'cliente-dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>

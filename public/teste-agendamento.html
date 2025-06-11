@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Teste de Agendamentos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    
+    <!-- PWA Meta Tags -->
+    <meta name="theme-color" content="#1e40af">
+    <meta name="description" content="Sistema de agendamento e gestão para barbearias">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BarberPro">
+    
+    <!-- PWA Icons -->
+    <link rel="icon" type="image/png" sizes="196x196" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" sizes="167x167" href="img/icons/icon-152x152.png">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-2xl mx-auto">
+            <!-- Logo -->
+            <div class="text-center mb-8">
+                <img src="img/icons/icon-192x192.png" alt="BarberPro" class="w-24 h-24 mx-auto mb-4">
+                <h1 class="text-3xl font-bold text-gray-800">BarberPro - Teste de Agendamentos</h1>
+                <p class="text-gray-600 mt-2">Validação de salvamento e quantidade por item</p>
+            </div>
+            
+            <!-- Área de Teste Manual -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Teste Manual</h2>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-medium text-gray-700 mb-2">Serviços Disponíveis</h3>
+                        <div id="servicos-container" class="space-y-3">
+                            <!-- Serviços serão inseridos aqui via JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <h3 class="font-medium text-gray-700 mb-2">Resumo do Agendamento</h3>
+                        <div id="resumo-agendamento">
+                            <!-- Resumo será inserido aqui via JavaScript -->
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-end">
+                        <button id="btn-salvar" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
+                            Salvar Agendamento
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Agendamentos Salvos -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Agendamentos Salvos</h2>
+                    
+                    <div id="agendamentos-salvos">
+                        <!-- Agendamentos serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Área de Teste Automatizado -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="p-6">
+                    <h2 class="text-xl font-semibold text-gray-800 mb-4">Teste Automatizado</h2>
+                    
+                    <button id="btn-executar-testes" class="bg-green-600 text-white px-6 py-2 rounded-md font-medium hover:bg-green-700 transition duration-300">
+                        Executar Testes Automatizados
+                    </button>
+                    
+                    <div id="test-results" class="mt-4 hidden">
+                        <!-- Resultados dos testes serão inseridos aqui via JavaScript -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Botão de Voltar -->
+            <div class="text-center">
+                <a href="index.html" class="inline-block bg-gray-800 text-white px-6 py-2 rounded-md font-medium hover:bg-gray-900 transition duration-300">
+                    Voltar para o Aplicativo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/agendamento-storage.js"></script>
+    <script src="js/agendamento-test.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar BarberPro se não existir
+            window.BarberPro = window.BarberPro || {};
+            
+            // Serviços disponíveis para teste
+            const servicos = [
+                {
+                    id: 'serv_001',
+                    nome: 'Corte de Cabelo',
+                    descricao: 'Corte masculino tradicional',
+                    preco: 35.00,
+                    duracao: 30
+                },
+                {
+                    id: 'serv_002',
+                    nome: 'Barba',
+                    descricao: 'Aparar e modelar barba',
+                    preco: 25.00,
+                    duracao: 20
+                },
+                {
+                    id: 'serv_003',
+                    nome: 'Corte + Barba',
+                    descricao: 'Combo corte e barba',
+                    preco: 55.00,
+                    duracao: 45
+                }
+            ];
+            
+            // Agendamento temporário para teste manual
+            const agendamentoTemp = {
+                id: 'manual_' + Date.now(),
+                clienteId: 'cliente_teste',
+                clienteNome: 'Cliente Teste',
+                barbeiroId: 'barbeiro_teste',
+                data: new Date().toISOString(),
+                hora: '15:00',
+                status: 'pendente',
+                itens: [],
+                valorTotal: 0,
+                duracaoTotal: 0
+            };
+            
+            // Renderizar serviços
+            const servicosContainer = document.getElementById('servicos-container');
+            
+            servicos.forEach(servico => {
+                const servicoElement = document.createElement('div');
+                servicoElement.className = 'bg-gray-50 rounded-md p-3 flex justify-between items-center';
+                
+                servicoElement.innerHTML = `
+                    <div>
+                        <h4 class="font-medium text-gray-800">${servico.nome}</h4>
+                        <p class="text-sm text-gray-600">${servico.descricao}</p>
+                        <p class="text-blue-600 font-medium mt-1">R$ ${servico.preco.toFixed(2)}</p>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="btn-quantidade w-8 h-8 flex items-center justify-center bg-gray-200 rounded-full" data-action="diminuir" data-id="${servico.id}">
+                            <i class="fas fa-minus text-gray-600"></i>
+                        </button>
+                        <span class="quantidade-display mx-3 text-lg font-semibold w-6 text-center" data-id="${servico.id}">0</span>
+                        <button class="btn-quantidade w-8 h-8 flex items-center justify-center bg-blue-600 rounded-full" data-action="aumentar" data-id="${servico.id}">
+                            <i class="fas fa-plus text-white"></i>
+                        </button>
+                    </div>
+                `;
+                
+                servicosContainer.appendChild(servicoElement);
+                
+                // Configurar botões de quantidade
+                const btnDiminuir = servicoElement.querySelector('[data-action="diminuir"]');
+                const btnAumentar = servicoElement.querySelector('[data-action="aumentar"]');
+                const quantidadeDisplay = servicoElement.querySelector('.quantidade-display');
+                
+                btnDiminuir.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const itemIndex = agendamentoTemp.itens.findIndex(item => item.id === id);
+                    
+                    if (itemIndex !== -1 && agendamentoTemp.itens[itemIndex].quantidade > 0) {
+                        agendamentoTemp.itens[itemIndex].quantidade--;
+                        
+                        if (agendamentoTemp.itens[itemIndex].quantidade === 0) {
+                            agendamentoTemp.itens.splice(itemIndex, 1);
+                        }
+                        
+                        quantidadeDisplay.textContent = itemIndex !== -1 ? agendamentoTemp.itens[itemIndex].quantidade : 0;
+                        recalcularTotais();
+                        atualizarResumo();
+                    }
+                });
+                
+                btnAumentar.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const itemIndex = agendamentoTemp.itens.findIndex(item => item.id === id);
+                    const servicoSelecionado = servicos.find(s => s.id === id);
+                    
+                    if (itemIndex !== -1) {
+                        agendamentoTemp.itens[itemIndex].quantidade++;
+                    } else if (servicoSelecionado) {
+                        agendamentoTemp.itens.push({
+                            ...servicoSelecionado,
+                            quantidade: 1
+                        });
+                    }
+                    
+                    const novoItemIndex = agendamentoTemp.itens.findIndex(item => item.id === id);
+                    quantidadeDisplay.textContent = agendamentoTemp.itens[novoItemIndex].quantidade;
+                    
+                    recalcularTotais();
+                    atualizarResumo();
+                });
+            });
+            
+            // Função para recalcular totais
+            function recalcularTotais() {
+                // Calcular valor total
+                agendamentoTemp.valorTotal = agendamentoTemp.itens.reduce((total, item) => {
+                    return total + (item.preco * item.quantidade);
+                }, 0);
+                
+                // Calcular duração total
+                let duracaoTotal = 0;
+                
+                agendamentoTemp.itens.forEach((item, index) => {
+                    if (index === 0) {
+                        // Primeiro serviço com duração completa
+                        duracaoTotal += (item.duracao || 30) * item.quantidade;
+                    } else {
+                        // Serviços adicionais: +30min por serviço
+                        duracaoTotal += 30 * item.quantidade;
+                    }
+                });
+                
+                agendamentoTemp.duracaoTotal = duracaoTotal;
+            }
+            
+            // Função para atualizar resumo
+            function atualizarResumo() {
+                const resumoContainer = document.getElementById('resumo-agendamento');
+                
+                if (agendamentoTemp.itens.length === 0) {
+                    resumoContainer.innerHTML = `
+                        <div class="p-4 bg-gray-50 rounded-md text-center">
+                            <p class="text-gray-500">Nenhum serviço selecionado</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let html = `
+                    <div class="p-4 bg-blue-50 rounded-md">
+                        <h3 class="font-semibold text-blue-800 mb-3">Resumo do Agendamento</h3>
+                        <ul class="space-y-2">
+                `;
+                
+                agendamentoTemp.itens.forEach(item => {
+                    html += `
+                        <li class="flex justify-between">
+                            <span>${item.nome} <span class="text-blue-600 font-medium">x${item.quantidade}</span></span>
+                            <span class="font-medium">R$ ${(item.preco * item.quantidade).toFixed(2)}</span>
+                        </li>
+                    `;
+                });
+                
+                html += `
+                        </ul>
+                        <div class="border-t border-blue-200 mt-3 pt-3 flex justify-between font-semibold">
+                            <span>Total:</span>
+                            <span>R$ ${agendamentoTemp.valorTotal.toFixed(2)}</span>
+                        </div>
+                        <div class="mt-2 text-blue-700 text-sm">
+                            <i class="far fa-clock mr-1"></i> Duração estimada: ${agendamentoTemp.duracaoTotal} minutos
+                        </div>
+                    </div>
+                `;
+                
+                resumoContainer.innerHTML = html;
+            }
+            
+            // Função para salvar agendamento
+            document.getElementById('btn-salvar').addEventListener('click', function() {
+                if (agendamentoTemp.itens.length === 0) {
+                    alert('Selecione pelo menos um serviço para agendar.');
+                    return;
+                }
+                
+                if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
+                    const salvo = window.BarberPro.AgendamentoStorage.add({...agendamentoTemp});
+                    
+                    if (salvo) {
+                        alert('Agendamento salvo com sucesso!');
+                        
+                        // Limpar seleções
+                        agendamentoTemp.itens = [];
+                        agendamentoTemp.valorTotal = 0;
+                        agendamentoTemp.duracaoTotal = 0;
+                        agendamentoTemp.id = 'manual_' + Date.now();
+                        
+                        // Resetar displays de quantidade
+                        document.querySelectorAll('.quantidade-display').forEach(el => {
+                            el.textContent = '0';
+                        });
+                        
+                        // Atualizar resumo
+                        atualizarResumo();
+                        
+                        // Atualizar lista de agendamentos salvos
+                        atualizarAgendamentosSalvos();
+                    } else {
+                        alert('Erro ao salvar agendamento. Tente novamente.');
+                    }
+                } else {
+                    alert('Sistema de armazenamento não encontrado.');
+                }
+            });
+            
+            // Função para atualizar lista de agendamentos salvos
+            function atualizarAgendamentosSalvos() {
+                const container = document.getElementById('agendamentos-salvos');
+                
+                if (!window.BarberPro || !window.BarberPro.AgendamentoStorage) {
+                    container.innerHTML = `
+                        <div class="p-4 bg-red-50 rounded-md text-center">
+                            <p class="text-red-500">Sistema de armazenamento não encontrado</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                const agendamentos = window.BarberPro.AgendamentoStorage.getAll();
+                
+                if (agendamentos.length === 0) {
+                    container.innerHTML = `
+                        <div class="p-4 bg-gray-50 rounded-md text-center">
+                            <p class="text-gray-500">Nenhum agendamento salvo</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                let html = '';
+                
+                agendamentos.forEach(agendamento => {
+                    // Formatar lista de serviços
+                    let servicosHtml = '';
+                    if (agendamento.itens && agendamento.itens.length > 0) {
+                        servicosHtml = agendamento.itens.map(item => 
+                            `<li class="flex justify-between"><span>${item.nome}</span> <span class="text-blue-600 font-medium">x${item.quantidade}</span></li>`
+                        ).join('');
+                    } else {
+                        servicosHtml = '<li>Nenhum serviço selecionado</li>';
+                    }
+                    
+                    html += `
+                        <div class="bg-gray-50 rounded-md p-4 mb-4">
+                            <div class="flex justify-between items-start">
+                                <h3 class="font-semibold text-gray-800">Agendamento #${agendamento.id.substring(0, 8)}</h3>
+                                <button class="text-red-600 hover:text-red-800" data-action="remover" data-id="${agendamento.id}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-1">Cliente: ${agendamento.clienteNome || 'Não especificado'}</p>
+                            <p class="text-sm text-gray-600">Data: ${formatarData(agendamento.data)} às ${agendamento.hora || 'Não especificado'}</p>
+                            
+                            <div class="mt-3">
+                                <h4 class="font-medium text-gray-700">Serviços:</h4>
+                                <ul class="mt-1 space-y-1 text-gray-600">
+                                    ${servicosHtml}
+                                </ul>
+                            </div>
+                            
+                            <div class="mt-3 flex justify-between items-center">
+                                <div>
+                                    <span class="font-medium">Total:</span>
+                                    <span class="text-blue-600 font-semibold">R$ ${agendamento.valorTotal ? agendamento.valorTotal.toFixed(2) : '0.00'}</span>
+                                </div>
+                                <div class="text-sm text-gray-600">
+                                    <i class="far fa-clock mr-1"></i> ${agendamento.duracaoTotal || 0} minutos
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                
+                container.innerHTML = html;
+                
+                // Configurar botões de remover
+                document.querySelectorAll('[data-action="remover"]').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const id = this.getAttribute('data-id');
+                        
+                        if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
+                            const removido = window.BarberPro.AgendamentoStorage.remove(id);
+                            
+                            if (removido) {
+                                alert('Agendamento removido com sucesso!');
+                                atualizarAgendamentosSalvos();
+                            } else {
+                                alert('Erro ao remover agendamento.');
+                            }
+                        }
+                    });
+                });
+            }
+            
+            // Função para formatar data
+            function formatarData(dataString) {
+                if (!dataString) return 'Data não definida';
+                
+                try {
+                    const data = new Date(dataString);
+                    return data.toLocaleDateString('pt-BR');
+                } catch (e) {
+                    return dataString;
+                }
+            }
+            
+            // Inicializar resumo
+            atualizarResumo();
+            
+            // Inicializar lista de agendamentos salvos
+            atualizarAgendamentosSalvos();
+            
+            // Configurar botão de testes automatizados
+            document.getElementById('btn-executar-testes').addEventListener('click', function() {
+                const testResults = document.getElementById('test-results');
+                testResults.classList.remove('hidden');
+                testResults.innerHTML = '<div class="p-4 bg-blue-50 rounded-md"><p class="text-blue-600">Executando testes automatizados...</p></div>';
+                
+                // Executar testes após um pequeno delay
+                setTimeout(function() {
+                    // Criar área de resultados de teste
+                    testResults.innerHTML = '<h3 class="font-semibold text-lg mb-2">Resultados dos Testes</h3><div id="test-output" class="font-mono text-sm"></div>';
+                    
+                    // Sobrescrever console.log para exibir na página
+                    const originalLog = console.log;
+                    const originalError = console.error;
+                    const testOutput = document.getElementById('test-output');
+                    
+                    console.log = function() {
+                        const args = Array.from(arguments);
+                        const message = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' ');
+                        
+                        const logElement = document.createElement('div');
+                        logElement.className = 'mb-1 text-green-800';
+                        logElement.textContent = '✓ ' + message;
+                        testOutput.appendChild(logElement);
+                        
+                        originalLog.apply(console, arguments);
+                    };
+                    
+                    console.error = function() {
+                        const args = Array.from(arguments);
+                        const message = args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' ');
+                        
+                        const logElement = document.createElement('div');
+                        logElement.className = 'mb-1 text-red-800 font-bold';
+                        logElement.textContent = '✗ ' + message;
+                        testOutput.appendChild(logElement);
+                        
+                        originalError.apply(console, arguments);
+                    };
+                    
+                    // Executar testes
+                    const success = runTests();
+                    
+                    const resultElement = document.createElement('div');
+                    resultElement.className = 'mt-4 p-3 rounded-md ' + (success ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800');
+                    resultElement.innerHTML = success 
+                        ? '<strong>✅ Todos os testes passaram!</strong> O sistema de agendamentos e quantidade por item está funcionando corretamente.'
+                        : '<strong>❌ Falha nos testes!</strong> Verifique os erros acima para corrigir o sistema.';
+                    
+                    testOutput.appendChild(resultElement);
+                    
+                    // Restaurar console original
+                    console.log = originalLog;
+                    console.error = originalError;
+                    
+                    // Atualizar lista de agendamentos após os testes
+                    atualizarAgendamentosSalvos();
+                }, 500);
+            });
+        });
+    </script>
+</body>
+</html>

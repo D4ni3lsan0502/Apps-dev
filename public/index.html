@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Seu Aplicativo de Barbearia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#1e293b">
+    <link rel="icon" href="public/img/icons/icon-192x192.png">
+    <link rel="apple-touch-icon" href="public/img/icons/icon-192x192.png">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Cabeçalho -->
+    <header class="bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <div class="flex items-center">
+                <img src="public/img/barberpro-base.png" alt="BarberPro Logo" class="h-10 mr-2">
+                <h1 class="text-2xl font-bold text-gray-800">BarberPro</h1>
+            </div>
+            <div>
+                <a href="login.html" class="bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
+                    Entrar
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-slate-800 to-slate-900 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0">
+                    <h2 class="text-4xl font-bold mb-4">Conectando barbeiros e clientes</h2>
+                    <p class="text-xl mb-6">Agende serviços de barbearia com facilidade, encontre os melhores profissionais e gerencie seus horários em um só lugar.</p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="login.html" class="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition duration-300 text-center">
+                            Entrar como Cliente
+                        </a>
+                        <a href="login.html" class="bg-white text-slate-800 py-3 px-6 rounded-md hover:bg-gray-100 transition duration-300 text-center">
+                            Sou Barbeiro
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative w-64 h-96 bg-white rounded-3xl shadow-2xl overflow-hidden border-8 border-white">
+                        <div class="absolute top-0 left-0 right-0 h-8 bg-black rounded-t-xl"></div>
+                        <img src="public/img/barberpro-base.png" alt="BarberPro App" class="w-full h-full object-cover rounded-xl">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Recursos Principais</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-calendar-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Agendamento Fácil</h3>
+                    <p class="text-gray-600">Agende serviços de barbearia em poucos cliques, escolhendo data, horário e serviços desejados.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-map-marker-alt text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Encontre Barbeiros</h3>
+                    <p class="text-gray-600">Descubra os melhores barbeiros próximos a você, com avaliações e portfólio de trabalhos.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-wallet text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Pagamento Flexível</h3>
+                    <p class="text-gray-600">Diversas opções de pagamento, incluindo antecipado ou no momento do atendimento.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-star text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Avaliações</h3>
+                    <p class="text-gray-600">Avalie os serviços recebidos e consulte a reputação dos profissionais antes de agendar.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-bell text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Notificações</h3>
+                    <p class="text-gray-600">Receba lembretes de agendamentos e notificações sobre promoções especiais.</p>
+                </div>
+                <div class="bg-gray-50 p-6 rounded-lg shadow-md">
+                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Gestão para Barbeiros</h3>
+                    <p class="text-gray-600">Ferramentas completas para barbeiros gerenciarem agenda, clientes e finanças.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Como Funciona -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Como Funciona</h2>
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-6 text-blue-600">Para Clientes</h3>
+                    <ol class="space-y-6">
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">1</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Crie sua conta</h4>
+                                <p class="text-gray-600">Cadastre-se rapidamente com email ou redes sociais.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">2</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Encontre barbeiros</h4>
+                                <p class="text-gray-600">Busque por localização, avaliações ou serviços oferecidos.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">3</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Agende serviços</h4>
+                                <p class="text-gray-600">Escolha data, horário e serviços desejados.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center text-white font-bold mr-4">4</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Realize o pagamento</h4>
+                                <p class="text-gray-600">Pague antecipadamente ou no momento do atendimento.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <div class="flex-1">
+                    <h3 class="text-2xl font-bold mb-6 text-slate-800">Para Barbeiros</h3>
+                    <ol class="space-y-6">
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold mr-4">1</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Crie seu perfil profissional</h4>
+                                <p class="text-gray-600">Cadastre seus serviços, preços e horários disponíveis.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold mr-4">2</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Receba agendamentos</h4>
+                                <p class="text-gray-600">Clientes podem agendar diretamente pelo aplicativo.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold mr-4">3</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Gerencie sua agenda</h4>
+                                <p class="text-gray-600">Visualize e organize seus compromissos diários.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <div class="flex-shrink-0 w-8 h-8 bg-slate-800 rounded-full flex items-center justify-center text-white font-bold mr-4">4</div>
+                            <div>
+                                <h4 class="font-semibold text-lg">Receba pagamentos</h4>
+                                <p class="text-gray-600">Acompanhe seus ganhos e histórico financeiro.</p>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl font-bold mb-6">Comece a usar o BarberPro hoje mesmo</h2>
+            <p class="text-xl mb-8 max-w-2xl mx-auto">Junte-se a milhares de usuários que já estão aproveitando a facilidade de agendar serviços de barbearia online.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="login.html" class="bg-white text-blue-600 py-3 px-8 rounded-md hover:bg-gray-100 transition duration-300 text-center font-semibold">
+                    Entrar Agora
+                </a>
+                <a href="cadastro-cliente.html" class="bg-transparent border-2 border-white text-white py-3 px-8 rounded-md hover:bg-white hover:text-blue-600 transition duration-300 text-center font-semibold">
+                    Criar Conta
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Rodapé -->
+    <footer class="bg-slate-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">BarberPro</h3>
+                    <p class="text-gray-400">A plataforma que conecta barbeiros e clientes de forma simples e eficiente.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="login.html" class="text-gray-400 hover:text-white">Entrar</a></li>
+                        <li><a href="cadastro-cliente.html" class="text-gray-400 hover:text-white">Cadastro Cliente</a></li>
+                        <li><a href="cadastro-barbeiro.html" class="text-gray-400 hover:text-white">Cadastro Barbeiro</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Recursos</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Agendamento</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Pagamentos</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Avaliações</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contato</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fas fa-envelope mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">contato@barberpro.com</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-phone mr-2 text-gray-400"></i>
+                            <span class="text-gray-400">(11) 99999-9999</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Service Worker Registration -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('service-worker.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado com sucesso:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Falha ao registrar Service Worker:', error);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

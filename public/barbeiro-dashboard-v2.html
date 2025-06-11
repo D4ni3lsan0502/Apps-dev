@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Painel do Barbeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="barbeiro-dashboard.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Usuário" class="w-8 h-8 rounded-full">
+                            <span class="hidden md:block text-sm font-medium text-gray-700">Carlos Silva</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex flex-wrap -mx-4">
+            <!-- Sidebar -->
+            <div class="w-full md:w-1/4 px-4 mb-8">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="flex items-center mb-6">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-16 h-16 rounded-full border-2 border-blue-500">
+                            <div class="ml-4">
+                                <h2 class="text-xl font-semibold text-gray-800">Carlos Silva</h2>
+                                <p class="text-sm text-gray-600">Barbeiro Profissional</p>
+                            </div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <ul class="space-y-2">
+                                <li>
+                                    <a href="barbeiro-dashboard.html" class="flex items-center text-blue-600 font-medium">
+                                        <i class="fas fa-tachometer-alt w-5 text-center"></i>
+                                        <span class="ml-2">Dashboard</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="agendamentos-barbeiro.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                        <i class="fas fa-calendar-alt w-5 text-center"></i>
+                                        <span class="ml-2">Agendamentos</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="barbeiro-servicos.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                        <i class="fas fa-cut w-5 text-center"></i>
+                                        <span class="ml-2">Serviços</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="barbeiro-clientes.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                        <i class="fas fa-users w-5 text-center"></i>
+                                        <span class="ml-2">Clientes</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" class="flex items-center text-gray-700 hover:text-blue-600">
+                                        <i class="fas fa-money-bill-wave w-5 text-center"></i>
+                                        <span class="ml-2">Financeiro</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="barbeiro-configurções.html" class="flex items-center text-gray-700 hover:text-blue-600">
+                                        <i class="fas fa-cog w-5 text-center"></i>
+                                        <span class="ml-2">Configurações</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Main Content -->
+            <div class="w-full md:w-3/4 px-4">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center">
+                            <div class="rounded-full bg-blue-100 p-3">
+                                <i class="fas fa-calendar-check text-blue-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm">Agendamentos Hoje</h3>
+                                <p class="text-2xl font-semibold">8</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center">
+                            <div class="rounded-full bg-green-100 p-3">
+                                <i class="fas fa-money-bill-wave text-green-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm">Faturamento Hoje</h3>
+                                <p class="text-2xl font-semibold">R$ 480,00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-md p-6">
+                        <div class="flex items-center">
+                            <div class="rounded-full bg-purple-100 p-3">
+                                <i class="fas fa-user-plus text-purple-600 text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-gray-500 text-sm">Novos Clientes</h3>
+                                <p class="text-2xl font-semibold">3</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Próximos Agendamentos -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden mb-8">
+                    <div class="p-6 bg-blue-600 text-white flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Próximos Agendamentos</h2>
+                        <button class="bg-white text-blue-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-50">
+                            <i class="fas fa-plus mr-1"></i> Novo
+                        </button>
+                    </div>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Cliente</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Data/Hora</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Local</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+                                    <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody class="bg-white divide-y divide-gray-200">
+                                <!-- Agendamento 1 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/43.jpg" alt="Cliente">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">João Silva</div>
+                                                <div class="text-sm text-gray-500">(11) 98765-4321</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Corte + Barba</div>
+                                        <div class="text-sm text-gray-500">1h</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Hoje</div>
+                                        <div class="text-sm text-gray-500">10:00</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Barbearia</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Confirmado
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" title="Ver detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3" title="Confirmar">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-900" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Agendamento 2 (a domicílio) -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/22.jpg" alt="Cliente">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Pedro Santos</div>
+                                                <div class="text-sm text-gray-500">(11) 97654-3210</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Corte Masculino</div>
+                                        <div class="text-sm text-gray-500">30min</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Hoje</div>
+                                        <div class="text-sm text-gray-500">11:30</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <span class="text-sm text-gray-900 mr-2">Domicílio</span>
+                                            <div class="dropdown relative inline-block" data-endereco='{"rua":"Av. Paulista","numero":"1000","bairro":"Bela Vista","cidade":"São Paulo","estado":"SP"}'>
+                                                <button class="text-blue-600 hover:text-blue-900 focus:outline-none" title="Abrir GPS">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </button>
+                                                <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="googleMaps">
+                                                        <i class="fab fa-google mr-2"></i> Google Maps
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="waze">
+                                                        <i class="fab fa-waze mr-2"></i> Waze
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="appleMaps">
+                                                        <i class="fas fa-map mr-2"></i> Apple Maps
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mt-1">Av. Paulista, 1000 - Bela Vista, São Paulo - SP</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Pendente
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" title="Ver detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3" title="Confirmar">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-900" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Agendamento 3 (a domicílio) -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/36.jpg" alt="Cliente">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Lucas Oliveira</div>
+                                                <div class="text-sm text-gray-500">(11) 96543-2109</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Corte + Barba + Sobrancelha</div>
+                                        <div class="text-sm text-gray-500">1h 30min</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Hoje</div>
+                                        <div class="text-sm text-gray-500">14:00</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <span class="text-sm text-gray-900 mr-2">Domicílio</span>
+                                            <div class="dropdown relative inline-block" data-endereco='{"rua":"Rua Augusta","numero":"1200","bairro":"Consolação","cidade":"São Paulo","estado":"SP"}'>
+                                                <button class="text-blue-600 hover:text-blue-900 focus:outline-none" title="Abrir GPS">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </button>
+                                                <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="googleMaps">
+                                                        <i class="fab fa-google mr-2"></i> Google Maps
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="waze">
+                                                        <i class="fab fa-waze mr-2"></i> Waze
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="appleMaps">
+                                                        <i class="fas fa-map mr-2"></i> Apple Maps
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mt-1">Rua Augusta, 1200 - Consolação, São Paulo - SP</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Confirmado
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" title="Ver detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3" title="Confirmar">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-900" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Agendamento 4 -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/55.jpg" alt="Cliente">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Marcos Souza</div>
+                                                <div class="text-sm text-gray-500">(11) 95432-1098</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Barba</div>
+                                        <div class="text-sm text-gray-500">30min</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Hoje</div>
+                                        <div class="text-sm text-gray-500">16:00</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Barbearia</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                            Confirmado
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" title="Ver detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3" title="Confirmar">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-900" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                                
+                                <!-- Agendamento 5 (a domicílio) -->
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <div class="flex-shrink-0 h-10 w-10">
+                                                <img class="h-10 w-10 rounded-full" src="https://randomuser.me/api/portraits/men/67.jpg" alt="Cliente">
+                                            </div>
+                                            <div class="ml-4">
+                                                <div class="text-sm font-medium text-gray-900">Rafael Costa</div>
+                                                <div class="text-sm text-gray-500">(11) 94321-0987</div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Corte Masculino</div>
+                                        <div class="text-sm text-gray-500">30min</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="text-sm text-gray-900">Amanhã</div>
+                                        <div class="text-sm text-gray-500">09:00</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <div class="flex items-center">
+                                            <span class="text-sm text-gray-900 mr-2">Domicílio</span>
+                                            <div class="dropdown relative inline-block" data-endereco='{"rua":"Av. Brigadeiro Faria Lima","numero":"3477","bairro":"Itaim Bibi","cidade":"São Paulo","estado":"SP"}'>
+                                                <button class="text-blue-600 hover:text-blue-900 focus:outline-none" title="Abrir GPS">
+                                                    <i class="fas fa-map-marker-alt"></i>
+                                                </button>
+                                                <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="googleMaps">
+                                                        <i class="fab fa-google mr-2"></i> Google Maps
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="waze">
+                                                        <i class="fab fa-waze mr-2"></i> Waze
+                                                    </a>
+                                                    <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="appleMaps">
+                                                        <i class="fas fa-map mr-2"></i> Apple Maps
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="text-xs text-gray-500 mt-1">Av. Brigadeiro Faria Lima, 3477 - Itaim Bibi, São Paulo - SP</div>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap">
+                                        <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                            Pendente
+                                        </span>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                        <button class="text-blue-600 hover:text-blue-900 mr-3" title="Ver detalhes">
+                                            <i class="fas fa-eye"></i>
+                                        </button>
+                                        <button class="text-green-600 hover:text-green-900 mr-3" title="Confirmar">
+                                            <i class="fas fa-check"></i>
+                                        </button>
+                                        <button class="text-red-600 hover:text-red-900" title="Cancelar">
+                                            <i class="fas fa-times"></i>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Calendário -->
+                <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                    <div class="p-6 bg-blue-600 text-white">
+                        <h2 class="text-lg font-semibold">Calendário de Agendamentos</h2>
+                    </div>
+                    
+                    <div class="p-6">
+                        <div class="flex justify-between items-center mb-6">
+                            <button class="text-gray-600 hover:text-gray-900">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h3 class="text-lg font-medium text-gray-900">Maio 2025</h3>
+                            <button class="text-gray-600 hover:text-gray-900">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="grid grid-cols-7 gap-2 mb-4">
+                            <div class="text-center text-sm font-medium text-gray-700">Dom</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Seg</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Ter</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Qua</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Qui</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Sex</div>
+                            <div class="text-center text-sm font-medium text-gray-700">Sáb</div>
+                            
+                            <!-- Dias do calendário (exemplo) -->
+                            <div class="text-center py-2 text-gray-400">26</div>
+                            <div class="text-center py-2 text-gray-400">27</div>
+                            <div class="text-center py-2 text-gray-400">28</div>
+                            <div class="text-center py-2 text-gray-400">29</div>
+                            <div class="text-center py-2 text-gray-400">30</div>
+                            <div class="text-center py-2">1</div>
+                            <div class="text-center py-2">2</div>
+                            
+                            <div class="text-center py-2">3</div>
+                            <div class="text-center py-2">4</div>
+                            <div class="text-center py-2">5</div>
+                            <div class="text-center py-2">6</div>
+                            <div class="text-center py-2">7</div>
+                            <div class="text-center py-2">8</div>
+                            <div class="text-center py-2">9</div>
+                            
+                            <div class="text-center py-2">10</div>
+                            <div class="text-center py-2">11</div>
+                            <div class="text-center py-2">12</div>
+                            <div class="text-center py-2">13</div>
+                            <div class="text-center py-2">14</div>
+                            <div class="text-center py-2">15</div>
+                            <div class="text-center py-2">16</div>
+                            
+                            <div class="text-center py-2">17</div>
+                            <div class="text-center py-2">18</div>
+                            <div class="text-center py-2">19</div>
+                            <div class="text-center py-2">20</div>
+                            <div class="text-center py-2">21</div>
+                            <div class="text-center py-2">22</div>
+                            <div class="text-center py-2">23</div>
+                            
+                            <div class="text-center py-2">24</div>
+                            <div class="text-center py-2">25</div>
+                            <div class="text-center py-2">26</div>
+                            <div class="text-center py-2">27</div>
+                            <div class="text-center py-2">28</div>
+                            <div class="text-center py-2 bg-blue-600 text-white rounded-full">29</div>
+                            <div class="text-center py-2">30</div>
+                            
+                            <div class="text-center py-2">31</div>
+                            <div class="text-center py-2 text-gray-400">1</div>
+                            <div class="text-center py-2 text-gray-400">2</div>
+                            <div class="text-center py-2 text-gray-400">3</div>
+                            <div class="text-center py-2 text-gray-400">4</div>
+                            <div class="text-center py-2 text-gray-400">5</div>
+                            <div class="text-center py-2 text-gray-400">6</div>
+                        </div>
+                        
+                        <div class="border-t border-gray-200 pt-4">
+                            <h4 class="text-md font-medium text-gray-900 mb-3">Legenda</h4>
+                            <div class="flex flex-wrap gap-4">
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-blue-600 mr-2"></div>
+                                    <span class="text-sm text-gray-700">Hoje</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-green-500 mr-2"></div>
+                                    <span class="text-sm text-gray-700">Agendamento Confirmado</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-yellow-500 mr-2"></div>
+                                    <span class="text-sm text-gray-700">Agendamento Pendente</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-3 h-3 rounded-full bg-red-500 mr-2"></div>
+                                    <span class="text-sm text-gray-700">Agendamento Cancelado</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalhes do Agendamento -->
+    <div id="appointment-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-lg font-semibold text-gray-900">Detalhes do Agendamento</h3>
+                    <button id="close-modal" class="text-gray-400 hover:text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="mb-6">
+                    <div class="flex items-center mb-4">
+                        <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Cliente" class="w-16 h-16 rounded-full">
+                        <div class="ml-4">
+                            <h4 class="text-md font-medium text-gray-900">Lucas Oliveira</h4>
+                            <p class="text-sm text-gray-600">(11) 96543-2109</p>
+                            <div class="flex text-yellow-400 text-xs mt-1">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-gray-500 ml-1">(4.5)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-md p-4 mb-4">
+                        <h5 class="text-sm font-medium text-gray-900 mb-2">Informações do Agendamento</h5>
+                        <div class="space-y-2 text-sm">
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Serviços:</span>
+                                <span class="font-medium text-gray-900">Corte + Barba + Sobrancelha</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Data:</span>
+                                <span class="font-medium text-gray-900">29/05/2025</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Horário:</span>
+                                <span class="font-medium text-gray-900">14:00</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Duração:</span>
+                                <span class="font-medium text-gray-900">1h 30min</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Local:</span>
+                                <span class="font-medium text-gray-900">Domicílio</span>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <span class="text-gray-600">Endereço:</span>
+                                <div class="text-right">
+                                    <span class="font-medium text-gray-900">Rua Augusta, 1200 - Consolação, São Paulo - SP</span>
+                                    <div class="mt-1">
+                                        <div class="dropdown relative inline-block" data-endereco='{"rua":"Rua Augusta","numero":"1200","bairro":"Consolação","cidade":"São Paulo","estado":"SP"}'>
+                                            <button class="text-blue-600 hover:text-blue-900 text-sm focus:outline-none">
+                                                <i class="fas fa-map-marker-alt mr-1"></i> Abrir no GPS
+                                            </button>
+                                            <div class="dropdown-menu hidden absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-10">
+                                                <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="googleMaps">
+                                                    <i class="fab fa-google mr-2"></i> Google Maps
+                                                </a>
+                                                <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="waze">
+                                                    <i class="fab fa-waze mr-2"></i> Waze
+                                                </a>
+                                                <a href="#" class="gps-link block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100" data-app="appleMaps">
+                                                    <i class="fas fa-map mr-2"></i> Apple Maps
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Forma de Pagamento:</span>
+                                <span class="font-medium text-gray-900">PIX</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Momento do Pagamento:</span>
+                                <span class="font-medium text-gray-900">50% antecipado</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span class="text-gray-600">Status:</span>
+                                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                                    Confirmado
+                                </span>
+                            </div>
+                            <div class="border-t border-gray-200 pt-2 mt-2">
+                                <div class="flex justify-between">
+                                    <span class="font-medium text-gray-900">Valor Total:</span>
+                                    <span class="font-medium text-gray-900">R$ 120,00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-gray-50 rounded-md p-4">
+                        <h5 class="text-sm font-medium text-gray-900 mb-2">Observações</h5>
+                        <p class="text-sm text-gray-600">Cliente prefere corte mais curto nas laterais e barba bem aparada. Alérgico a alguns produtos, verificar antes de aplicar.</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end space-x-3">
+                    <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-md hover:bg-gray-300 transition duration-300">
+                        Fechar
+                    </button>
+                    <button class="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition duration-300">
+                        Confirmar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-gray-200 mt-12">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script type="module">
+        // Importar funções de GPS
+        import { gerarLinkGoogleMaps, gerarLinkWaze, gerarLinkAppleMaps, abrirGPSComRota } from './js/gps-rotas.js';
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // User menu toggle
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Dropdown de GPS
+            const dropdownButtons = document.querySelectorAll('.dropdown button');
+            
+            dropdownButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    
+                    // Fechar todos os outros dropdowns
+                    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                        if (menu !== this.nextElementSibling) {
+                            menu.classList.add('hidden');
+                        }
+                    });
+                    
+                    // Alternar visibilidade do dropdown atual
+                    const dropdownMenu = this.nextElementSibling;
+                    dropdownMenu.classList.toggle('hidden');
+                });
+            });
+            
+            // Fechar dropdowns ao clicar fora
+            document.addEventListener('click', function() {
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.classList.add('hidden');
+                });
+            });
+            
+            // Evitar que cliques dentro do dropdown fechem o dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                });
+            });
+            
+            // Links de GPS
+            const gpsLinks = document.querySelectorAll('.gps-link');
+            
+            gpsLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Obter dados do endereço
+                    const dropdown = this.closest('.dropdown');
+                    const enderecoJSON = dropdown.getAttribute('data-endereco');
+                    const endereco = JSON.parse(enderecoJSON);
+                    
+                    // Obter aplicativo selecionado
+                    const app = this.getAttribute('data-app');
+                    
+                    // Gerar link apropriado
+                    let url;
+                    switch (app) {
+                        case 'googleMaps':
+                            url = gerarLinkGoogleMaps(endereco);
+                            break;
+                        case 'waze':
+                            url = gerarLinkWaze(endereco);
+                            break;
+                        case 'appleMaps':
+                            url = gerarLinkAppleMaps(endereco);
+                            break;
+                        default:
+                            url = gerarLinkGoogleMaps(endereco);
+                    }
+                    
+                    // Abrir em nova aba
+                    window.open(url, '_blank');
+                });
+            });
+            
+            // Modal de detalhes
+            const appointmentModal = document.getElementById('appointment-modal');
+            const closeModalButton = document.getElementById('close-modal');
+            const detailButtons = document.querySelectorAll('button[title="Ver detalhes"]');
+            
+            detailButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    appointmentModal.classList.remove('hidden');
+                });
+            });
+            
+            closeModalButton.addEventListener('click', function() {
+                appointmentModal.classList.add('hidden');
+            });
+            
+            // Fechar modal ao clicar fora
+            appointmentModal.addEventListener('click', function(event) {
+                if (event.target === appointmentModal) {
+                    appointmentModal.classList.add('hidden');
+                }
+            });
+            
+            // Botão de fechar no modal
+            document.querySelector('#appointment-modal button.bg-gray-200').addEventListener('click', function() {
+                appointmentModal.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>

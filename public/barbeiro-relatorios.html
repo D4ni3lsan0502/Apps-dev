@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Relatórios do Barbeiro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Sidebar Navigation -->
+    <div class="flex h-screen bg-gray-100">
+        <div class="hidden md:flex md:flex-shrink-0">
+            <div class="flex flex-col w-64 bg-slate-900 text-white">
+                <div class="flex items-center justify-center h-16 px-4 bg-slate-800">
+                    <h1 class="text-xl font-bold">BarberPro</h1>
+                </div>
+                <div class="flex flex-col flex-grow px-4 mt-5">
+                    <nav class="flex-1 space-y-1">
+                        <a href="barbeiro-dashboard.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-home mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="agendamentos-barbeiro.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            Agendamentos
+                        </a>
+                        <a href="barbeiro-servicos.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cut mr-3"></i>
+                            Serviços
+                        </a>
+                        <a href="barbeiro-clientes.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-users mr-3"></i>
+                            Clientes
+                        </a>
+                        <a href="barbeiro-relatorios.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md bg-slate-800">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Relatórios
+                        </a>
+                        <a href="barbeiro-configuracoes.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cog mr-3"></i>
+                            Configurações
+                        </a>
+                    </nav>
+                    <div class="mt-auto pb-6">
+                        <div class="barber-card rounded-lg p-4 mb-4">
+                            <div class="flex items-center">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
+                                    <p class="text-xs text-gray-400">Barbeiro Master</p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="login.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-sign-out-alt mr-3"></i>
+                            Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <div class="md:hidden fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white p-4 flex items-center justify-between">
+            <h1 class="text-xl font-bold">BarberPro</h1>
+            <button id="mobile-menu-button" class="text-white focus:outline-none">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile menu -->
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+            <div class="flex flex-col h-full">
+                <div class="flex items-center justify-between p-4 border-b border-slate-800">
+                    <h1 class="text-xl font-bold">BarberPro</h1>
+                    <button id="close-menu-button" class="text-white focus:outline-none">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="flex-1 overflow-y-auto">
+                    <nav class="px-4 pt-4 space-y-1">
+                        <a href="barbeiro-dashboard.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-home mr-3"></i>
+                            Dashboard
+                        </a>
+                        <a href="agendamentos-barbeiro.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-calendar-alt mr-3"></i>
+                            Agendamentos
+                        </a>
+                        <a href="barbeiro-servicos.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cut mr-3"></i>
+                            Serviços
+                        </a>
+                        <a href="barbeiro-clientes.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-users mr-3"></i>
+                            Clientes
+                        </a>
+                        <a href="barbeiro-relatorios.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md bg-slate-800">
+                            <i class="fas fa-chart-line mr-3"></i>
+                            Relatórios
+                        </a>
+                        <a href="barbeiro-configuracoes.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                            <i class="fas fa-cog mr-3"></i>
+                            Configurações
+                        </a>
+                    </nav>
+                </div>
+                <div class="p-4 border-t border-slate-800">
+                    <div class="barber-card rounded-lg p-4 mb-4">
+                        <div class="flex items-center">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                            <div class="ml-3">
+                                <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
+                                <p class="text-xs text-gray-400">Barbeiro Master</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="login.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                        <i class="fas fa-sign-out-alt mr-3"></i>
+                        Sair
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="flex flex-col flex-1 overflow-hidden">
+            <main class="flex-1 overflow-y-auto pt-16 md:pt-0 pb-4 px-4 md:px-6 bg-gray-100">
+                <!-- Relatórios Content -->
+                <div class="py-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
+                        <h2 class="text-2xl font-semibold text-gray-900">Relatórios</h2>
+                        <div class="mt-3 md:mt-0 flex">
+                            <div class="relative mr-4">
+                                <select class="w-full pl-3 pr-10 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500">
+                                    <option value="mes_atual">Mês Atual</option>
+                                    <option value="mes_anterior">Mês Anterior</option>
+                                    <option value="trimestre">Último Trimestre</option>
+                                    <option value="semestre">Último Semestre</option>
+                                    <option value="ano">Último Ano</option>
+                                </select>
+                            </div>
+                            <button class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                <i class="fas fa-download mr-2"></i> Exportar
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Resumo Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                        <div class="bg-white rounded-lg shadow p-5">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-blue-500 rounded-md p-3">
+                                    <i class="fas fa-calendar-check text-white"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <p class="text-sm font-medium text-gray-500">Total de Agendamentos</p>
+                                    <p class="text-2xl font-semibold text-gray-900">48</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-5">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-green-500 rounded-md p-3">
+                                    <i class="fas fa-money-bill-wave text-white"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <p class="text-sm font-medium text-gray-500">Faturamento Total</p>
+                                    <p class="text-2xl font-semibold text-gray-900">R$ 2.450,00</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-5">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-purple-500 rounded-md p-3">
+                                    <i class="fas fa-users text-white"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <p class="text-sm font-medium text-gray-500">Novos Clientes</p>
+                                    <p class="text-2xl font-semibold text-gray-900">12</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white rounded-lg shadow p-5">
+                            <div class="flex items-center">
+                                <div class="flex-shrink-0 bg-yellow-500 rounded-md p-3">
+                                    <i class="fas fa-star text-white"></i>
+                                </div>
+                                <div class="ml-5">
+                                    <p class="text-sm font-medium text-gray-500">Avaliação Média</p>
+                                    <p class="text-2xl font-semibold text-gray-900">4.8</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráficos -->
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                        <!-- Gráfico de Faturamento -->
+                        <div class="bg-white shadow rounded-lg p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Faturamento Mensal</h3>
+                            <div class="h-64 bg-gray-100 rounded-md flex items-center justify-center">
+                                <p class="text-gray-500">Gráfico de Faturamento Mensal</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Gráfico de Serviços -->
+                        <div class="bg-white shadow rounded-lg p-6">
+                            <h3 class="text-lg font-medium text-gray-900 mb-4">Serviços Mais Populares</h3>
+                            <div class="h-64 bg-gray-100 rounded-md flex items-center justify-center">
+                                <p class="text-gray-500">Gráfico de Serviços Mais Populares</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabela de Desempenho -->
+                    <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
+                        <div class="px-6 py-4 border-b border-gray-200">
+                            <h3 class="text-lg font-medium text-gray-900">Desempenho por Serviço</h3>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Serviço</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantidade</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Faturamento</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Ticket Médio</th>
+                                        <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avaliação</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">Corte Masculino</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">24</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 960,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 40,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <span class="text-sm text-gray-900 mr-2">4.9</span>
+                                                <div class="text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">Barba</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">18</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 540,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 30,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <span class="text-sm text-gray-900 mr-2">4.7</span>
+                                                <div class="text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm font-medium text-gray-900">Corte + Barba</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">12</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 780,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="text-sm text-gray-900">R$ 65,00</div>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <div class="flex items-center">
+                                                <span class="text-sm text-gray-900 mr-2">4.8</span>
+                                                <div class="text-yellow-400">
+                                                    <i class="fas fa-star"></i>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <!-- Notificação -->
+    <div class="notificacao fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full"></div>
+
+    <!-- Scripts -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Menu mobile
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMenuButton = document.getElementById('close-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('-translate-x-full');
+                });
+            }
+            
+            if (closeMenuButton && mobileMenu) {
+                closeMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('-translate-x-full');
+                });
+            }
+            
+            // Verificar usuário logado
+            const usuarioJSON = localStorage.getItem('barberpro_usuario_logado');
+            if (!usuarioJSON) {
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            try {
+                const usuario = JSON.parse(usuarioJSON);
+                if (usuario.tipo !== 'barbeiro') {
+                    window.location.href = 'login.html';
+                    return;
+                }
+                
+                // Atualizar informações do barbeiro
+                const elementosNomeBarbeiro = document.querySelectorAll('.nome-barbeiro');
+                elementosNomeBarbeiro.forEach(elemento => {
+                    if (elemento) elemento.textContent = usuario.nome || 'Barbeiro';
+                });
+            } catch (e) {
+                console.error('Erro ao verificar usuário:', e);
+                window.location.href = 'login.html';
+            }
+        });
+    </script>
+</body>
+</html>

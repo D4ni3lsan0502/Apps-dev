@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BarberPro - Configurações</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="public/css/styles.css">
+</head>
+<body class="bg-gray-100">
+    <!-- Navbar -->
+    <nav class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="index.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                </div>
+                <div class="flex items-center">
+                    <div class="relative">
+                        <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold" id="user-avatar"></div>
+                            <span class="hidden md:block text-sm font-medium text-gray-700" id="user-name">Carregando...</span>
+                            <i class="fas fa-chevron-down text-xs text-gray-500"></i>
+                        </button>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="cliente-perfil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="cliente-configuracoes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-3xl mx-auto">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">Configurações</h2>
+                    
+                    <form id="settings-form">
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Conta</h3>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                <input type="email" id="email" name="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" readonly>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <button type="button" id="change-password-button" class="text-blue-600 text-sm hover:underline">Alterar senha</button>
+                            </div>
+                            
+                            <div id="password-change-section" class="hidden border border-gray-200 rounded-md p-4 mb-4">
+                                <div class="mb-3">
+                                    <label for="current-password" class="block text-sm font-medium text-gray-700 mb-1">Senha atual</label>
+                                    <input type="password" id="current-password" name="current-password" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="new-password" class="block text-sm font-medium text-gray-700 mb-1">Nova senha</label>
+                                    <input type="password" id="new-password" name="new-password" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="confirm-password" class="block text-sm font-medium text-gray-700 mb-1">Confirmar nova senha</label>
+                                    <input type="password" id="confirm-password" name="confirm-password" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                
+                                <div class="flex justify-end">
+                                    <button type="button" id="cancel-password-button" class="bg-white border border-gray-300 text-gray-700 px-3 py-1 rounded-md mr-2 text-sm hover:bg-gray-50 transition duration-300">
+                                        Cancelar
+                                    </button>
+                                    <button type="button" id="save-password-button" class="bg-blue-600 text-white px-3 py-1 rounded-md text-sm hover:bg-blue-700 transition duration-300">
+                                        Salvar senha
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Notificações</h3>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="notificacoes_email" name="notificacoes_email" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Receber notificações por email</span>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="notificacoes_sms" name="notificacoes_sms" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Receber notificações por SMS</span>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="notificacoes_agendamento" name="notificacoes_agendamento" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Lembretes de agendamentos</span>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="notificacoes_promocoes" name="notificacoes_promocoes" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Promoções e novidades</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Privacidade</h3>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="privacidade_perfil" name="privacidade_perfil" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Perfil público (barbeiros podem ver seu histórico)</span>
+                                    </label>
+                                </div>
+                                
+                                <div>
+                                    <label class="flex items-center">
+                                        <input type="checkbox" id="privacidade_localizacao" name="privacidade_localizacao" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
+                                        <span class="ml-2 text-sm text-gray-700">Compartilhar localização para sugestões próximas</span>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Ações da conta</h3>
+                            
+                            <div class="space-y-3">
+                                <div>
+                                    <button type="button" id="clear-data-button" class="text-yellow-600 text-sm hover:underline">Limpar dados de navegação</button>
+                                </div>
+                                
+                                <div>
+                                    <button type="button" id="delete-account-button" class="text-red-600 text-sm hover:underline">Excluir minha conta</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 flex justify-end">
+                            <button type="button" id="cancel-button" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2 hover:bg-gray-50 transition duration-300">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300">
+                                Salvar configurações
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Delete Account Modal -->
+    <div id="delete-account-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg max-w-md w-full p-6">
+            <h3 class="text-xl font-bold text-gray-900 mb-4">Excluir conta</h3>
+            <p class="text-gray-700 mb-6">Tem certeza que deseja excluir sua conta? Esta ação não pode ser desfeita e todos os seus dados serão perdidos.</p>
+            <div class="flex justify-end">
+                <button id="cancel-delete-button" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded-md mr-2 hover:bg-gray-50 transition duration-300">
+                    Cancelar
+                </button>
+                <button id="confirm-delete-button" class="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition duration-300">
+                    Excluir conta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white mt-12 border-t border-gray-200">
+        <div class="container mx-auto px-4 py-6">
+            <div class="text-center text-sm text-gray-500">
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Toggle user menu
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
+            });
+            
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                }
+            });
+            
+            // Logout functionality
+            document.getElementById('logout-button').addEventListener('click', function(e) {
+                e.preventDefault();
+                localStorage.removeItem('barberpro_user');
+                window.location.href = 'login.html';
+            });
+            
+            // Cancel button
+            document.getElementById('cancel-button').addEventListener('click', function() {
+                window.location.href = 'cliente-dashboard.html';
+            });
+            
+            // Password change section toggle
+            const changePasswordButton = document.getElementById('change-password-button');
+            const passwordChangeSection = document.getElementById('password-change-section');
+            const cancelPasswordButton = document.getElementById('cancel-password-button');
+            
+            changePasswordButton.addEventListener('click', function() {
+                passwordChangeSection.classList.remove('hidden');
+            });
+            
+            cancelPasswordButton.addEventListener('click', function() {
+                passwordChangeSection.classList.add('hidden');
+                document.getElementById('current-password').value = '';
+                document.getElementById('new-password').value = '';
+                document.getElementById('confirm-password').value = '';
+            });
+            
+            // Save password
+            document.getElementById('save-password-button').addEventListener('click', function() {
+                const currentPassword = document.getElementById('current-password').value;
+                const newPassword = document.getElementById('new-password').value;
+                const confirmPassword = document.getElementById('confirm-password').value;
+                
+                if (!currentPassword || !newPassword || !confirmPassword) {
+                    alert('Por favor, preencha todos os campos de senha.');
+                    return;
+                }
+                
+                if (newPassword !== confirmPassword) {
+                    alert('As senhas não coincidem.');
+                    return;
+                }
+                
+                // In a real app, we would send this to the server
+                // For this demo, we'll just show a success message
+                alert('Senha alterada com sucesso!');
+                passwordChangeSection.classList.add('hidden');
+                document.getElementById('current-password').value = '';
+                document.getElementById('new-password').value = '';
+                document.getElementById('confirm-password').value = '';
+            });
+            
+            // Delete account modal
+            const deleteAccountButton = document.getElementById('delete-account-button');
+            const deleteAccountModal = document.getElementById('delete-account-modal');
+            const cancelDeleteButton = document.getElementById('cancel-delete-button');
+            const confirmDeleteButton = document.getElementById('confirm-delete-button');
+            
+            deleteAccountButton.addEventListener('click', function() {
+                deleteAccountModal.classList.remove('hidden');
+            });
+            
+            cancelDeleteButton.addEventListener('click', function() {
+                deleteAccountModal.classList.add('hidden');
+            });
+            
+            confirmDeleteButton.addEventListener('click', function() {
+                // In a real app, we would send this to the server
+                localStorage.removeItem('barberpro_user');
+                alert('Sua conta foi excluída com sucesso.');
+                window.location.href = 'index.html';
+            });
+            
+            // Clear data
+            document.getElementById('clear-data-button').addEventListener('click', function() {
+                if (confirm('Tem certeza que deseja limpar seus dados de navegação?')) {
+                    // Clear only navigation data, not the user account
+                    localStorage.removeItem('barberpro_recent_searches');
+                    localStorage.removeItem('barberpro_viewed_profiles');
+                    alert('Dados de navegação limpos com sucesso!');
+                }
+            });
+            
+            // Load user data
+            const userData = JSON.parse(localStorage.getItem('barberpro_user') || '{}');
+            if (!userData.id) {
+                // Redirect to login if not logged in
+                window.location.href = 'login.html';
+                return;
+            }
+            
+            // Display user name
+            document.getElementById('user-name').textContent = userData.nome || 'Usuário';
+            
+            // Set avatar initials
+            const userInitial = (userData.nome || 'U').charAt(0).toUpperCase();
+            document.getElementById('user-avatar').textContent = userInitial;
+            
+            // Fill form with user data
+            document.getElementById('email').value = userData.email || '';
+            
+            // Notification preferences
+            document.getElementById('notificacoes_email').checked = userData.notificacoes_email || false;
+            document.getElementById('notificacoes_sms').checked = userData.notificacoes_sms || false;
+            document.getElementById('notificacoes_agendamento').checked = userData.notificacoes_agendamento || true;
+            document.getElementById('notificacoes_promocoes').checked = userData.notificacoes_promocoes || false;
+            
+            // Privacy settings
+            document.getElementById('privacidade_perfil').checked = userData.privacidade_perfil || false;
+            document.getElementById('privacidade_localizacao').checked = userData.privacidade_localizacao || true;
+            
+            // Form submission
+            document.getElementById('settings-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Update user data
+                userData.notificacoes_email = document.getElementById('notificacoes_email').checked;
+                userData.notificacoes_sms = document.getElementById('notificacoes_sms').checked;
+                userData.notificacoes_agendamento = document.getElementById('notificacoes_agendamento').checked;
+                userData.notificacoes_promocoes = document.getElementById('notificacoes_promocoes').checked;
+                
+                userData.privacidade_perfil = document.getElementById('privacidade_perfil').checked;
+                userData.privacidade_localizacao = document.getElementById('privacidade_localizacao').checked;
+                
+                // Save updated data
+                localStorage.setItem('barberpro_user', JSON.stringify(userData));
+                
+                // Show success message
+                alert('Configurações atualizadas com sucesso!');
+                
+                // Redirect to dashboard
+                window.location.href = 'cliente-dashboard.html';
+            });
+        });
+    </script>
+</body>
+</html>
