@@ -48,7 +48,13 @@ self.addEventListener('install', event => {
 // Ativação do Service Worker
 self.addEventListener('activate', event => {
   const cacheWhitelist = [CACHE_NAME];
-  
+  self.addEventListener('install', event => {
+  self.skipWaiting();
+});
+
+self.addEventListener('fetch', event => {
+  event.respondWith(fetch(event.request));
+});
   event.waitUntil(
     caches.keys().then(cacheNames => {
       return Promise.all(

@@ -126,10 +126,10 @@
            const userData = JSON.parse(localStorage.getItem('barberpro_user') || '{}');
 if (!userData.id || userData.tipo !== 'cliente') {
     window.location.href = 'login.html';
+    return;
 }
-            
-            // Exibir nome do usuário
-            document.getElementById('user-name').textContent = userData.nome || 'Cliente';
+// Exibir nome do usuário
+document.getElementById('user-name').textContent = userData.nome || 'Cliente';
             
             // Exibir inicial do avatar
             const userInitial = (userData.nome || 'C').charAt(0).toUpperCase();
@@ -185,7 +185,68 @@ if (!userData.id || userData.tipo !== 'cliente') {
                 contentAgendamentos.classList.add('hidden');
                 contentFavoritos.classList.add('hidden');
             });
-            
+            tabAgendamentos.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Ativar tab
+                tabAgendamentos.classList.add('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.remove('border-transparent', 'text-gray-500');
+
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
+
+                tabFavoritos.classList.remove('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.add('border-transparent', 'text-gray-500');
+
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.remove('hidden');
+                contentFavoritos.classList.add('hidden');
+
+                // Carregar agendamentos
+                carregarAgendamentos();
+            });
+
+            tabFavoritos.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Ativar tab
+                tabFavoritos.classList.add('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.remove('border-transparent', 'text-gray-500');
+
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
+
+                tabAgendamentos.classList.remove('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.add('border-transparent', 'text-gray-500');
+
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.add('hidden');
+                contentFavoritos.classList.remove('hidden');
+
+                // Carregar favoritos
+                carregarFavoritos();
+            });
+
+            // Integração entre arquivos do app
+            // Redirecionamento para páginas de perfil/configurações
+            document.querySelector('a[href="cliente-perfil.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'cliente-perfil.html';
+            });
+            document.querySelector('a[href="cliente-configuracoes.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'cliente-configuracoes.html';
+            });
+
+            // Navbar link para home
+            document.querySelector('a[href="index.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            });
             tabAgendamentos.addEventListener('click', function(e) {
                 e.preventDefault();
                 

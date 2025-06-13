@@ -5,6 +5,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const User = require('./models/User');
+const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,7 +23,7 @@ console.log('JWT_SECRET:', process.env.JWT_SECRET ? 'OK' : 'NÃO ENCONTRADA');
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Conectar ao MongoDB (sem opções deprecated)
 mongoose.connect(process.env.MONGODB_URI)
@@ -75,6 +76,16 @@ function auth(req, res, next) {
 app.get('/api/perfil', auth, async (req, res) => {
   const user = await User.findById(req.user.id).select('-senha');
   res.json(user);
+});
+
+// Rota para obter todos os usuários
+app.get('/usuarios', async (req, res) => {
+  try {
+    const usuarios = await db.collection('usuarios').find().toArray();
+    res.json(usuarios);
+  } catch (err) {
+    res.status(500).json({ error: 'Erro ao buscar usuários' });
+  }
 });
 
 app.listen(PORT, () => {

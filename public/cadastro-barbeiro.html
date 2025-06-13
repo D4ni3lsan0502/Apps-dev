@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberPro - Cadastro Completo de Barbeiro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body class="bg-gray-100 min-h-screen">
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-4xl mx-auto">
@@ -15,7 +16,7 @@
                 <h1 class="text-3xl font-bold text-gray-800">BarberPro</h1>
                 <p class="text-gray-600 mt-2">Cadastro de Barbeiro</p>
             </div>
-            
+
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <form id="cadastro-barbeiro-form">
                     <div class="mb-8">
@@ -27,17 +28,20 @@
                             <div class="bg-blue-600 h-2.5 rounded-full" id="progress-bar" style="width: 25%"></div>
                         </div>
                     </div>
-                    
+
                     <div id="etapa-1" class="block">
                         <h2 class="text-xl font-semibold mb-4">Dados Pessoais</h2>
                         <div class="mb-6">
                             <div class="flex justify-center mb-4">
                                 <div class="relative">
-                                    <div class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
-                                        <img id="preview-foto" src="" alt="Preview da foto" class="w-full h-full object-cover hidden">
+                                    <div
+                                        class="w-32 h-32 bg-gray-200 rounded-full flex items-center justify-center overflow-hidden">
+                                        <img id="preview-foto" src="" alt="Preview da foto"
+                                            class="w-full h-full object-cover hidden">
                                         <i id="icon-foto" class="fas fa-user text-gray-400 text-4xl"></i>
                                     </div>
-                                    <label for="foto" class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-blue-700">
+                                    <label for="foto"
+                                        class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center cursor-pointer hover:bg-blue-700">
                                         <i class="fas fa-camera"></i>
                                     </label>
                                     <input type="file" id="foto" class="hidden" accept="image/*">
@@ -46,36 +50,51 @@
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
                             <div>
-                                <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome Completo*</label>
-                                <input type="text" id="nome" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <label for="nome" class="block text-sm font-medium text-gray-700 mb-1">Nome
+                                    Completo*</label>
+                                <input type="text" id="nome"
+                                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                             <div>
-                                <label for="telefone" class="block text-sm font-medium text-gray-700 mb-1">Telefone/WhatsApp*</label>
-                                <input type="tel" id="telefone" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <label for="telefone"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Telefone/WhatsApp*</label>
+                                <input type="tel" id="telefone"
+                                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email*</label>
-                                <input type="email" id="email" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <input type="email" id="email"
+                                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                             <div>
                                 <label for="senha" class="block text-sm font-medium text-gray-700 mb-1">Senha*</label>
-                                <input type="password" id="senha" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                <input type="password" id="senha"
+                                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                    required>
                             </div>
                         </div>
                         <div class="flex justify-end">
-                            <button type="button" id="btn-etapa-1" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300">Próximo</button>
+                            <button type="button" id="btn-etapa-1"
+                                class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300">Próximo</button>
                         </div>
                     </div>
-                    
+
                     <div id="etapa-2" class="hidden">
                         <h2 class="text-xl font-semibold mb-4">Endereço e Tipo de Atendimento</h2>
                         <div class="mb-4">
                             <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Atendimento</label>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div class="flex items-center"><input type="checkbox" name="tipo-atendimento" id="atend-barbearia" class="mr-2" checked><label for="atend-barbearia">Atendo na barbearia</label></div>
-                                <div class="flex items-center"><input type="checkbox" name="tipo-atendimento" id="atend-domicilio" class="mr-2"><label for="atend-domicilio">Atendo a domicílio</label></div>
+                                <div class="flex items-center"><input type="checkbox" name="tipo-atendimento"
+                                        id="atend-barbearia" class="mr-2" checked><label for="atend-barbearia">Atendo na
+                                        barbearia</label></div>
+                                <div class="flex items-center"><input type="checkbox" name="tipo-atendimento"
+                                        id="atend-domicilio" class="mr-2"><label for="atend-domicilio">Atendo a
+                                        domicílio</label></div>
                             </div>
                         </div>
                         <div id="endereco-barbearia" class="mb-6">
@@ -83,10 +102,13 @@
                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
                                 <div class="md:col-span-3">
                                     <label for="cep" class="block text-sm font-medium text-gray-700 mb-1">CEP*</label>
-                                    <input type="text" id="cep" placeholder="Apenas números" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <input type="text" id="cep" placeholder="Apenas números"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                                 <div class="pt-6">
-                                    <button type="button" id="btn-buscar-cep" class="w-full bg-gray-700 text-white py-2 px-6 rounded-md hover:bg-gray-800 transition duration-300 flex items-center justify-center">
+                                    <button type="button" id="btn-buscar-cep"
+                                        class="w-full bg-gray-700 text-white py-2 px-6 rounded-md hover:bg-gray-800 transition duration-300 flex items-center justify-center">
                                         <i class="fas fa-search mr-2"></i> Buscar
                                     </button>
                                 </div>
@@ -94,38 +116,56 @@
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                 <div class="md:col-span-2">
                                     <label for="rua" class="block text-sm font-medium text-gray-700 mb-1">Rua*</label>
-                                    <input type="text" id="rua" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <input type="text" id="rua"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="numero" class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
-                                    <input type="text" id="numero" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <label for="numero"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
+                                    <input type="text" id="numero"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                             </div>
                             <div class="mb-4">
-                                <label for="complemento" class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
-                                <input type="text" id="complemento" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                <label for="complemento"
+                                    class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
+                                <input type="text" id="complemento"
+                                    class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                 <div>
-                                    <label for="bairro" class="block text-sm font-medium text-gray-700 mb-1">Bairro*</label>
-                                    <input type="text" id="bairro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <label for="bairro"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Bairro*</label>
+                                    <input type="text" id="bairro"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="cidade" class="block text-sm font-medium text-gray-700 mb-1">Cidade*</label>
-                                    <input type="text" id="cidade" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <label for="cidade"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Cidade*</label>
+                                    <input type="text" id="cidade"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                                 <div>
-                                    <label for="estado" class="block text-sm font-medium text-gray-700 mb-1">Estado*</label>
-                                    <input type="text" id="estado" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                    <label for="estado"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Estado*</label>
+                                    <input type="text" id="estado"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                        required>
                                 </div>
                             </div>
                         </div>
                         <div class="flex justify-between">
-                            <button type="button" id="btn-voltar-1" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
-                            <button type="button" id="btn-etapa-2" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">Próximo</button>
+                            <button type="button" id="btn-voltar-1"
+                                class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
+                            <button type="button" id="btn-etapa-2"
+                                class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">Próximo</button>
                         </div>
                     </div>
-                    
+
                     <div id="etapa-3" class="hidden">
                         <h2 class="text-xl font-semibold mb-4">Serviços e Pagamentos</h2>
                         <div class="mb-6">
@@ -133,66 +173,203 @@
                             <div class="space-y-4" id="servicos-container">
                                 <div class="servico-item bg-gray-50 p-4 rounded-md border">
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-2">
-                                        <div class="md:col-span-2"><label class="block text-sm font-medium text-gray-700 mb-1">Nome do Serviço*</label><input type="text" class="servico-nome w-full border border-gray-300 rounded-md px-3 py-2" value="Corte Masculino" required></div>
-                                        <div><label class="block text-sm font-medium text-gray-700 mb-1">Preço (R$)*</label><input type="number" class="servico-preco w-full border border-gray-300 rounded-md px-3 py-2" value="40" required></div>
+                                        <div class="md:col-span-2"><label
+                                                class="block text-sm font-medium text-gray-700 mb-1">Nome do
+                                                Serviço*</label><input type="text"
+                                                class="servico-nome w-full border border-gray-300 rounded-md px-3 py-2"
+                                                value="Corte Masculino" required></div>
+                                        <div><label class="block text-sm font-medium text-gray-700 mb-1">Preço
+                                                (R$)*</label><input type="number"
+                                                class="servico-preco w-full border border-gray-300 rounded-md px-3 py-2"
+                                                value="40" required></div>
                                     </div>
                                     <div class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
-                                        <div class="md:col-span-2"><label class="block text-sm font-medium text-gray-700 mb-1">Descrição</label><input type="text" class="servico-descricao w-full border border-gray-300 rounded-md px-3 py-2" value="Corte com tesoura ou máquina"></div>
-                                        <div><label class="block text-sm font-medium text-gray-700 mb-1">Duração (min)*</label><input type="number" class="servico-duracao w-full border border-gray-300 rounded-md px-3 py-2" value="30" required></div>
+                                        <div class="md:col-span-2"><label
+                                                class="block text-sm font-medium text-gray-700 mb-1">Descrição</label><input
+                                                type="text"
+                                                class="servico-descricao w-full border border-gray-300 rounded-md px-3 py-2"
+                                                value="Corte com tesoura ou máquina"></div>
+                                        <div><label class="block text-sm font-medium text-gray-700 mb-1">Duração
+                                                (min)*</label><input type="number"
+                                                class="servico-duracao w-full border border-gray-300 rounded-md px-3 py-2"
+                                                value="30" required></div>
                                     </div>
                                 </div>
                             </div>
-                            <button type="button" id="btn-add-servico" class="mt-3 text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"><i class="fas fa-plus-circle mr-1"></i> Adicionar outro serviço</button>
+                            <button type="button" id="btn-add-servico"
+                                class="mt-3 text-blue-600 hover:text-blue-800 text-sm font-medium flex items-center"><i
+                                    class="fas fa-plus-circle mr-1"></i> Adicionar outro serviço</button>
                         </div>
                         <div class="mb-6">
                             <h3 class="text-md font-medium mb-3">Formas de Pagamento Aceitas</h3>
                             <div class="grid grid-cols-2 md:grid-cols-3 gap-3">
-                                <div class="flex items-center"><input type="checkbox" id="pag-dinheiro" class="mr-2" checked><label for="pag-dinheiro">Dinheiro</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="pag-credito" class="mr-2" checked><label for="pag-credito">Cartão de Crédito</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="pag-debito" class="mr-2" checked><label for="pag-debito">Cartão de Débito</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="pag-pix" class="mr-2"><label for="pag-pix">PIX</label></div>
-                                <div class="flex items-center"><input type="checkbox" id="pag-transferencia" class="mr-2"><label for="pag-transferencia">Transferência Bancária</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="pag-dinheiro" class="mr-2"
+                                        checked><label for="pag-dinheiro">Dinheiro</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="pag-credito" class="mr-2"
+                                        checked><label for="pag-credito">Cartão de Crédito</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="pag-debito" class="mr-2"
+                                        checked><label for="pag-debito">Cartão de Débito</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="pag-pix" class="mr-2"><label
+                                        for="pag-pix">PIX</label></div>
+                                <div class="flex items-center"><input type="checkbox" id="pag-transferencia"
+                                        class="mr-2"><label for="pag-transferencia">Transferência Bancária</label></div>
                             </div>
                         </div>
                         <div id="pix-fields" class="mb-6 hidden">
                             <h3 class="text-md font-medium mb-3 text-blue-700">Dados para Pagamento PIX</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <div><label for="pix-tipo" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Chave*</label><select id="pix-tipo" class="w-full border border-gray-300 rounded-md px-3 py-2"><option value="">Selecione</option><option value="cpf">CPF</option><option value="cnpj">CNPJ</option><option value="email">E-mail</option><option value="telefone">Telefone</option><option value="aleatoria">Chave Aleatória</option></select></div>
-                                <div><label for="pix-chave" class="block text-sm font-medium text-gray-700 mb-1">Chave PIX*</label><input type="text" id="pix-chave" class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
+                                <div><label for="pix-tipo" class="block text-sm font-medium text-gray-700 mb-1">Tipo de
+                                        Chave*</label><select id="pix-tipo"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2">
+                                        <option value="">Selecione</option>
+                                        <option value="cpf">CPF</option>
+                                        <option value="cnpj">CNPJ</option>
+                                        <option value="email">E-mail</option>
+                                        <option value="telefone">Telefone</option>
+                                        <option value="aleatoria">Chave Aleatória</option>
+                                    </select></div>
+                                <div><label for="pix-chave" class="block text-sm font-medium text-gray-700 mb-1">Chave
+                                        PIX*</label><input type="text" id="pix-chave"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
                             </div>
                         </div>
                         <div id="transferencia-fields" class="mb-6 hidden">
                             <h3 class="text-md font-medium mb-3 text-blue-700">Dados Bancários para Transferência</h3>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                                <div><label for="banco" class="block text-sm font-medium text-gray-700 mb-1">Banco*</label><input type="text" id="banco" class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
-                                <div><label for="tipo-conta" class="block text-sm font-medium text-gray-700 mb-1">Tipo de Conta*</label><select id="tipo-conta" class="w-full border border-gray-300 rounded-md px-3 py-2"><option value="">Selecione</option><option value="corrente">Conta Corrente</option><option value="poupanca">Conta Poupança</option></select></div>
+                                <div><label for="banco"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Banco*</label><input
+                                        type="text" id="banco"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
+                                <div><label for="tipo-conta" class="block text-sm font-medium text-gray-700 mb-1">Tipo
+                                        de Conta*</label><select id="tipo-conta"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2">
+                                        <option value="">Selecione</option>
+                                        <option value="corrente">Conta Corrente</option>
+                                        <option value="poupanca">Conta Poupança</option>
+                                    </select></div>
                             </div>
                             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                                <div><label for="agencia" class="block text-sm font-medium text-gray-700 mb-1">Agência*</label><input type="text" id="agencia" class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
-                                <div><label for="conta" class="block text-sm font-medium text-gray-700 mb-1">Conta*</label><input type="text" id="conta" class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
-                                <div><label for="digito" class="block text-sm font-medium text-gray-700 mb-1">Dígito</label><input type="text" id="digito" class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
+                                <div><label for="agencia"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Agência*</label><input
+                                        type="text" id="agencia"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
+                                <div><label for="conta"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Conta*</label><input
+                                        type="text" id="conta"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
+                                <div><label for="digito"
+                                        class="block text-sm font-medium text-gray-700 mb-1">Dígito</label><input
+                                        type="text" id="digito"
+                                        class="w-full border border-gray-300 rounded-md px-3 py-2"></div>
                             </div>
                         </div>
                         <div class="flex justify-between">
-                            <button type="button" id="btn-voltar-2" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
-                            <button type="button" id="btn-etapa-3" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">Próximo</button>
+                            <button type="button" id="btn-voltar-2"
+                                class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
+                            <button type="button" id="btn-etapa-3"
+                                class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition">Próximo</button>
                         </div>
                     </div>
-                    
+
                     <div id="etapa-4" class="hidden">
                         <h2 class="text-xl font-semibold mb-4">Horários de Funcionamento</h2>
                         <div class="space-y-4">
-                             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-segunda" class="mr-2 dia-semana-checkbox" checked><label for="dia-segunda">Segunda</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="segunda-inicio" class="block text-sm">Início</label><input type="time" id="segunda-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="segunda-fim" class="block text-sm">Fim</label><input type="time" id="segunda-fim" class="w-full border-gray-300 rounded-md" value="19:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-terca" class="mr-2 dia-semana-checkbox" checked><label for="dia-terca">Terça</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="terca-inicio" class="block text-sm">Início</label><input type="time" id="terca-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="terca-fim" class="block text-sm">Fim</label><input type="time" id="terca-fim" class="w-full border-gray-300 rounded-md" value="19:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-quarta" class="mr-2 dia-semana-checkbox" checked><label for="dia-quarta">Quarta</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="quarta-inicio" class="block text-sm">Início</label><input type="time" id="quarta-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="quarta-fim" class="block text-sm">Fim</label><input type="time" id="quarta-fim" class="w-full border-gray-300 rounded-md" value="19:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-quinta" class="mr-2 dia-semana-checkbox" checked><label for="dia-quinta">Quinta</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="quinta-inicio" class="block text-sm">Início</label><input type="time" id="quinta-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="quinta-fim" class="block text-sm">Fim</label><input type="time" id="quinta-fim" class="w-full border-gray-300 rounded-md" value="19:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-sexta" class="mr-2 dia-semana-checkbox" checked><label for="dia-sexta">Sexta</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="sexta-inicio" class="block text-sm">Início</label><input type="time" id="sexta-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="sexta-fim" class="block text-sm">Fim</label><input type="time" id="sexta-fim" class="w-full border-gray-300 rounded-md" value="19:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-sabado" class="mr-2 dia-semana-checkbox" checked><label for="dia-sabado">Sábado</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="sabado-inicio" class="block text-sm">Início</label><input type="time" id="sabado-inicio" class="w-full border-gray-300 rounded-md" value="09:00"></div><div><label for="sabado-fim" class="block text-sm">Fim</label><input type="time" id="sabado-fim" class="w-full border-gray-300 rounded-md" value="18:00"></div></div></div>
-                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center"><div class="flex items-center"><input type="checkbox" id="dia-domingo" class="mr-2 dia-semana-checkbox"><label for="dia-domingo">Domingo</label></div><div class="md:col-span-3 grid grid-cols-2 gap-4"><div><label for="domingo-inicio" class="block text-sm">Início</label><input type="time" id="domingo-inicio" class="w-full border-gray-300 rounded-md" value="09:00" disabled></div><div><label for="domingo-fim" class="block text-sm">Fim</label><input type="time" id="domingo-fim" class="w-full border-gray-300 rounded-md" value="14:00" disabled></div></div></div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-segunda"
+                                        class="mr-2 dia-semana-checkbox" checked><label
+                                        for="dia-segunda">Segunda</label></div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="segunda-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="segunda-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="segunda-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="segunda-fim" class="w-full border-gray-300 rounded-md" value="19:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-terca"
+                                        class="mr-2 dia-semana-checkbox" checked><label for="dia-terca">Terça</label>
+                                </div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="terca-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="terca-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="terca-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="terca-fim" class="w-full border-gray-300 rounded-md" value="19:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-quarta"
+                                        class="mr-2 dia-semana-checkbox" checked><label for="dia-quarta">Quarta</label>
+                                </div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="quarta-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="quarta-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="quarta-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="quarta-fim" class="w-full border-gray-300 rounded-md" value="19:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-quinta"
+                                        class="mr-2 dia-semana-checkbox" checked><label for="dia-quinta">Quinta</label>
+                                </div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="quinta-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="quinta-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="quinta-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="quinta-fim" class="w-full border-gray-300 rounded-md" value="19:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-sexta"
+                                        class="mr-2 dia-semana-checkbox" checked><label for="dia-sexta">Sexta</label>
+                                </div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="sexta-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="sexta-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="sexta-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="sexta-fim" class="w-full border-gray-300 rounded-md" value="19:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-sabado"
+                                        class="mr-2 dia-semana-checkbox" checked><label for="dia-sabado">Sábado</label>
+                                </div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="sabado-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="sabado-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00"></div>
+                                    <div><label for="sabado-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="sabado-fim" class="w-full border-gray-300 rounded-md" value="18:00">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 items-center">
+                                <div class="flex items-center"><input type="checkbox" id="dia-domingo"
+                                        class="mr-2 dia-semana-checkbox"><label for="dia-domingo">Domingo</label></div>
+                                <div class="md:col-span-3 grid grid-cols-2 gap-4">
+                                    <div><label for="domingo-inicio" class="block text-sm">Início</label><input
+                                            type="time" id="domingo-inicio" class="w-full border-gray-300 rounded-md"
+                                            value="09:00" disabled></div>
+                                    <div><label for="domingo-fim" class="block text-sm">Fim</label><input type="time"
+                                            id="domingo-fim" class="w-full border-gray-300 rounded-md" value="14:00"
+                                            disabled></div>
+                                </div>
+                            </div>
                         </div>
                         <div class="mt-8 flex justify-between">
-                            <button type="button" id="btn-voltar-3" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
-                            <button type="submit" id="btn-concluir" class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition flex items-center justify-center">
+                            <button type="button" id="btn-voltar-3"
+                                class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition">Voltar</button>
+                            <button type="submit" id="btn-concluir"
+                                class="bg-green-600 text-white py-2 px-6 rounded-md hover:bg-green-700 transition flex items-center justify-center">
                                 <i class="fas fa-check-circle mr-2"></i> Concluir Cadastro
                             </button>
                         </div>
@@ -202,170 +379,174 @@
         </div>
     </div>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('cadastro-barbeiro-form');
-    let currentStep = 1;
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('cadastro-barbeiro-form');
+            let currentStep = 1;
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/public/service-worker.js');
+}
+// --- Seletores de Elementos ---
+const progressBar = document.getElementById('progress-bar');
+            const etapaTexto = document.getElementById('etapa-texto');
+            const etapaDescricao = document.getElementById('etapa-descricao');
+            const etapas = { 1: document.getElementById('etapa-1'), 2: document.getElementById('etapa-2'), 3: document.getElementById('etapa-3'), 4: document.getElementById('etapa-4') };
+            const descricoesEtapas = ["Dados Pessoais", "Endereço e Atendimento", "Serviços e Pagamentos", "Horários e Finalização"];
 
-    // --- Seletores de Elementos ---
-    const progressBar = document.getElementById('progress-bar');
-    const etapaTexto = document.getElementById('etapa-texto');
-    const etapaDescricao = document.getElementById('etapa-descricao');
-    const etapas = { 1: document.getElementById('etapa-1'), 2: document.getElementById('etapa-2'), 3: document.getElementById('etapa-3'), 4: document.getElementById('etapa-4') };
-    const descricoesEtapas = ["Dados Pessoais", "Endereço e Atendimento", "Serviços e Pagamentos", "Horários e Finalização"];
+            // --- (NOVO) Lógica de Endereço Condicional ---
+            const atendBarbeariaCheckbox = document.getElementById('atend-barbearia');
+            const enderecoBarbeariaDiv = document.getElementById('endereco-barbearia');
+            const enderecoInputs = enderecoBarbeariaDiv.querySelectorAll('input, select');
 
-    // --- (NOVO) Lógica de Endereço Condicional ---
-    const atendBarbeariaCheckbox = document.getElementById('atend-barbearia');
-    const enderecoBarbeariaDiv = document.getElementById('endereco-barbearia');
-    const enderecoInputs = enderecoBarbeariaDiv.querySelectorAll('input, select');
+            function toggleEnderecoObrigatorio() {
+                const isBarbeariaChecked = atendBarbeariaCheckbox.checked;
 
-    function toggleEnderecoObrigatorio() {
-        const isBarbeariaChecked = atendBarbeariaCheckbox.checked;
+                // 1. Mostra ou esconde a seção de endereço
+                enderecoBarbeariaDiv.classList.toggle('hidden', !isBarbeariaChecked);
 
-        // 1. Mostra ou esconde a seção de endereço
-        enderecoBarbeariaDiv.classList.toggle('hidden', !isBarbeariaChecked);
-
-        // 2. Ativa ou desativa a obrigatoriedade dos campos de endereço
-        enderecoInputs.forEach(input => {
-            // Apenas o campo 'complemento' não é obrigatório
-            if (input.id !== 'complemento') {
-                input.required = isBarbeariaChecked;
+                // 2. Ativa ou desativa a obrigatoriedade dos campos de endereço
+                enderecoInputs.forEach(input => {
+                    // Apenas o campo 'complemento' não é obrigatório
+                    if (input.id !== 'complemento') {
+                        input.required = isBarbeariaChecked;
+                    }
+                });
             }
-        });
-    }
-    // Adiciona o evento para chamar a função sempre que o checkbox mudar
-    atendBarbeariaCheckbox.addEventListener('change', toggleEnderecoObrigatorio);
-    // Chama a função uma vez no início para configurar o estado inicial
-    toggleEnderecoObrigatorio();
+            // Adiciona o evento para chamar a função sempre que o checkbox mudar
+            atendBarbeariaCheckbox.addEventListener('change', toggleEnderecoObrigatorio);
+            // Chama a função uma vez no início para configurar o estado inicial
+            toggleEnderecoObrigatorio();
 
 
-    function showStep(stepNumber) {
-        Object.values(etapas).forEach(etapa => etapa.classList.add('hidden'));
-        etapas[stepNumber].classList.remove('hidden');
-        progressBar.style.width = `${stepNumber * 25}%`;
-        etapaTexto.textContent = `Etapa ${stepNumber} de 4`;
-        etapaDescricao.textContent = descricoesEtapas[stepNumber - 1];
-        currentStep = stepNumber;
-    }
-
-    function validateStep(step) {
-        let isValid = true;
-        // Validação da Etapa 2 agora precisa de uma lógica especial
-        if (step === 2) {
-            const atendBarbearia = document.getElementById('atend-barbearia');
-            const atendDomicilio = document.getElementById('atend-domicilio');
-            if (!atendBarbearia.checked && !atendDomicilio.checked) {
-                alert('Por favor, selecione pelo menos um tipo de atendimento.');
-                return false;
+            function showStep(stepNumber) {
+                Object.values(etapas).forEach(etapa => etapa.classList.add('hidden'));
+                etapas[stepNumber].classList.remove('hidden');
+                progressBar.style.width = `${stepNumber * 25}%`;
+                etapaTexto.textContent = `Etapa ${stepNumber} de 4`;
+                etapaDescricao.textContent = descricoesEtapas[stepNumber - 1];
+                currentStep = stepNumber;
             }
-        }
-        
-        // A validação genérica agora funciona perfeitamente, pois respeita o atributo 'required'
-        // que estamos gerenciando dinamicamente.
-        const requiredInputs = etapas[step].querySelectorAll('[required]');
-        requiredInputs.forEach(input => {
-            input.classList.remove('border-red-500');
-            // Só valida se o campo não estiver dentro de uma seção escondida
-            if (input.offsetWidth > 0 && input.offsetHeight > 0 && !input.value.trim()) {
-                isValid = false;
-                input.classList.add('border-red-500');
+
+            function validateStep(step) {
+                let isValid = true;
+                // Validação da Etapa 2 agora precisa de uma lógica especial
+                if (step === 2) {
+                    const atendBarbearia = document.getElementById('atend-barbearia');
+                    const atendDomicilio = document.getElementById('atend-domicilio');
+                    if (!atendBarbearia.checked && !atendDomicilio.checked) {
+                        alert('Por favor, selecione pelo menos um tipo de atendimento.');
+                        return false;
+                    }
+                }
+
+                // A validação genérica agora funciona perfeitamente, pois respeita o atributo 'required'
+                // que estamos gerenciando dinamicamente.
+                const requiredInputs = etapas[step].querySelectorAll('[required]');
+                requiredInputs.forEach(input => {
+                    input.classList.remove('border-red-500');
+                    // Só valida se o campo não estiver dentro de uma seção escondida
+                    if (input.offsetWidth > 0 && input.offsetHeight > 0 && !input.value.trim()) {
+                        isValid = false;
+                        input.classList.add('border-red-500');
+                    }
+                });
+
+                if (!isValid) alert('Por favor, preencha todos os campos obrigatórios (*).');
+                return isValid;
             }
+
+            // --- LÓGICA DE NAVEGAÇÃO ENTRE ETAPAS ---
+            document.getElementById('btn-etapa-1').addEventListener('click', () => { if (validateStep(1)) showStep(2); });
+            document.getElementById('btn-etapa-2').addEventListener('click', () => { if (validateStep(2)) showStep(3); });
+            document.getElementById('btn-etapa-3').addEventListener('click', () => { if (validateStep(3)) showStep(4); });
+            document.getElementById('btn-voltar-1').addEventListener('click', () => showStep(1));
+            document.getElementById('btn-voltar-2').addEventListener('click', () => showStep(2));
+            document.getElementById('btn-voltar-3').addEventListener('click', () => showStep(3));
+
+            // --- LÓGICA DE BUSCA DE CEP ---
+            const btnBuscarCep = document.getElementById('btn-buscar-cep');
+            btnBuscarCep.addEventListener('click', async () => {
+                const cepInput = document.getElementById('cep');
+                const cep = cepInput.value.replace(/\D/g, '');
+                if (cep.length !== 8) {
+                    alert('CEP inválido. Por favor, digite 8 números.');
+                    return;
+                }
+                btnBuscarCep.disabled = true;
+                btnBuscarCep.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+
+                try {
+                    const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+                    if (!response.ok) throw new Error('CEP não encontrado.');
+                    const data = await response.json();
+                    if (data.erro) throw new Error('CEP não encontrado.');
+
+                    document.getElementById('rua').value = data.logradouro;
+                    document.getElementById('bairro').value = data.bairro;
+                    document.getElementById('cidade').value = data.localidade;
+                    document.getElementById('estado').value = data.uf;
+                    document.getElementById('numero').focus();
+
+                } catch (error) {
+                    alert(error.message);
+                } finally {
+                    btnBuscarCep.disabled = false;
+                    btnBuscarCep.innerHTML = '<i class="fas fa-search mr-2"></i> Buscar';
+                }
+            });
+
+            // --- LÓGICA DO FORMULÁRIO FINAL ---
+            form.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                if (!validateStep(4)) return;
+
+                const concluirButton = document.getElementById('btn-concluir');
+                concluirButton.disabled = true;
+                concluirButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Concluindo...';
+
+                // Coleta de dados completa
+                const barbeiroData = { /* ... a lógica de coleta de dados continua a mesma ... */ };
+                console.log("DADOS FINAIS PARA ENVIO:", JSON.stringify(barbeiroData, null, 2));
+
+                // Simulação de sucesso
+                setTimeout(() => {
+                    alert('Cadastro realizado com sucesso!');
+                    window.location.href = 'barbeiro-dashboard-v2.html';
+                }, 1000);
+            });
+
+            // --- LÓGICAS AUXILIARES (PAGAMENTOS, SERVIÇOS, HORÁRIOS) ---
+            document.getElementById('pag-pix').addEventListener('change', (e) => document.getElementById('pix-fields').classList.toggle('hidden', !e.target.checked));
+            document.getElementById('pag-transferencia').addEventListener('change', (e) => document.getElementById('transferencia-fields').classList.toggle('hidden', !e.target.checked));
+
+            document.getElementById('btn-add-servico').addEventListener('click', () => {
+                const container = document.getElementById('servicos-container');
+                const novoServico = container.firstElementChild.cloneNode(true);
+                novoServico.querySelectorAll('input').forEach(input => input.value = '');
+                container.appendChild(novoServico);
+            });
+
+            document.querySelectorAll('.dia-semana-checkbox').forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const dia = this.id.split('-')[1];
+                    document.getElementById(`${dia}-inicio`).disabled = !this.checked;
+                    document.getElementById(`${dia}-fim`).disabled = !this.checked;
+                });
+            });
+
+            // Upload de foto
+            document.getElementById('foto').addEventListener('change', function (e) {
+                if (e.target.files && e.target.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function (event) {
+                        document.getElementById('preview-foto').src = event.target.result;
+                        document.getElementById('preview-foto').classList.remove('hidden');
+                        document.getElementById('icon-foto').classList.add('hidden');
+                    };
+                    reader.readAsDataURL(e.target.files[0]);
+                }
+            });
         });
-
-        if (!isValid) alert('Por favor, preencha todos os campos obrigatórios (*).');
-        return isValid;
-    }
-    
-    // --- LÓGICA DE NAVEGAÇÃO ENTRE ETAPAS ---
-    document.getElementById('btn-etapa-1').addEventListener('click', () => { if (validateStep(1)) showStep(2); });
-    document.getElementById('btn-etapa-2').addEventListener('click', () => { if (validateStep(2)) showStep(3); });
-    document.getElementById('btn-etapa-3').addEventListener('click', () => { if (validateStep(3)) showStep(4); });
-    document.getElementById('btn-voltar-1').addEventListener('click', () => showStep(1));
-    document.getElementById('btn-voltar-2').addEventListener('click', () => showStep(2));
-    document.getElementById('btn-voltar-3').addEventListener('click', () => showStep(3));
-
-    // --- LÓGICA DE BUSCA DE CEP ---
-    const btnBuscarCep = document.getElementById('btn-buscar-cep');
-    btnBuscarCep.addEventListener('click', async () => {
-        const cepInput = document.getElementById('cep');
-        const cep = cepInput.value.replace(/\D/g, '');
-        if (cep.length !== 8) {
-            alert('CEP inválido. Por favor, digite 8 números.');
-            return;
-        }
-        btnBuscarCep.disabled = true;
-        btnBuscarCep.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
-
-        try {
-            const response = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
-            if (!response.ok) throw new Error('CEP não encontrado.');
-            const data = await response.json();
-            if (data.erro) throw new Error('CEP não encontrado.');
-
-            document.getElementById('rua').value = data.logradouro;
-            document.getElementById('bairro').value = data.bairro;
-            document.getElementById('cidade').value = data.localidade;
-            document.getElementById('estado').value = data.uf;
-            document.getElementById('numero').focus();
-
-        } catch (error) {
-            alert(error.message);
-        } finally {
-            btnBuscarCep.disabled = false;
-            btnBuscarCep.innerHTML = '<i class="fas fa-search mr-2"></i> Buscar';
-        }
-    });
-
-    // --- LÓGICA DO FORMULÁRIO FINAL ---
-    form.addEventListener('submit', async function(e) {
-        e.preventDefault();
-        if (!validateStep(4)) return;
-
-        const concluirButton = document.getElementById('btn-concluir');
-        concluirButton.disabled = true;
-        concluirButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Concluindo...';
-
-        // Coleta de dados completa
-        const barbeiroData = { /* ... a lógica de coleta de dados continua a mesma ... */ };
-        console.log("DADOS FINAIS PARA ENVIO:", JSON.stringify(barbeiroData, null, 2));
-        
-        // Simulação de sucesso
-        setTimeout(() => {
-            alert('Cadastro realizado com sucesso!');
-            window.location.href = 'barbeiro-dashboard-v2.html';
-        }, 1000);
-    });
-
-    // --- LÓGICAS AUXILIARES (PAGAMENTOS, SERVIÇOS, HORÁRIOS) ---
-    document.getElementById('pag-pix').addEventListener('change', (e) => document.getElementById('pix-fields').classList.toggle('hidden', !e.target.checked));
-    document.getElementById('pag-transferencia').addEventListener('change', (e) => document.getElementById('transferencia-fields').classList.toggle('hidden', !e.target.checked));
-
-    document.getElementById('btn-add-servico').addEventListener('click', () => {
-        const container = document.getElementById('servicos-container');
-        const novoServico = container.firstElementChild.cloneNode(true);
-        novoServico.querySelectorAll('input').forEach(input => input.value = '');
-        container.appendChild(novoServico);
-    });
-
-    document.querySelectorAll('.dia-semana-checkbox').forEach(checkbox => {
-        checkbox.addEventListener('change', function() {
-            const dia = this.id.split('-')[1];
-            document.getElementById(`${dia}-inicio`).disabled = !this.checked;
-            document.getElementById(`${dia}-fim`).disabled = !this.checked;
-        });
-    });
-
-    // Upload de foto
-    document.getElementById('foto').addEventListener('change', function(e) {
-        if (e.target.files && e.target.files[0]) {
-            const reader = new FileReader();
-            reader.onload = function(event) {
-                document.getElementById('preview-foto').src = event.target.result;
-                document.getElementById('preview-foto').classList.remove('hidden');
-                document.getElementById('icon-foto').classList.add('hidden');
-            };
-            reader.readAsDataURL(e.target.files[0]);
-        }
-    });
-});
-</script>
+        </script>
+    </body>
+    </html>
