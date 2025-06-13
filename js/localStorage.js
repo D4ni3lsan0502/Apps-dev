@@ -12,3 +12,10 @@ function obterUsuario() {
 function removerUsuario() {
   localStorage.removeItem('usuario');
 }
+
+// Adicionar barbeiro
+function adicionarBarbeiro(barbeiro) {
+  let barbeiros = JSON.parse(localStorage.getItem('barbeiros')) || [];
+  barbeiros.push(barbeiro);
+  localStorage.setItem('barbeiros', JSON.stringify(barbeiros));
+}

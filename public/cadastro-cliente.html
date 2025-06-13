@@ -141,9 +141,9 @@
         };
 
         // Recupera usuários existentes ou inicializa um array vazio
-        const usuarios = JSON.parse(localStorage.getItem('barberpro_users')) || [];
+        const usuarios = JSON.parse(localStorage.getItem('usuario')) || [];
         usuarios.push(usuario);
-        localStorage.setItem('barberpro_users', JSON.stringify(usuarios));
+        localStorage.setItem('usuario', JSON.stringify(usuarios));
         alert('Cadastro realizado com sucesso!');
         window.location.href = 'cliente-dashboard.html';
     });
