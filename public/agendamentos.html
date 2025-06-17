@@ -3,30 +3,290 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberPro - Agendamento</title>
+    <title>Matheus Costa Barber - Agendamento</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .bg-gray-100 {
+            background-color: #000000;
+        }
+        .bg-white {
+            background-color: #1a1a1a;
+        }
+        .text-gray-800 {
+            color: #ffffff;
+        }
+        .text-gray-700 {
+            color: #cccccc;
+        }
+        .hover\:bg-gray-100:hover {
+            background-color: #333333;
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #cccccc;
+        }
+        .border-blue-500 {
+            border-color: #ffffff;
+        }
+        .text-yellow-400 {
+            color: #ffd700;
+        }
+        .text-gray-900 {
+            color: #ffffff;
+        }
+        .text-gray-600 {
+            color: #aaaaaa;
+        }
+        .border-gray-200 {
+            border-color: #333333;
+        }
+        .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .bg-gray-400 {
+            background-color: #aaaaaa;
+        }
+        .bg-gray-200 {
+            background-color: #333333;
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .focus\:ring-blue-500:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+        .focus\:border-blue-500:focus {
+            border-color: #ffffff;
+        }
+        .border-gray-300 {
+            border-color: #333333;
+        }
+        .bg-gray-300 {
+            background-color: #aaaaaa;
+        }
+        .bg-gray-500 {
+            background-color: #888888;
+        }
+        .bg-gray-600 {
+            background-color: #666666;
+        }
+        .bg-gray-700 {
+            background-color: #444444;
+        }
+        .bg-gray-800 {
+            background-color: #1a1a1a;
+        }
+        .bg-gray-900 {
+            background-color: #000000;
+        }
+        .text-gray-500 {
+            color: #aaaaaa;
+        }
+        .text-gray-400 {
+            color: #aaaaaa;
+        }
+        .text-gray-300 {
+            color: #cccccc;
+        }
+        .text-gray-200 {
+            color: #dddddd;
+        }
+        .text-gray-100 {
+            color: #eeeeee;
+        }
+        .text-black {
+            color: #000000;
+        }
+        .text-white {
+            color: #ffffff;
+        }
+        .bg-black {
+            background-color: #000000;
+        }
+        .bg-slate-800 {
+            background-color: #1a1a1a;
+        }
+        .bg-slate-900 {
+            background-color: #000000;
+        }
+        .border-slate-800 {
+            border-color: #333333;
+        }
+        .barber-card {
+            background-color: #1a1a1a;
+        }
+        .border-white {
+            border-color: #ffffff;
+        }
+        .text-blue-500 {
+            color: #ffffff;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #333333;
+        }
+        .focus\:ring-blue-500:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+        .focus\:ring-offset-2:focus {
+            box-shadow: 0 0 0 2px #000000, 0 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+        .text-blue-700 {
+            color: #ffffff;
+        }
+        .bg-blue-100 {
+            background-color: #1a1a1a;
+        }
+        .hover\:bg-blue-200:hover {
+            background-color: #333333;
+        }
+        .text-indigo-600 {
+            color: #ffffff;
+        }
+        .hover\:text-indigo-900:hover {
+            color: #cccccc;
+        }
+        .text-red-600 {
+            color: #ff4500;
+        }
+        .hover\:bg-red-700:hover {
+            background-color: #cc3700;
+        }
+        .focus\:ring-red-500:focus {
+            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5);
+        }
+        .focus\:ring-offset-2:focus {
+            box-shadow: 0 0 0 2px #000000, 0 0 0 4px rgba(255, 69, 0, 0.5);
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #cccccc;
+        }
+        .text-white {
+            color: #000000;
+        }
+        .bg-white {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-gray-100:hover {
+            background-color: #cccccc;
+        }
+        .text-slate-800 {
+            color: #000000;
+        }
+        .bg-transparent {
+            background-color: transparent;
+        }
+        .border-white {
+            border-color: #ffffff;
+        }
+        .hover\:text-blue-600:hover {
+            color: #000000;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .bg-gradient-to-r.from-blue-600.to-blue-800 {
+            background-image: none;
+            background-color: #000000;
+        }
+        .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        .text-gray-400 {
+            color: #aaaaaa;
+        }
+        .hover\:text-white:hover {
+            color: #ffffff;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #cccccc;
+        }
+        .text-white {
+            color: #000000;
+        }
+        .bg-white {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-gray-100:hover {
+            background-color: #cccccc;
+        }
+        .text-slate-800 {
+            color: #000000;
+        }
+        .bg-transparent {
+            background-color: transparent;
+        }
+        .border-white {
+            border-color: #ffffff;
+        }
+        .hover\:text-blue-600:hover {
+            color: #000000;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .bg-gradient-to-r.from-blue-600.to-blue-800 {
+            background-image: none;
+            background-color: #000000;
+        }
+        .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        .text-gray-400 {
+            color: #aaaaaa;
+        }
+        .hover\:text-white:hover {
+            color: #ffffff;
+        }
+    </style>
 </head>
-<body class="bg-gray-100">
+<body class="bg-black">
     <!-- Navbar -->
-    <nav class="bg-white shadow-sm">
+    <nav class="bg-black shadow-md">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <a href="cliente-dashboard.html" class="text-xl font-bold text-gray-800">BarberPro</a>
+                    <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-10 mr-2">
                 </div>
                 <div class="flex items-center">
                     <div class="relative">
                         <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
                             <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Usuário" class="w-8 h-8 rounded-full">
-                            <span class="hidden md:block text-sm font-medium text-gray-700">João Silva</span>
+                            <span class="hidden md:block text-sm font-medium text-white">Cliente</span>
                             <i class="fas fa-chevron-down text-xs text-gray-500"></i>
                         </button>
-                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
-                            <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
-                            <a href="login.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Meu Perfil</a>
+                            <a href="#" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Configurações</a>
+                            <a href="login.html" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Sair</a>
                         </div>
                     </div>
                 </div>
@@ -38,8 +298,8 @@
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-3xl mx-auto">
             <!-- Formulário de Agendamento -->
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden mb-6">
-                <div class="bg-blue-600 p-6 text-white">
+            <div class="bg-slate-800 rounded-lg shadow-lg overflow-hidden mb-6">
+                <div class="bg-white p-6 text-black">
                     <h1 class="text-2xl font-bold">Agendar Serviço</h1>
                     <p class="mt-2">Preencha os dados abaixo para agendar seu serviço</p>
                 </div>
@@ -49,11 +309,11 @@
                         <!-- Progresso do agendamento -->
                         <div class="mb-8">
                             <div class="flex justify-between mb-2">
-                                <span class="text-sm font-medium text-blue-600" id="etapa-texto">Etapa 1 de 3</span>
+                                <span class="text-sm font-medium text-white" id="etapa-texto">Etapa 1 de 3</span>
                                 <span class="text-sm text-gray-500" id="etapa-descricao">Serviços</span>
                             </div>
-                            <div class="w-full bg-gray-200 rounded-full h-2.5">
-                                <div class="bg-blue-600 h-2.5 rounded-full" id="progress-bar" style="width: 33%"></div>
+                            <div class="w-full bg-gray-700 rounded-full h-2.5">
+                                <div class="bg-white h-2.5 rounded-full" id="progress-bar" style="width: 33%"></div>
                             </div>
                         </div>
                         
@@ -63,9 +323,9 @@
                             
                             <div class="mb-6">
                                 <div class="flex items-center mb-4">
-                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-white">
                                     <div class="ml-4">
-                                        <h3 class="text-md font-medium text-gray-900">Carlos Silva</h3>
+                                        <h3 class="text-md font-medium text-white">Matheus Costa</h3>
                                         <div class="flex text-yellow-400 text-xs">
                                             <i class="fas fa-star"></i>
                                             <i class="fas fa-star"></i>
@@ -78,68 +338,68 @@
                                 </div>
                                 
                                 <div class="space-y-3">
-                                    <div class="flex items-center p-3 border border-gray-200 rounded-md">
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
                                         <input type="checkbox" id="servico-1" name="servicos" value="1" class="servico-checkbox mr-3" data-duracao="30" data-preco="40">
                                         <div class="flex-1">
-                                            <label for="servico-1" class="block font-medium text-gray-900">Corte Masculino</label>
-                                            <p class="text-sm text-gray-600">Corte tradicional com tesoura ou máquina</p>
+                                            <label for="servico-1" class="block font-medium text-white">Corte Masculino</label>
+                                            <p class="text-sm text-gray-400">Corte tradicional com tesoura ou máquina</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="font-medium text-gray-900">R$ 40,00</p>
-                                            <p class="text-xs text-gray-600">30 min</p>
+                                            <p class="font-medium text-white">R$ 40,00</p>
+                                            <p class="text-xs text-gray-400">30 min</p>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-center p-3 border border-gray-200 rounded-md">
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
                                         <input type="checkbox" id="servico-2" name="servicos" value="2" class="servico-checkbox mr-3" data-duracao="20" data-preco="30">
                                         <div class="flex-1">
-                                            <label for="servico-2" class="block font-medium text-gray-900">Barba</label>
-                                            <p class="text-sm text-gray-600">Barba completa com toalha quente</p>
+                                            <label for="servico-2" class="block font-medium text-white">Barba</label>
+                                            <p class="text-sm text-gray-400">Barba completa com toalha quente</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="font-medium text-gray-900">R$ 30,00</p>
-                                            <p class="text-xs text-gray-600">20 min</p>
+                                            <p class="font-medium text-white">R$ 30,00</p>
+                                            <p class="text-xs text-gray-400">20 min</p>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-center p-3 border border-gray-200 rounded-md">
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
                                         <input type="checkbox" id="servico-3" name="servicos" value="3" class="servico-checkbox mr-3" data-duracao="15" data-preco="25">
                                         <div class="flex-1">
-                                            <label for="servico-3" class="block font-medium text-gray-900">Sobrancelha</label>
-                                            <p class="text-sm text-gray-600">Modelagem de sobrancelha</p>
+                                            <label for="servico-3" class="block font-medium text-white">Sobrancelha</label>
+                                            <p class="text-sm text-gray-400">Modelagem de sobrancelha</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="font-medium text-gray-900">R$ 25,00</p>
-                                            <p class="text-xs text-gray-600">15 min</p>
+                                            <p class="font-medium text-white">R$ 25,00</p>
+                                            <p class="text-xs text-gray-400">15 min</p>
                                         </div>
                                     </div>
                                     
-                                    <div class="flex items-center p-3 border border-gray-200 rounded-md">
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
                                         <input type="checkbox" id="servico-4" name="servicos" value="4" class="servico-checkbox mr-3" data-duracao="60" data-preco="80">
                                         <div class="flex-1">
-                                            <label for="servico-4" class="block font-medium text-gray-900">Corte + Barba</label>
-                                            <p class="text-sm text-gray-600">Combo corte e barba completa</p>
+                                            <label for="servico-4" class="block font-medium text-white">Corte + Barba</label>
+                                            <p class="text-sm text-gray-400">Combo corte e barba completa</p>
                                         </div>
                                         <div class="text-right">
-                                            <p class="font-medium text-gray-900">R$ 80,00</p>
-                                            <p class="text-xs text-gray-600">60 min</p>
+                                            <p class="font-medium text-white">R$ 80,00</p>
+                                            <p class="text-xs text-gray-400">60 min</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             
-                            <div class="bg-gray-50 p-4 rounded-md mb-6">
+                            <div class="bg-slate-900 p-4 rounded-md mb-6">
                                 <div class="flex justify-between items-center">
                                     <div>
-                                        <p class="text-sm font-medium text-gray-900">Total:</p>
-                                        <p id="tempo-total" class="text-xs text-gray-600">0 min</p>
+                                        <p class="text-sm font-medium text-white">Total:</p>
+                                        <p id="tempo-total" class="text-xs text-gray-400">0 min</p>
                                     </div>
-                                    <p id="preco-total" class="text-lg font-semibold text-gray-900">R$ 0,00</p>
+                                    <p id="preco-total" class="text-lg font-semibold text-white">R$ 0,00</p>
                                 </div>
                             </div>
                             
                             <div class="flex justify-end">
-                                <button type="button" id="btn-etapa-1" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
+                                <button type="button" id="btn-etapa-1" class="bg-white text-black py-2 px-6 rounded-md hover:bg-gray-300 transition duration-300 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed" disabled>
                                     Próximo
                                 </button>
                             </div>
@@ -150,50 +410,50 @@
                             <h2 class="text-xl font-semibold mb-4">Escolha a Data e Hora</h2>
                             
                             <div class="mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Selecione o Tipo de Atendimento</h3>
+                                <h3 class="text-md font-medium text-white mb-3">Selecione o Tipo de Atendimento</h3>
                                 <div class="flex space-x-4">
                                     <div class="flex items-center">
                                         <input type="radio" id="local-barbearia" name="local" value="barbearia" class="mr-2" checked>
-                                        <label for="local-barbearia">Na barbearia</label>
+                                        <label for="local-barbearia" class="text-white">Na barbearia</label>
                                     </div>
                                     <div class="flex items-center">
                                         <input type="radio" id="local-domicilio" name="local" value="domicilio" class="mr-2">
-                                        <label for="local-domicilio">A domicílio</label>
+                                        <label for="local-domicilio" class="text-white">A domicílio</label>
                                     </div>
                                 </div>
                             </div>
                             
                             <div id="endereco-domicilio" class="mb-6 hidden">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Endereço para Atendimento</h3>
+                                <h3 class="text-md font-medium text-white mb-3">Endereço para Atendimento</h3>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
                                     <div class="md:col-span-2">
-                                        <label for="rua" class="block text-sm font-medium text-gray-700 mb-1">Rua*</label>
-                                        <input type="text" id="rua" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <label for="rua" class="block text-sm font-medium text-gray-300 mb-1">Rua*</label>
+                                        <input type="text" id="rua" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
                                     <div>
-                                        <label for="numero" class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
-                                        <input type="text" id="numero" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <label for="numero" class="block text-sm font-medium text-gray-300 mb-1">Número*</label>
+                                        <input type="text" id="numero" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
                                 </div>
                                 
                                 <div class="mb-4">
-                                    <label for="complemento" class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
-                                    <input type="text" id="complemento" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                    <label for="complemento" class="block text-sm font-medium text-gray-300 mb-1">Complemento</label>
+                                    <input type="text" id="complemento" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white">
                                 </div>
                                 
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
                                     <div>
-                                        <label for="bairro" class="block text-sm font-medium text-gray-700 mb-1">Bairro*</label>
-                                        <input type="text" id="bairro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <label for="bairro" class="block text-sm font-medium text-gray-300 mb-1">Bairro*</label>
+                                        <input type="text" id="bairro" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
                                     <div>
-                                        <label for="cidade" class="block text-sm font-medium text-gray-700 mb-1">Cidade*</label>
-                                        <input type="text" id="cidade" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <label for="cidade" class="block text-sm font-medium text-gray-300 mb-1">Cidade*</label>
+                                        <input type="text" id="cidade" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
                                     <div>
-                                        <label for="estado" class="block text-sm font-medium text-gray-700 mb-1">Estado*</label>
-                                        <select id="estado" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                                        <label for="estado" class="block text-sm font-medium text-gray-300 mb-1">Estado*</label>
+                                        <select id="estado" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                             <option value="">Selecione</option>
                                             <option value="AC">AC</option>
                                             <option value="AL">AL</option>
@@ -226,782 +486,90 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Selecione a Data</h3>
-                                
-                                <div class="grid grid-cols-7 gap-2 mb-4">
-                                    <div class="text-center text-sm font-medium text-gray-700">Dom</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Seg</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Ter</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Qua</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Qui</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Sex</div>
-                                    <div class="text-center text-sm font-medium text-gray-700">Sáb</div>
-                                    
-                                    <!-- Dias do calendário (exemplo) -->
-                                    <div class="calendar-day disabled text-center py-2 rounded-md">26</div>
-                                    <div class="calendar-day disabled text-center py-2 rounded-md">27</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">28</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">29</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">30</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">31</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">1</div>
-                                    
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">2</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">3</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">4</div>
-                                    <div class="calendar-day selected text-center py-2 rounded-md bg-blue-600 text-white cursor-pointer">5</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">6</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">7</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">8</div>
-                                    
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">9</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">10</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">11</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">12</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">13</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">14</div>
-                                    <div class="calendar-day text-center py-2 rounded-md hover:bg-gray-100 cursor-pointer">15</div>
+                                <h3 class="text-md font-medium text-white mb-3">Selecione a Data</h3>
+                                <div class="grid grid-cols-7 gap-2 text-center mb-4">
+                                    <div class="text-gray-400">Dom</div>
+                                    <div class="text-gray-400">Seg</div>
+                                    <div class="text-gray-400">Ter</div>
+                                    <div class="text-gray-400">Qua</div>
+                                    <div class="text-gray-400">Qui</div>
+                                    <div class="text-gray-400">Sex</div>
+                                    <div class="text-gray-400">Sáb</div>
                                 </div>
+                                <div id="calendar" class="grid grid-cols-7 gap-2 text-center"></div>
                             </div>
-                            
+
                             <div class="mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Selecione o Horário</h3>
-                                
-                                <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2">
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">09:00</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">09:30</div>
-                                    <div class="time-slot selected text-center py-2 rounded-md bg-blue-600 text-white cursor-pointer">10:00</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">10:30</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">11:00</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">11:30</div>
-                                    <div class="time-slot booked text-center py-2 rounded-md bg-red-500 text-white cursor-not-allowed">12:00</div>
-                                    <div class="time-slot booked text-center py-2 rounded-md bg-red-500 text-white cursor-not-allowed">12:30</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">13:00</div>
-                                    <div class="time-slot text-center py-2 rounded-md border border-gray-300 hover:bg-blue-600 hover:text-white cursor-pointer">13:30</div>
-                                </div>
+                                <h3 class="text-md font-medium text-white mb-3">Horários Disponíveis</h3>
+                                <div id="time-slots" class="grid grid-cols-3 md:grid-cols-5 gap-3"></div>
                             </div>
-                            
+
                             <div class="flex justify-between">
-                                <button type="button" id="btn-voltar-1" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition duration-300">
+                                <button type="button" id="btn-voltar-etapa-1" class="bg-gray-700 text-white py-2 px-6 rounded-md hover:bg-gray-600 transition duration-300">
                                     Voltar
                                 </button>
-                                <button type="button" id="btn-etapa-2" class="bg-blue-600 text-white py-2 px-6 rounded-md hover:bg-blue-700 transition duration-300">
+                                <button type="button" id="btn-etapa-2" class="bg-white text-black py-2 px-6 rounded-md hover:bg-gray-300 transition duration-300 disabled:bg-gray-700 disabled:text-gray-400 disabled:cursor-not-allowed" disabled>
                                     Próximo
                                 </button>
                             </div>
                         </div>
-                        
-                        <!-- Etapa 3: Pagamento -->
+
+                        <!-- Etapa 3: Confirmação e Pagamento -->
                         <div id="etapa-3" class="hidden">
-                            <h2 class="text-xl font-semibold mb-4">Pagamento</h2>
-                            
+                            <h2 class="text-xl font-semibold mb-4">Confirmação e Pagamento</h2>
+
+                            <div class="bg-slate-900 p-4 rounded-md mb-6">
+                                <h3 class="text-lg font-medium text-white mb-3">Detalhes do Agendamento</h3>
+                                <p class="text-gray-400 mb-2"><span class="font-medium">Barbeiro:</span> Matheus Costa</p>
+                                <p class="text-gray-400 mb-2"><span class="font-medium">Serviços:</span> <span id="confirm-servicos"></span></p>
+                                <p class="text-gray-400 mb-2"><span class="font-medium">Data:</span> <span id="confirm-data"></span></p>
+                                <p class="text-gray-400 mb-2"><span class="font-medium">Horário:</span> <span id="confirm-horario"></span></p>
+                                <p class="text-gray-400 mb-2"><span class="font-medium">Local:</span> <span id="confirm-local"></span></p>
+                                <p class="text-gray-400 mb-2" id="confirm-endereco-container"><span class="font-medium">Endereço:</span> <span id="confirm-endereco"></span></p>
+                                <p class="text-lg font-semibold text-white mt-4">Total: <span id="confirm-preco-total"></span></p>
+                            </div>
+
                             <div class="mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Forma de Pagamento</h3>
-                                
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-option">
-                                        <input type="radio" id="pagamento-dinheiro" name="forma-pagamento" value="dinheiro" class="mr-3">
-                                        <label for="pagamento-dinheiro" class="flex items-center cursor-pointer">
-                                            <i class="fas fa-money-bill-wave text-green-600 text-xl mr-2"></i>
-                                            <span>Dinheiro</span>
-                                        </label>
+                                <h3 class="text-md font-medium text-white mb-3">Informações de Contato</h3>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <label for="nome-cliente" class="block text-sm font-medium text-gray-300 mb-1">Seu Nome Completo*</label>
+                                        <input type="text" id="nome-cliente" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
-                                    
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-option">
-                                        <input type="radio" id="pagamento-cartao" name="forma-pagamento" value="cartao" class="mr-3">
-                                        <label for="pagamento-cartao" class="flex items-center cursor-pointer">
-                                            <i class="far fa-credit-card text-blue-600 text-xl mr-2"></i>
-                                            <span>Cartão de Crédito/Débito</span>
-                                        </label>
+                                    <div>
+                                        <label for="email-cliente" class="block text-sm font-medium text-gray-300 mb-1">Seu Email*</label>
+                                        <input type="email" id="email-cliente" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
-                                    
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-option">
-                                        <input type="radio" id="pagamento-pix" name="forma-pagamento" value="pix" class="mr-3" checked>
-                                        <label for="pagamento-pix" class="flex items-center cursor-pointer">
-                                            <i class="fas fa-qrcode text-purple-600 text-xl mr-2"></i>
-                                            <span>PIX</span>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-option">
-                                        <input type="radio" id="pagamento-transferencia" name="forma-pagamento" value="transferencia" class="mr-3">
-                                        <label for="pagamento-transferencia" class="flex items-center cursor-pointer">
-                                            <i class="fas fa-university text-gray-600 text-xl mr-2"></i>
-                                            <span>Transferência Bancária</span>
-                                        </label>
+                                    <div class="md:col-span-2">
+                                        <label for="telefone-cliente" class="block text-sm font-medium text-gray-300 mb-1">Seu Telefone*</label>
+                                        <input type="tel" id="telefone-cliente" class="w-full border border-gray-700 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-white bg-slate-800 text-white" required>
                                     </div>
                                 </div>
                             </div>
-                            
+
                             <div class="mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Momento do Pagamento</h3>
-                                
+                                <h3 class="text-md font-medium text-white mb-3">Forma de Pagamento</h3>
                                 <div class="space-y-3">
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-time-option">
-                                        <input type="radio" id="momento-antecipado-50" name="momento-pagamento" value="antecipado50" class="mr-3" checked>
-                                        <label for="momento-antecipado-50" class="cursor-pointer">
-                                            <div class="font-medium">50% antecipado (R$ 35,00)</div>
-                                            <div class="text-sm text-gray-600">Pague metade agora e o restante no momento do atendimento</div>
-                                        </label>
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
+                                        <input type="radio" id="pagamento-pix" name="pagamento" value="pix" class="mr-2" checked>
+                                        <label for="pagamento-pix" class="text-white">Pix</label>
                                     </div>
-                                    
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-time-option">
-                                        <input type="radio" id="momento-antecipado-100" name="momento-pagamento" value="antecipado100" class="mr-3">
-                                        <label for="momento-antecipado-100" class="cursor-pointer">
-                                            <div class="font-medium">100% antecipado (R$ 70,00)</div>
-                                            <div class="text-sm text-gray-600">Pague o valor total agora</div>
-                                        </label>
-                                    </div>
-                                    
-                                    <div class="flex items-center p-3 border border-gray-300 rounded-md hover:border-blue-500 cursor-pointer payment-time-option">
-                                        <input type="radio" id="momento-atendimento" name="momento-pagamento" value="noAtendimento" class="mr-3">
-                                        <label for="momento-atendimento" class="cursor-pointer">
-                                            <div class="font-medium">No momento do atendimento</div>
-                                            <div class="text-sm text-gray-600">Pague o valor total no momento do atendimento</div>
-                                        </label>
+                                    <div class="flex items-center p-3 border border-gray-700 rounded-md">
+                                        <input type="radio" id="pagamento-local" name="pagamento" value="local" class="mr-2">
+                                        <label for="pagamento-local" class="text-white">Pagar no Local</label>
                                     </div>
                                 </div>
                             </div>
-                            
-                            <!-- Seção de Dados PIX -->
-                            <div id="dados-pix" class="mb-6 bg-gray-50 p-4 rounded-md">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Dados para Pagamento PIX</h3>
-                                
-                                <div class="mb-3">
-                                    <p class="text-sm text-gray-600 mb-1">Chave PIX (CPF):</p>
-                                    <div class="flex items-center">
-                                        <p class="text-sm font-medium text-gray-900 mr-2">123.456.789-00</p>
-                                        <button type="button" class="text-blue-600 hover:text-blue-800 text-xs" id="copy-pix">
-                                            <i class="far fa-copy mr-1"></i> Copiar
-                                        </button>
-                                    </div>
-                                    <p class="text-xs text-gray-600 mt-1">Carlos Silva</p>
-                                </div>
-                                
-                                <!-- QR Code PIX (exemplo) -->
-                                <div class="flex justify-center mb-3">
-                                    <div class="bg-white p-3 rounded-md border border-gray-300 text-center">
-                                        <p class="text-xs font-medium mb-2">QR Code PIX</p>
-                                        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d0/QR_code_for_mobile_English_Wikipedia.svg" alt="QR Code PIX" class="w-32 h-32 mx-auto">
-                                    </div>
-                                </div>
-                                
-                                <div class="text-sm text-gray-600">
-                                    <p class="font-medium mb-1">Instruções:</p>
-                                    <ol class="list-decimal pl-5 space-y-1 text-xs">
-                                        <li>Abra o aplicativo do seu banco</li>
-                                        <li>Escolha a opção PIX</li>
-                                        <li>Copie e cole a chave PIX ou escaneie o QR Code</li>
-                                        <li>Digite o valor de R$ 35,00</li>
-                                        <li>Confirme o pagamento</li>
-                                        <li>Envie o comprovante abaixo</li>
-                                    </ol>
-                                </div>
-                            </div>
-                            
-                            <!-- Seção de Dados Transferência -->
-                            <div id="dados-transferencia" class="mb-6 bg-gray-50 p-4 rounded-md hidden">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Dados para Transferência Bancária</h3>
-                                
-                                <div class="space-y-2 mb-4">
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">Banco:</p>
-                                        <p class="text-sm font-medium text-gray-900">Banco do Brasil</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">Agência:</p>
-                                        <p class="text-sm font-medium text-gray-900">1234</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">Conta:</p>
-                                        <p class="text-sm font-medium text-gray-900">56789-0</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">Tipo de Conta:</p>
-                                        <p class="text-sm font-medium text-gray-900">Corrente</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">Titular:</p>
-                                        <p class="text-sm font-medium text-gray-900">Carlos Silva</p>
-                                    </div>
-                                    <div>
-                                        <p class="text-sm text-gray-600 mb-1">CPF:</p>
-                                        <p class="text-sm font-medium text-gray-900">123.456.789-00</p>
-                                    </div>
-                                </div>
-                                
-                                <div class="text-sm text-gray-600">
-                                    <p class="font-medium mb-1">Instruções:</p>
-                                    <ol class="list-decimal pl-5 space-y-1 text-xs">
-                                        <li>Acesse o aplicativo ou site do seu banco</li>
-                                        <li>Escolha a opção de transferência</li>
-                                        <li>Insira os dados bancários acima</li>
-                                        <li>Digite o valor de R$ 35,00</li>
-                                        <li>Confirme a transferência</li>
-                                        <li>Envie o comprovante abaixo</li>
-                                    </ol>
-                                </div>
-                            </div>
-                            
-                            <!-- Seção de Upload de Comprovante -->
-                            <div id="secao-comprovante" class="mb-6 bg-yellow-50 border border-yellow-200 rounded-md p-4">
-                                <div class="flex items-start">
-                                    <div class="flex-shrink-0 mt-0.5">
-                                        <i class="fas fa-exclamation-circle text-yellow-500"></i>
-                                    </div>
-                                    <div class="ml-3">
-                                        <h3 class="text-sm font-medium text-yellow-800" id="mensagem-comprovante">Atenção: Você precisa enviar o comprovante de pagamento para confirmar seu agendamento</h3>
-                                        <div class="mt-2">
-                                            <div class="mb-3">
-                                                <label for="comprovante" class="block text-sm font-medium text-gray-700 mb-1">Enviar Comprovante de Pagamento</label>
-                                                <div class="flex items-center">
-                                                    <input type="file" id="comprovante" class="hidden" accept="image/*,.pdf">
-                                                    <label for="comprovante" class="cursor-pointer bg-white border border-gray-300 rounded-md py-2 px-3 text-sm text-gray-700 hover:bg-gray-50 mr-2">
-                                                        <i class="fas fa-upload mr-1"></i> Selecionar arquivo
-                                                    </label>
-                                                    <span id="file-name" class="text-xs text-gray-500">Nenhum arquivo selecionado</span>
-                                                </div>
-                                                <p class="text-xs text-gray-500 mt-1">Formatos aceitos: JPG, PNG, PDF. Tamanho máximo: 5MB</p>
-                                            </div>
-                                            <button type="button" id="btn-enviar-comprovante" class="w-full bg-blue-600 text-white py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 disabled:bg-gray-400 disabled:cursor-not-allowed" disabled>
-                                                Enviar Comprovante
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="bg-gray-50 p-4 rounded-md mb-6">
-                                <h3 class="text-md font-medium text-gray-900 mb-3">Resumo do Agendamento</h3>
-                                
-                                <div class="space-y-3">
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Serviços:</p>
-                                        <p class="text-sm font-medium text-gray-900">Corte Masculino, Barba</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Data:</p>
-                                        <p class="text-sm font-medium text-gray-900">05/06/2025</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Horário:</p>
-                                        <p class="text-sm font-medium text-gray-900">10:00</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Duração:</p>
-                                        <p class="text-sm font-medium text-gray-900">1h (30min + 30min adicional)</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Local:</p>
-                                        <p class="text-sm font-medium text-gray-900">Barbearia</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Endereço:</p>
-                                        <p class="text-sm font-medium text-gray-900">Rua Exemplo, 123 - Bela Vista, São Paulo - SP</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Forma de Pagamento:</p>
-                                        <p class="text-sm font-medium text-gray-900">PIX</p>
-                                    </div>
-                                    <div class="flex justify-between">
-                                        <p class="text-sm text-gray-600">Momento do Pagamento:</p>
-                                        <p class="text-sm font-medium text-gray-900">50% antecipado</p>
-                                    </div>
-                                    <div class="border-t border-gray-200 pt-2 mt-2">
-                                        <div class="flex justify-between">
-                                            <p class="text-sm font-medium text-gray-900">Valor Total:</p>
-                                            <p class="text-sm font-medium text-gray-900">R$ 70,00</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <div class="flex justify-between">
-                                <button type="button" id="btn-voltar-2" class="bg-gray-200 text-gray-700 py-2 px-6 rounded-md hover:bg-gray-300 transition duration-300">
-                                    Voltar
-                                </button>
-                                <button type="submit" id="btn-confirmar" class="bg-gray-400 text-white py-2 px-6 rounded-md cursor-not-allowed" disabled>
-                                    Confirmar Agendamento
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Confirmação de Envio Modal -->
-    <div id="confirmation-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
-            <div class="p-6">
-                <div class="text-center mb-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-4">
-                        <i class="fas fa-check-circle text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">Comprovante Enviado!</h3>
-                    <p class="text-gray-600 mt-2">Seu comprovante foi enviado com sucesso.</p>
-                </div>
-                
-                <div class="bg-gray-50 rounded-md p-4 mb-6">
-                    <p class="text-sm text-gray-600 mb-2">Agora você pode confirmar seu agendamento clicando no botão "Confirmar Agendamento".</p>
-                </div>
-                
-                <div class="text-center">
-                    <button id="btn-close-modal" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300">
-                        Entendi
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+                            <div id="pix-info" class="bg-slate-900 p-4 rounded-md mb-6">
+                                <h3 class="text-lg font-medium text-white mb-3">Informações para Pagamento via Pix</h3>
+                                <p class="text-gray-400 mb-2">Chave Pix: <span class="font-medium text-white">matheuscosta@pix.com</span></p>
+                                <p class="text-gray-400 mb-2">Valor: <span id="pix-valor" class="font-medium text-white"></span></p>
+                                <p class="text-gray-400 mb-2">QR Code (apenas para demonstração):</p>
+                                <div class="flex justify-center mb-4">
+                                    <img src="https://via.placeholder.com/150" alt="QR Code Pix" class="w-32 h-32 border border-gray-700 rounded-md">
+                                </div>
+                                <p class="text-gray-400 text-sm">Após realizar o pagamento, clique em 
 
-    <!-- Agendamento Confirmado Modal -->
-    <div id="success-modal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 hidden">
-        <div class="bg-white rounded-lg shadow-xl w-full max-w-md mx-4">
-            <div class="p-6">
-                <div class="text-center mb-6">
-                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-100 text-green-600 mb-4">
-                        <i class="fas fa-check-circle text-3xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-gray-900">Agendamento Confirmado!</h3>
-                    <p class="text-gray-600 mt-2">Seu agendamento foi realizado com sucesso.</p>
-                </div>
-                
-                <div class="bg-gray-50 rounded-md p-4 mb-6">
-                    <p class="text-sm text-gray-600 mb-2">Você receberá um e-mail com os detalhes do seu agendamento.</p>
-                    <p class="text-sm text-gray-600">Lembre-se de chegar com 5 minutos de antecedência.</p>
-                </div>
-                
-                <div class="text-center">
-                    <a href="cliente-dashboard.html" class="bg-blue-600 text-white px-6 py-2 rounded-md font-medium hover:bg-blue-700 transition duration-300 inline-block">
-                        Voltar para a Página Inicial
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer class="bg-white border-t border-gray-200 mt-12">
-        <div class="container mx-auto px-4 py-6">
-            <div class="text-center text-sm text-gray-500">
-                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- JavaScript -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // User menu toggle
-            const userMenuButton = document.getElementById('user-menu-button');
-            const userMenu = document.getElementById('user-menu');
-            
-            userMenuButton.addEventListener('click', function() {
-                userMenu.classList.toggle('hidden');
-            });
-            
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
-                    userMenu.classList.add('hidden');
-                }
-            });
-            
-            // Elementos das etapas
-            const etapa1 = document.getElementById('etapa-1');
-            const etapa2 = document.getElementById('etapa-2');
-            const etapa3 = document.getElementById('etapa-3');
-            
-            // Botões de navegação
-            const btnEtapa1 = document.getElementById('btn-etapa-1');
-            const btnEtapa2 = document.getElementById('btn-etapa-2');
-            const btnVoltar1 = document.getElementById('btn-voltar-1');
-            const btnVoltar2 = document.getElementById('btn-voltar-2');
-            
-            // Elementos de progresso
-            const progressBar = document.getElementById('progress-bar');
-            const etapaTexto = document.getElementById('etapa-texto');
-            const etapaDescricao = document.getElementById('etapa-descricao');
-            
-            // Navegação entre etapas
-            btnEtapa1.addEventListener('click', function() {
-                etapa1.classList.add('hidden');
-                etapa2.classList.remove('hidden');
-                
-                // Atualizar barra de progresso
-                progressBar.style.width = '66%';
-                etapaTexto.textContent = 'Etapa 2 de 3';
-                etapaDescricao.textContent = 'Data e Hora';
-            });
-            
-            btnEtapa2.addEventListener('click', function() {
-                etapa2.classList.add('hidden');
-                etapa3.classList.remove('hidden');
-                
-                // Atualizar barra de progresso
-                progressBar.style.width = '100%';
-                etapaTexto.textContent = 'Etapa 3 de 3';
-                etapaDescricao.textContent = 'Pagamento';
-            });
-            
-            btnVoltar1.addEventListener('click', function() {
-                etapa2.classList.add('hidden');
-                etapa1.classList.remove('hidden');
-                
-                // Atualizar barra de progresso
-                progressBar.style.width = '33%';
-                etapaTexto.textContent = 'Etapa 1 de 3';
-                etapaDescricao.textContent = 'Serviços';
-            });
-            
-            btnVoltar2.addEventListener('click', function() {
-                etapa3.classList.add('hidden');
-                etapa2.classList.remove('hidden');
-                
-                // Atualizar barra de progresso
-                progressBar.style.width = '66%';
-                etapaTexto.textContent = 'Etapa 2 de 3';
-                etapaDescricao.textContent = 'Data e Hora';
-            });
-            
-            // Seleção de serviços
-            const servicoCheckboxes = document.querySelectorAll('.servico-checkbox');
-            const precoTotal = document.getElementById('preco-total');
-            const tempoTotal = document.getElementById('tempo-total');
-            
-            servicoCheckboxes.forEach(checkbox => {
-                checkbox.addEventListener('change', function() {
-                    atualizarTotais();
-                });
-            });
-            
-            function atualizarTotais() {
-                let preco = 0;
-                let tempo = 0;
-                let servicosSelecionados = 0;
-                
-                servicoCheckboxes.forEach(checkbox => {
-                    if (checkbox.checked) {
-                        servicosSelecionados++;
-                        preco += parseInt(checkbox.dataset.preco);
-                        
-                        // Apenas o primeiro serviço usa a duração original
-                        if (servicosSelecionados === 1) {
-                            tempo += parseInt(checkbox.dataset.duracao);
-                        }
-                    }
-                });
-                
-                // Para cada serviço adicional, adicionar 30 minutos
-                if (servicosSelecionados > 1) {
-                    tempo += (servicosSelecionados - 1) * 30;
-                }
-                
-                precoTotal.textContent = `R$ ${preco.toFixed(2).replace('.', ',')}`;
-                
-                if (tempo > 0) {
-                    const horas = Math.floor(tempo / 60);
-                    const minutos = tempo % 60;
-                    
-                    let tempoFormatado = '';
-                    if (horas > 0) {
-                        tempoFormatado += `${horas}h `;
-                    }
-                    if (minutos > 0 || horas === 0) {
-                        tempoFormatado += `${minutos}min`;
-                    }
-                    
-                    if (servicosSelecionados > 1) {
-                        tempoFormatado += ` (${parseInt(document.querySelector('.servico-checkbox:checked').dataset.duracao)}min + ${(servicosSelecionados - 1) * 30}min adicional)`;
-                    }
-                    
-                    tempoTotal.textContent = tempoFormatado;
-                } else {
-                    tempoTotal.textContent = '0 min';
-                }
-                
-                // Habilitar/desabilitar botão de próximo
-                btnEtapa1.disabled = servicosSelecionados === 0;
-                if (servicosSelecionados === 0) {
-                    btnEtapa1.classList.add('bg-gray-400', 'cursor-not-allowed');
-                    btnEtapa1.classList.remove('bg-blue-600', 'hover:bg-blue-700');
-                } else {
-                    btnEtapa1.classList.remove('bg-gray-400', 'cursor-not-allowed');
-                    btnEtapa1.classList.add('bg-blue-600', 'hover:bg-blue-700');
-                }
-            }
-            
-            // Inicializar totais
-            atualizarTotais();
-            
-            // Seleção de data no calendário
-            const calendarDays = document.querySelectorAll('.calendar-day:not(.disabled)');
-            
-            calendarDays.forEach(day => {
-                day.addEventListener('click', function() {
-                    // Remover seleção anterior
-                    document.querySelector('.calendar-day.selected')?.classList.remove('selected', 'bg-blue-600', 'text-white');
-                    
-                    // Adicionar seleção atual
-                    this.classList.add('selected', 'bg-blue-600', 'text-white');
-                });
-            });
-            
-            // Seleção de horário
-            const timeSlots = document.querySelectorAll('.time-slot:not(.booked)');
-            
-            timeSlots.forEach(slot => {
-                slot.addEventListener('click', function() {
-                    // Remover seleção anterior
-                    document.querySelector('.time-slot.selected')?.classList.remove('selected', 'bg-blue-600', 'text-white');
-                    
-                    // Adicionar seleção atual
-                    this.classList.add('selected', 'bg-blue-600', 'text-white');
-                });
-            });
-            
-            // Mostrar/esconder campos de endereço
-            const localBarbearia = document.getElementById('local-barbearia');
-            const localDomicilio = document.getElementById('local-domicilio');
-            const enderecoDomicilio = document.getElementById('endereco-domicilio');
-            
-            localBarbearia.addEventListener('change', function() {
-                if (this.checked) {
-                    enderecoDomicilio.classList.add('hidden');
-                }
-            });
-            
-            localDomicilio.addEventListener('change', function() {
-                if (this.checked) {
-                    enderecoDomicilio.classList.remove('hidden');
-                }
-            });
-            
-            // Seleção de forma de pagamento
-            const formaPagamentoRadios = document.querySelectorAll('input[name="forma-pagamento"]');
-            const momentoPagamentoRadios = document.querySelectorAll('input[name="momento-pagamento"]');
-            const dadosPix = document.getElementById('dados-pix');
-            const dadosTransferencia = document.getElementById('dados-transferencia');
-            const secaoComprovante = document.getElementById('secao-comprovante');
-            const btnConfirmar = document.getElementById('btn-confirmar');
-            const mensagemComprovante = document.getElementById('mensagem-comprovante');
-            
-            // Função para verificar se precisa de comprovante
-            function verificarNecessidadeComprovante() {
-                const formaPagamento = document.querySelector('input[name="forma-pagamento"]:checked').value;
-                const momentoPagamento = document.querySelector('input[name="momento-pagamento"]:checked').value;
-                
-                // Comprovante é necessário para PIX e transferência quando o pagamento é antecipado
-                return (formaPagamento === 'pix' || formaPagamento === 'transferencia') && 
-                       (momentoPagamento === 'antecipado50' || momentoPagamento === 'antecipado100');
-            }
-            
-            // Função para atualizar a interface de pagamento
-            function atualizarInterfacePagamento() {
-                const formaPagamento = document.querySelector('input[name="forma-pagamento"]:checked').value;
-                const momentoPagamento = document.querySelector('input[name="momento-pagamento"]:checked').value;
-                
-                // Mostrar/esconder dados de pagamento
-                dadosPix.classList.toggle('hidden', formaPagamento !== 'pix');
-                dadosTransferencia.classList.toggle('hidden', formaPagamento !== 'transferencia');
-                
-                // Verificar se precisa de comprovante
-                const precisaComprovante = verificarNecessidadeComprovante();
-                
-                // Mostrar/esconder seção de comprovante
-                secaoComprovante.classList.toggle('hidden', !precisaComprovante);
-                
-                // Atualizar mensagem de comprovante
-                if (precisaComprovante) {
-                    mensagemComprovante.textContent = 'Atenção: Você precisa enviar o comprovante de pagamento para confirmar seu agendamento';
-                }
-                
-                // Atualizar estado do botão de confirmação
-                atualizarBotaoConfirmacao();
-            }
-            
-            // Função para atualizar o estado do botão de confirmação
-            function atualizarBotaoConfirmacao() {
-                const precisaComprovante = verificarNecessidadeComprovante();
-                
-                if (precisaComprovante && !comprovanteEnviado) {
-                    // Desabilitar botão de confirmação
-                    btnConfirmar.disabled = true;
-                    btnConfirmar.classList.remove('bg-green-600', 'hover:bg-green-700');
-                    btnConfirmar.classList.add('bg-gray-400', 'cursor-not-allowed');
-                } else {
-                    // Habilitar botão de confirmação
-                    btnConfirmar.disabled = false;
-                    btnConfirmar.classList.remove('bg-gray-400', 'cursor-not-allowed');
-                    btnConfirmar.classList.add('bg-green-600', 'hover:bg-green-700');
-                }
-            }
-            
-            // Adicionar eventos para forma de pagamento
-            formaPagamentoRadios.forEach(radio => {
-                radio.addEventListener('change', atualizarInterfacePagamento);
-            });
-            
-            // Adicionar eventos para momento de pagamento
-            momentoPagamentoRadios.forEach(radio => {
-                radio.addEventListener('change', atualizarInterfacePagamento);
-            });
-            
-            // Estilizar opções de pagamento ao clicar
-            const paymentOptions = document.querySelectorAll('.payment-option');
-            
-            paymentOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const radio = this.querySelector('input[type="radio"]');
-                    radio.checked = true;
-                    
-                    // Disparar evento de change manualmente
-                    const event = new Event('change');
-                    radio.dispatchEvent(event);
-                    
-                    // Atualizar estilos
-                    paymentOptions.forEach(opt => {
-                        opt.classList.remove('border-blue-500', 'bg-blue-50');
-                    });
-                    this.classList.add('border-blue-500', 'bg-blue-50');
-                });
-            });
-            
-            // Estilizar opções de momento de pagamento ao clicar
-            const paymentTimeOptions = document.querySelectorAll('.payment-time-option');
-            
-            paymentTimeOptions.forEach(option => {
-                option.addEventListener('click', function() {
-                    const radio = this.querySelector('input[type="radio"]');
-                    radio.checked = true;
-                    
-                    // Disparar evento de change manualmente
-                    const event = new Event('change');
-                    radio.dispatchEvent(event);
-                    
-                    // Atualizar estilos
-                    paymentTimeOptions.forEach(opt => {
-                        opt.classList.remove('border-blue-500', 'bg-blue-50');
-                    });
-                    this.classList.add('border-blue-500', 'bg-blue-50');
-                });
-            });
-            
-            // Copiar chave PIX
-            const copyPixButton = document.getElementById('copy-pix');
-            copyPixButton.addEventListener('click', function() {
-                const pixKey = '123.456.789-00';
-                navigator.clipboard.writeText(pixKey).then(() => {
-                    // Mudar texto do botão temporariamente
-                    const originalText = copyPixButton.innerHTML;
-                    copyPixButton.innerHTML = '<i class="fas fa-check mr-1"></i> Copiado!';
-                    setTimeout(() => {
-                        copyPixButton.innerHTML = originalText;
-                    }, 2000);
-                });
-            });
-            
-            // Upload de comprovante
-            const inputComprovante = document.getElementById('comprovante');
-            const fileNameElement = document.getElementById('file-name');
-            const btnEnviarComprovante = document.getElementById('btn-enviar-comprovante');
-            const confirmationModal = document.getElementById('confirmation-modal');
-            const btnCloseModal = document.getElementById('btn-close-modal');
-            const successModal = document.getElementById('success-modal');
-            
-            // Estado do comprovante
-            let comprovanteEnviado = false;
-            
-            inputComprovante.addEventListener('change', function() {
-                if (this.files && this.files[0]) {
-                    const file = this.files[0];
-                    
-                    // Verificar tamanho do arquivo (máximo 5MB)
-                    const maxSize = 5 * 1024 * 1024; // 5MB em bytes
-                    if (file.size > maxSize) {
-                        alert('O arquivo excede o tamanho máximo de 5MB');
-                        this.value = '';
-                        fileNameElement.textContent = 'Nenhum arquivo selecionado';
-                        btnEnviarComprovante.disabled = true;
-                        return;
-                    }
-                    
-                    // Verificar tipo de arquivo
-                    const allowedTypes = ['image/jpeg', 'image/png', 'image/gif', 'application/pdf'];
-                    if (!allowedTypes.includes(file.type)) {
-                        alert('Formato de arquivo não suportado. Use JPG, PNG, GIF ou PDF');
-                        this.value = '';
-                        fileNameElement.textContent = 'Nenhum arquivo selecionado';
-                        btnEnviarComprovante.disabled = true;
-                        return;
-                    }
-                    
-                    // Atualizar nome do arquivo e habilitar botão
-                    fileNameElement.textContent = file.name;
-                    btnEnviarComprovante.disabled = false;
-                } else {
-                    fileNameElement.textContent = 'Nenhum arquivo selecionado';
-                    btnEnviarComprovante.disabled = true;
-                }
-            });
-            
-            btnEnviarComprovante.addEventListener('click', function() {
-                // Simular envio do comprovante
-                btnEnviarComprovante.disabled = true;
-                btnEnviarComprovante.innerHTML = '<i class="fas fa-spinner fa-spin mr-1"></i> Enviando...';
-                
-                setTimeout(() => {
-                    // Marcar como enviado
-                    comprovanteEnviado = true;
-                    
-                    // Atualizar interface
-                    btnEnviarComprovante.innerHTML = '<i class="fas fa-check mr-1"></i> Enviado';
-                    mensagemComprovante.textContent = 'Comprovante enviado com sucesso! Agora você pode confirmar seu agendamento.';
-                    
-                    // Habilitar botão de confirmação
-                    atualizarBotaoConfirmacao();
-                    
-                    // Mostrar modal de confirmação
-                    confirmationModal.classList.remove('hidden');
-                }, 2000);
-            });
-            
-            btnCloseModal.addEventListener('click', function() {
-                confirmationModal.classList.add('hidden');
-            });
-            
-            // Fechar modal ao clicar fora dele
-            confirmationModal.addEventListener('click', function(event) {
-                if (event.target === confirmationModal) {
-                    confirmationModal.classList.add('hidden');
-                }
-            });
-            
-            // Formulário de agendamento
-            document.getElementById('agendamento-form').addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Verificar se precisa de comprovante
-                if (verificarNecessidadeComprovante() && !comprovanteEnviado) {
-                    alert('Você precisa enviar o comprovante de pagamento antes de confirmar o agendamento.');
-                    return;
-                }
-                
-                // Mostrar modal de sucesso
-                successModal.classList.remove('hidden');
-            });
-            
-            // Inicializar interface de pagamento
-            atualizarInterfacePagamento();
-            
-            // Selecionar opções padrão
-            document.querySelector('.payment-option:nth-child(3)').classList.add('border-blue-500', 'bg-blue-50');
-            document.querySelector('.payment-time-option:first-child').classList.add('border-blue-500', 'bg-blue-50');
-        });
-    </script>
-</body>
-</html>

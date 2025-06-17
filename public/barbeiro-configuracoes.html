@@ -3,18 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberPro - Configurações do Barbeiro</title>
+    <title>Matheus Costa Barber - Configurações</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .bg-gray-100 {
+            background-color: #000000;
+        }
+        .bg-slate-900 {
+            background-color: #000000;
+        }
+        .bg-slate-800 {
+            background-color: #1a1a1a;
+        }
+        .text-white {
+            color: #ffffff;
+        }
+        .text-gray-300 {
+            color: #cccccc;
+        }
+        .hover\:bg-slate-800:hover {
+            background-color: #333333;
+        }
+        .barber-card {
+            background-color: #1a1a1a;
+        }
+        .border-blue-500 {
+            border-color: #ffffff;
+        }
+        .text-gray-400 {
+            color: #aaaaaa;
+        }
+        .bg-white {
+            background-color: #1a1a1a;
+        }
+        .shadow {
+            box-shadow: none;
+        }
+        .text-gray-900 {
+            color: #ffffff;
+        }
+        .text-gray-500 {
+            color: #aaaaaa;
+        }
+        .bg-blue-500 {
+            background-color: #ffffff;
+        }
+        .text-blue-500 {
+            color: #000000;
+        }
+        .bg-green-500 {
+            background-color: #90ee90;
+        }
+        .text-green-500 {
+            color: #000000;
+        }
+        .bg-purple-500 {
+            background-color: #800080;
+        }
+        .text-purple-500 {
+            color: #000000;
+        }
+        .bg-yellow-500 {
+            background-color: #ffd700;
+        }
+        .text-yellow-500 {
+            color: #000000;
+        }
+        .border-gray-200 {
+            border-color: #333333;
+        }
+        .divide-gray-200 > :not([hidden]) ~ :not([hidden]) {
+            border-color: #333333;
+        }
+        .bg-gray-50 {
+            background-color: #1a1a1a;
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #cccccc;
+        }
+        .focus\:ring-blue-500:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+        .focus\:ring-offset-2:focus {
+            box-shadow: 0 0 0 2px #000000, 0 0 0 4px rgba(255, 255, 255, 0.5);
+        }
+        .text-blue-700 {
+            color: #ffffff;
+        }
+        .bg-blue-100 {
+            background-color: #1a1a1a;
+        }
+        .hover\:bg-blue-200:hover {
+            background-color: #333333;
+        }
+        .text-green-800 {
+            color: #90ee90;
+        }
+        .bg-green-100 {
+            background-color: #1a1a1a;
+        }
+    </style>
 </head>
 <body>
     <!-- Sidebar Navigation -->
-    <div class="flex h-screen bg-gray-100">
+    <div class="flex h-screen bg-black">
         <div class="hidden md:flex md:flex-shrink-0">
-            <div class="flex flex-col w-64 bg-slate-900 text-white">
-                <div class="flex items-center justify-center h-16 px-4 bg-slate-800">
-                    <h1 class="text-xl font-bold">BarberPro</h1>
+            <div class="flex flex-col w-64 bg-black text-white">
+                <div class="flex items-center justify-center h-16 px-4 bg-black">
+                    <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-10">
                 </div>
                 <div class="flex flex-col flex-grow px-4 mt-5">
                     <nav class="flex-1 space-y-1">
@@ -46,10 +152,10 @@
                     <div class="mt-auto pb-6">
                         <div class="barber-card rounded-lg p-4 mb-4">
                             <div class="flex items-center">
-                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                                <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-white foto-barbeiro">
                                 <div class="ml-3">
-                                    <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
-                                    <p class="text-xs text-gray-400">Barbeiro Master</p>
+                                    <p class="text-sm font-medium nome-barbeiro">Matheus Costa</p>
+                                    <p class="text-xs text-gray-400">Barbeiro</p>
                                 </div>
                             </div>
                         </div>
@@ -63,18 +169,18 @@
         </div>
 
         <!-- Mobile menu button -->
-        <div class="md:hidden fixed top-0 left-0 right-0 z-50 bg-slate-900 text-white p-4 flex items-center justify-between">
-            <h1 class="text-xl font-bold">BarberPro</h1>
+        <div class="md:hidden fixed top-0 left-0 right-0 z-50 bg-black text-white p-4 flex items-center justify-between">
+            <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-8">
             <button id="mobile-menu-button" class="text-white focus:outline-none">
                 <i class="fas fa-bars text-xl"></i>
             </button>
         </div>
 
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="fixed inset-0 z-40 bg-slate-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
+        <div id="mobile-menu" class="fixed inset-0 z-40 bg-black text-white transform -translate-x-full transition-transform duration-300 ease-in-out md:hidden">
             <div class="flex flex-col h-full">
                 <div class="flex items-center justify-between p-4 border-b border-slate-800">
-                    <h1 class="text-xl font-bold">BarberPro</h1>
+                    <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-8">
                     <button id="close-menu-button" class="text-white focus:outline-none">
                         <i class="fas fa-times text-xl"></i>
                     </button>
@@ -110,44 +216,44 @@
                 <div class="p-4 border-t border-slate-800">
                     <div class="barber-card rounded-lg p-4 mb-4">
                         <div class="flex items-center">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500 foto-barbeiro">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-white foto-barbeiro">
                             <div class="ml-3">
-                                <p class="text-sm font-medium nome-barbeiro">Carlos Silva</p>
-                                <p class="text-xs text-gray-400">Barbeiro Master</p>
+                                <p class="text-sm font-medium nome-barbeiro">Matheus Costa</p>
+                                <p class="text-xs text-gray-400">Barbeiro</p>
                             </div>
                         </div>
                     </div>
                     <a href="login.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
                         <i class="fas fa-sign-out-alt mr-3"></i>
                         Sair
-                    </a>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
 
         <!-- Main Content -->
         <div class="flex flex-col flex-1 overflow-hidden">
-            <main class="flex-1 overflow-y-auto pt-16 md:pt-0 pb-4 px-4 md:px-6 bg-gray-100">
+            <main class="flex-1 overflow-y-auto pt-16 md:pt-0 pb-4 px-4 md:px-6 bg-black">
                 <!-- Configurações Content -->
                 <div class="py-6">
                     <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-                        <h2 class="text-2xl font-semibold text-gray-900">Configurações</h2>
+                        <h2 class="text-2xl font-semibold text-white">Configurações</h2>
                     </div>
 
                     <!-- Configurações Tabs -->
-                    <div class="bg-white shadow rounded-lg overflow-hidden mb-8">
-                        <div class="border-b border-gray-200">
+                    <div class="bg-slate-800 shadow rounded-lg overflow-hidden mb-8">
+                        <div class="border-b border-gray-700">
                             <nav class="flex -mb-px">
-                                <button class="tab-button active-tab text-blue-600 border-blue-500 whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm" data-tab="perfil">
+                                <button class="tab-button active-tab text-white border-white whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm" data-tab="perfil">
                                     Perfil
                                 </button>
-                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-700 hover:border-gray-300" data-tab="conta">
+                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-300 hover:border-gray-500" data-tab="conta">
                                     Conta
                                 </button>
-                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-700 hover:border-gray-300" data-tab="horarios">
+                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-300 hover:border-gray-500" data-tab="horarios">
                                     Horários
                                 </button>
-                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-700 hover:border-gray-300" data-tab="notificacoes">
+                                <button class="tab-button text-gray-500 border-transparent whitespace-nowrap py-4 px-6 border-b-2 font-medium text-sm hover:text-gray-300 hover:border-gray-500" data-tab="notificacoes">
                                     Notificações
                                 </button>
                             </nav>
@@ -159,20 +265,20 @@
                             <div class="tab-content" id="perfil-tab">
                                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                                     <div class="md:col-span-1">
-                                        <div class="flex flex-col items-center p-6 bg-gray-50 rounded-lg">
+                                        <div class="flex flex-col items-center p-6 bg-slate-800 rounded-lg">
                                             <div class="relative mb-4">
                                                 <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Foto de Perfil" class="w-32 h-32 rounded-full border-4 border-white shadow">
-                                                <button class="absolute bottom-0 right-0 bg-blue-600 text-white rounded-full p-2 shadow-lg">
+                                                <button class="absolute bottom-0 right-0 bg-white text-black rounded-full p-2 shadow-lg">
                                                     <i class="fas fa-camera"></i>
                                                 </button>
                                             </div>
-                                            <h3 class="text-lg font-medium text-gray-900 mb-1">Carlos Silva</h3>
-                                            <p class="text-sm text-gray-500 mb-4">Barbeiro Master</p>
+                                            <h3 class="text-lg font-medium text-white mb-1">Matheus Costa</h3>
+                                            <p class="text-sm text-gray-500 mb-4">Barbeiro</p>
                                             <div class="flex space-x-2">
-                                                <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                <button class="inline-flex items-center px-3 py-1.5 border border-gray-700 text-sm font-medium rounded-md text-gray-300 bg-slate-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                                                     <i class="fab fa-instagram mr-1"></i> Conectar
                                                 </button>
-                                                <button class="inline-flex items-center px-3 py-1.5 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                <button class="inline-flex items-center px-3 py-1.5 border border-gray-700 text-sm font-medium rounded-md text-gray-300 bg-slate-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                                                     <i class="fab fa-whatsapp mr-1"></i> Conectar
                                                 </button>
                                             </div>
@@ -182,35 +288,35 @@
                                         <form>
                                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                                 <div>
-                                                    <label for="nome" class="block text-sm font-medium text-gray-700">Nome Completo</label>
-                                                    <input type="text" name="nome" id="nome" value="Carlos Silva" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <label for="nome" class="block text-sm font-medium text-gray-300">Nome Completo</label>
+                                                    <input type="text" name="nome" id="nome" value="Matheus Costa" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                                 </div>
                                                 <div>
-                                                    <label for="especialidade" class="block text-sm font-medium text-gray-700">Especialidade</label>
-                                                    <input type="text" name="especialidade" id="especialidade" value="Barbeiro Master" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <label for="especialidade" class="block text-sm font-medium text-gray-300">Especialidade</label>
+                                                    <input type="text" name="especialidade" id="especialidade" value="Barbeiro" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                                 </div>
                                                 <div>
-                                                    <label for="email" class="block text-sm font-medium text-gray-700">Email</label>
-                                                    <input type="email" name="email" id="email" value="carlos@barberpro.com" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <label for="email" class="block text-sm font-medium text-gray-300">Email</label>
+                                                    <input type="email" name="email" id="email" value="matheus@barber.com" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                                 </div>
                                                 <div>
-                                                    <label for="telefone" class="block text-sm font-medium text-gray-700">Telefone</label>
-                                                    <input type="tel" name="telefone" id="telefone" value="(11) 98765-4321" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <label for="telefone" class="block text-sm font-medium text-gray-300">Telefone</label>
+                                                    <input type="tel" name="telefone" id="telefone" value="(11) 98765-4321" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                                 </div>
                                                 <div class="md:col-span-2">
-                                                    <label for="bio" class="block text-sm font-medium text-gray-700">Biografia</label>
-                                                    <textarea name="bio" id="bio" rows="4" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">Barbeiro profissional com mais de 10 anos de experiência. Especialista em cortes modernos e barba.</textarea>
+                                                    <label for="bio" class="block text-sm font-medium text-gray-300">Biografia</label>
+                                                    <textarea name="bio" id="bio" rows="4" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">Barbeiro Matheus Costa, especialista em cortes clássicos e modernos, e design de barba. Atendimento personalizado para um visual impecável.</textarea>
                                                 </div>
                                                 <div class="md:col-span-2">
-                                                    <label for="endereco" class="block text-sm font-medium text-gray-700">Endereço</label>
-                                                    <input type="text" name="endereco" id="endereco" value="Rua das Barbearias, 123 - São Paulo, SP" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
+                                                    <label for="endereco" class="block text-sm font-medium text-gray-300">Endereço</label>
+                                                    <input type="text" name="endereco" id="endereco" value="Rua da Barbearia, 456 - São Paulo, SP" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                                 </div>
                                             </div>
                                             <div class="mt-6 flex justify-end">
-                                                <button type="button" class="mr-3 inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                <button type="button" class="mr-3 inline-flex items-center px-4 py-2 border border-gray-700 shadow-sm text-sm font-medium rounded-md text-gray-300 bg-slate-800 hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                                                     Cancelar
                                                 </button>
-                                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
                                                     Salvar Alterações
                                                 </button>
                                             </div>
@@ -219,261 +325,92 @@
                                 </div>
                             </div>
 
-                            <!-- Conta Tab (oculto por padrão) -->
+                            <!-- Conta Tab (simplificada) -->
                             <div class="tab-content hidden" id="conta-tab">
-                                <div class="space-y-6">
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Alterar Senha</h3>
-                                        <form class="space-y-4">
-                                            <div>
-                                                <label for="senha-atual" class="block text-sm font-medium text-gray-700">Senha Atual</label>
-                                                <input type="password" name="senha-atual" id="senha-atual" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label for="nova-senha" class="block text-sm font-medium text-gray-700">Nova Senha</label>
-                                                <input type="password" name="nova-senha" id="nova-senha" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div>
-                                                <label for="confirmar-senha" class="block text-sm font-medium text-gray-700">Confirmar Nova Senha</label>
-                                                <input type="password" name="confirmar-senha" id="confirmar-senha" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div class="flex justify-end">
-                                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                    Alterar Senha
-                                                </button>
-                                            </div>
-                                        </form>
+                                <h3 class="text-lg font-medium text-white mb-4">Configurações da Conta</h3>
+                                <form>
+                                    <div class="mb-4">
+                                        <label for="senha-atual" class="block text-sm font-medium text-gray-300">Senha Atual</label>
+                                        <input type="password" id="senha-atual" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                     </div>
-                                    <div class="pt-6 border-t border-gray-200">
-                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Preferências de Pagamento</h3>
-                                        <form class="space-y-4">
-                                            <div>
-                                                <label for="chave-pix" class="block text-sm font-medium text-gray-700">Chave PIX</label>
-                                                <input type="text" name="chave-pix" id="chave-pix" value="carlos@barberpro.com" class="mt-1 focus:ring-blue-500 focus:border-blue-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md">
-                                            </div>
-                                            <div class="flex justify-end">
-                                                <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                    Salvar Preferências
-                                                </button>
-                                            </div>
-                                        </form>
+                                    <div class="mb-4">
+                                        <label for="nova-senha" class="block text-sm font-medium text-gray-300">Nova Senha</label>
+                                        <input type="password" id="nova-senha" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                     </div>
-                                    <div class="pt-6 border-t border-gray-200">
-                                        <h3 class="text-lg font-medium text-red-600 mb-4">Zona de Perigo</h3>
-                                        <p class="text-sm text-gray-500 mb-4">Ações nesta seção podem resultar em perda permanente de dados.</p>
-                                        <div class="flex space-x-4">
-                                            <button type="button" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                                Limpar Todos os Dados
-                                            </button>
-                                            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
-                                                Excluir Conta
-                                            </button>
-                                        </div>
+                                    <div class="mb-6">
+                                        <label for="confirmar-senha" class="block text-sm font-medium text-gray-300">Confirmar Nova Senha</label>
+                                        <input type="password" id="confirmar-senha" class="mt-1 focus:ring-white focus:border-white block w-full shadow-sm sm:text-sm border-gray-700 rounded-md bg-slate-800 text-white">
                                     </div>
-                                </div>
+                                    <div class="flex justify-end">
+                                        <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                                            Atualizar Senha
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
 
-                            <!-- Horários Tab (oculto por padrão) -->
+                            <!-- Horários Tab (simplificada) -->
                             <div class="tab-content hidden" id="horarios-tab">
-                                <div class="space-y-6">
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Horários de Trabalho</h3>
-                                        <div class="bg-gray-50 p-4 rounded-md mb-6">
-                                            <p class="text-sm text-gray-500">Configure seus horários de disponibilidade para cada dia da semana.</p>
-                                        </div>
-                                        <div class="space-y-4">
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="segunda" name="segunda" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="segunda" class="ml-3 block text-sm font-medium text-gray-700">Segunda-feira</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="terca" name="terca" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="terca" class="ml-3 block text-sm font-medium text-gray-700">Terça-feira</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="quarta" name="quarta" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="quarta" class="ml-3 block text-sm font-medium text-gray-700">Quarta-feira</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="quinta" name="quinta" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="quinta" class="ml-3 block text-sm font-medium text-gray-700">Quinta-feira</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="sexta" name="sexta" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="sexta" class="ml-3 block text-sm font-medium text-gray-700">Sexta-feira</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="sabado" name="sabado" type="checkbox" checked class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="sabado" class="ml-3 block text-sm font-medium text-gray-700">Sábado</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>14:00</option>
-                                                        <option>15:00</option>
-                                                        <option>16:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-center justify-between py-3 border-b border-gray-200">
-                                                <div class="flex items-center">
-                                                    <input id="domingo" name="domingo" type="checkbox" class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded">
-                                                    <label for="domingo" class="ml-3 block text-sm font-medium text-gray-700">Domingo</label>
-                                                </div>
-                                                <div class="flex space-x-2">
-                                                    <select disabled class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 bg-gray-100 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>08:00</option>
-                                                        <option>09:00</option>
-                                                        <option>10:00</option>
-                                                    </select>
-                                                    <span class="text-gray-500 self-center">até</span>
-                                                    <select disabled class="block w-24 pl-3 pr-10 py-2 text-base border-gray-300 bg-gray-100 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                                                        <option>18:00</option>
-                                                        <option>19:00</option>
-                                                        <option>20:00</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-6 flex justify-end">
-                                            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                Salvar Horários
-                                            </button>
-                                        </div>
+                                <h3 class="text-lg font-medium text-white mb-4">Horários de Atendimento</h3>
+                                <p class="text-gray-400 mb-4">Defina seus horários de trabalho e bloqueie horários de folga.</p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Segunda-feira</span>
+                                        <span class="text-gray-400">09:00 - 18:00</span>
                                     </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Terça-feira</span>
+                                        <span class="text-gray-400">09:00 - 18:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Quarta-feira</span>
+                                        <span class="text-gray-400">09:00 - 18:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Quinta-feira</span>
+                                        <span class="text-gray-400">09:00 - 18:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Sexta-feira</span>
+                                        <span class="text-gray-400">09:00 - 18:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Sábado</span>
+                                        <span class="text-gray-400">10:00 - 14:00</span>
+                                    </div>
+                                    <div class="flex items-center justify-between bg-slate-800 p-4 rounded-md">
+                                        <span class="text-white">Domingo</span>
+                                        <span class="text-gray-400">Fechado</span>
+                                    </div>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                                        Editar Horários
+                                    </button>
                                 </div>
                             </div>
 
-                            <!-- Notificações Tab (oculto por padrão) -->
+                            <!-- Notificações Tab (simplificada) -->
                             <div class="tab-content hidden" id="notificacoes-tab">
-                                <div class="space-y-6">
-                                    <div>
-                                        <h3 class="text-lg font-medium text-gray-900 mb-4">Preferências de Notificação</h3>
-                                        <div class="space-y-4">
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input id="notif-email" name="notif-email" type="checkbox" checked class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="notif-email" class="font-medium text-gray-700">Notificações por Email</label>
-                                                    <p class="text-gray-500">Receba atualizações sobre novos agendamentos, cancelamentos e lembretes.</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input id="notif-sms" name="notif-sms" type="checkbox" checked class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="notif-sms" class="font-medium text-gray-700">Notificações por SMS</label>
-                                                    <p class="text-gray-500">Receba lembretes de agendamentos por SMS.</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input id="notif-app" name="notif-app" type="checkbox" checked class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="notif-app" class="font-medium text-gray-700">Notificações no Aplicativo</label>
-                                                    <p class="text-gray-500">Receba notificações em tempo real no aplicativo.</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start">
-                                                <div class="flex items-center h-5">
-                                                    <input id="notif-marketing" name="notif-marketing" type="checkbox" class="focus:ring-blue-500 h-4 w-4 text-blue-600 border-gray-300 rounded">
-                                                </div>
-                                                <div class="ml-3 text-sm">
-                                                    <label for="notif-marketing" class="font-medium text-gray-700">Comunicações de Marketing</label>
-                                                    <p class="text-gray-500">Receba dicas, promoções e novidades sobre o BarberPro.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="mt-6 flex justify-end">
-                                            <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
-                                                Salvar Preferências
-                                            </button>
-                                        </div>
+                                <h3 class="text-lg font-medium text-white mb-4">Preferências de Notificação</h3>
+                                <div class="space-y-4">
+                                    <div class="flex items-center">
+                                        <input id="email-notificacoes" type="checkbox" class="h-4 w-4 text-white border-gray-700 rounded bg-slate-800 focus:ring-white">
+                                        <label for="email-notificacoes" class="ml-3 block text-sm text-gray-300">
+                                            Receber notificações por email
+                                        </label>
                                     </div>
+                                    <div class="flex items-center">
+                                        <input id="sms-notificacoes" type="checkbox" class="h-4 w-4 text-white border-gray-700 rounded bg-slate-800 focus:ring-white">
+                                        <label for="sms-notificacoes" class="ml-3 block text-sm text-gray-300">
+                                            Receber notificações por SMS
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="mt-6 flex justify-end">
+                                    <button type="submit" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-black bg-white hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white">
+                                        Salvar Preferências
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -483,79 +420,44 @@
         </div>
     </div>
 
-    <!-- Notificação -->
-    <div class="notificacao fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transform transition-all duration-300 translate-x-full"></div>
-
-    <!-- Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Menu mobile
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMenuButton = document.getElementById('close-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileMenuButton && mobileMenu) {
-                mobileMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.remove('-translate-x-full');
-                });
-            }
-            
-            if (closeMenuButton && mobileMenu) {
-                closeMenuButton.addEventListener('click', function() {
-                    mobileMenu.classList.add('-translate-x-full');
-                });
-            }
-            
-            // Tabs
-            const tabButtons = document.querySelectorAll('.tab-button');
-            const tabContents = document.querySelectorAll('.tab-content');
-            
+        document.addEventListener(
+            'DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll(
+                '.tab-button');
+            const tabContents = document.querySelectorAll(
+                '.tab-content');
+
             tabButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const tabName = button.getAttribute('data-tab');
-                    
-                    // Desativar todos os botões e conteúdos
+                button.addEventListener(
+                    'click', () => {
+                    const tab = button.dataset.tab;
+
                     tabButtons.forEach(btn => {
-                        btn.classList.remove('active-tab', 'text-blue-600', 'border-blue-500');
-                        btn.classList.add('text-gray-500', 'border-transparent');
+                        btn.classList.remove(
+                            'active-tab', 'text-white', 'border-white');
+                        btn.classList.add(
+                            'text-gray-500', 'border-transparent', 'hover:text-gray-300', 'hover:border-gray-500');
                     });
-                    
+
+                    button.classList.add(
+                        'active-tab', 'text-white', 'border-white');
+                    button.classList.remove(
+                        'text-gray-500', 'border-transparent', 'hover:text-gray-300', 'hover:border-gray-500');
+
                     tabContents.forEach(content => {
-                        content.classList.add('hidden');
+                        content.classList.add(
+                            'hidden');
                     });
-                    
-                    // Ativar o botão e conteúdo selecionado
-                    button.classList.add('active-tab', 'text-blue-600', 'border-blue-500');
-                    button.classList.remove('text-gray-500', 'border-transparent');
-                    
-                    document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+
+                    document.getElementById(
+                        `${tab}-tab`).classList.remove(
+                        'hidden');
                 });
             });
-            
-            // Verificar usuário logado
-            const usuarioJSON = localStorage.getItem('barberpro_usuario_logado');
-            if (!usuarioJSON) {
-                window.location.href = 'login.html';
-                return;
-            }
-            
-            try {
-                const usuario = JSON.parse(usuarioJSON);
-                if (usuario.tipo !== 'barbeiro') {
-                    window.location.href = 'login.html';
-                    return;
-                }
-                
-                // Atualizar informações do barbeiro
-                const elementosNomeBarbeiro = document.querySelectorAll('.nome-barbeiro');
-                elementosNomeBarbeiro.forEach(elemento => {
-                    if (elemento) elemento.textContent = usuario.nome || 'Barbeiro';
-                });
-            } catch (e) {
-                console.error('Erro ao verificar usuário:', e);
-                window.location.href = 'login.html';
-            }
         });
     </script>
 </body>
 </html>
+
+

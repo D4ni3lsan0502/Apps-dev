@@ -3,76 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BarberPro - Login</title>
+    <title>Matheus Costa Barber - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="public/css/styles.css"> <!-- Corrigido caminho CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        body {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        .bg-gray-100 {
+            background-color: #000000;
+        }
+        .bg-white {
+            background-color: #1a1a1a;
+        }
+        .text-gray-800 {
+            color: #ffffff;
+        }
+        .text-gray-600 {
+            color: #cccccc;
+        }
+        .border-gray-200 {
+            border-color: #333333;
+        }
+        .text-blue-600 {
+            color: #ffffff;
+        }
+        .border-blue-600 {
+            border-color: #ffffff;
+        }
+        .text-gray-500 {
+            color: #aaaaaa;
+        }
+        .hover\:text-gray-700:hover {
+            color: #ffffff;
+        }
+        .border-gray-300 {
+            border-color: #333333;
+        }
+        .focus\:ring-blue-500:focus {
+            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
+        }
+        .focus\:border-blue-500:focus {
+            border-color: #ffffff;
+        }
+        .bg-blue-600 {
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .hover\:bg-blue-700:hover {
+            background-color: #cccccc;
+        }
+        .bg-slate-800 {
+            background-color: #1a1a1a;
+        }
+        .hover\:bg-slate-900:hover {
+            background-color: #333333;
+        }
+        .shadow-lg {
+            box-shadow: none;
+        }
+    </style>
 </head>
-<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+<body class="bg-black min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-8">
-        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+        <div class="max-w-md mx-auto bg-gray-900 rounded-lg shadow-lg overflow-hidden">
             <div class="p-6">
                 <div class="text-center mb-8">
-                    <h1 class="text-3xl font-bold text-gray-800">BarberPro</h1>
-                    <p class="text-gray-600 mt-2">Conectando barbeiros e clientes</p>
-                </div>
-                
-                <!-- Abas de Login -->
-                <div class="flex border-b border-gray-200 mb-6">
-                    <button id="tab-cliente" class="flex-1 py-3 px-4 text-center font-medium border-b-2 border-blue-600 text-blue-600">
-                        Cliente
-                    </button>
-                    <button id="tab-barbeiro" class="flex-1 py-3 px-4 text-center font-medium border-b-2 border-transparent text-gray-500 hover:text-gray-700">
-                        Barbeiro
-                    </button>
-                </div>
-                
-                <!-- Formulário de Login Cliente -->
-                <div id="form-cliente" class="block">
-                    <form id="login-cliente-form">
-                        <div class="mb-4">
-                            <label for="email-cliente" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email-cliente" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="seu@email.com" required>
-                        </div>
-                        <div class="mb-6">
-                            <label for="senha-cliente" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                            <input type="password" id="senha-cliente" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required>
-                        </div>
-                        <div class="mb-6">
-                            <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
-                                Entrar como Cliente
-                            </button>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">
-                                Não tem uma conta? 
-                                <a href="cadastro-cliente.html" id="link-cadastro-cliente" class="text-blue-600 hover:underline">Cadastre-se como cliente</a>
-                            </p>
-                        </div>
-                    </form>
+                    <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-16 mx-auto mb-4">
+                    <h1 class="text-3xl font-bold text-white">Login do Barbeiro</h1>
+                    <p class="text-gray-400 mt-2">Acesse sua agenda e serviços</p>
                 </div>
                 
                 <!-- Formulário de Login Barbeiro -->
-                <div id="form-barbeiro" class="hidden">
+                <div id="form-barbeiro" class="block">
                     <form id="login-barbeiro-form">
                         <div class="mb-4">
-                            <label for="email-barbeiro" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
-                            <input type="email" id="email-barbeiro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="seu@email.com" required>
+                            <label for="email-barbeiro" class="block text-sm font-medium text-gray-300 mb-1">Email</label>
+                            <input type="email" id="email-barbeiro" class="w-full border border-gray-700 rounded-md px-3 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-white" placeholder="matheus@barber.com" required>
                         </div>
                         <div class="mb-6">
-                            <label for="senha-barbeiro" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
-                            <input type="password" id="senha-barbeiro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required>
+                            <label for="senha-barbeiro" class="block text-sm font-medium text-gray-300 mb-1">Senha</label>
+                            <input type="password" id="senha-barbeiro" class="w-full border border-gray-700 rounded-md px-3 py-2 bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-white" placeholder="••••••••" required>
                         </div>
                         <div class="mb-6">
-                            <button type="submit" class="w-full bg-slate-800 text-white py-2 px-4 rounded-md hover:bg-slate-900 transition duration-300">
-                                Entrar como Barbeiro
+                            <button type="submit" class="w-full bg-white text-black py-2 px-4 rounded-md hover:bg-gray-300 transition duration-300 font-semibold">
+                                Entrar
                             </button>
-                        </div>
-                        <div class="text-center">
-                            <p class="text-sm text-gray-600">
-                                Não tem uma conta? 
-                                <a href="cadastro-barbeiro.html" id="link-cadastro-barbeiro" class="text-blue-600 hover:underline">Cadastre-se como barbeiro</a>
-                            </p>
                         </div>
                     </form>
                 </div>
@@ -81,99 +99,42 @@
         
         <!-- Informações adicionais -->
         <div class="mt-8 text-center">
-            <p class="text-sm text-gray-600">
-                &copy; 2025 BarberPro - Todos os direitos reservados
+            <p class="text-sm text-gray-400">
+                &copy; 2025 Matheus Costa Barber - Todos os direitos reservados
             </p>
         </div>
     </div>
     
     <!-- JavaScript -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Elementos das abas
-            const tabCliente = document.getElementById('tab-cliente');
-            const tabBarbeiro = document.getElementById('tab-barbeiro');
-            const formCliente = document.getElementById('form-cliente');
-            const formBarbeiro = document.getElementById('form-barbeiro');
-            
-            // Alternar entre abas
-            tabCliente.addEventListener('click', function() {
-                // Ativar aba cliente
-                tabCliente.classList.add('border-blue-600', 'text-blue-600');
-                tabCliente.classList.remove('border-transparent', 'text-gray-500');
+        document.addEventListener(
+            'DOMContentLoaded', function() {
+            document.getElementById(
+                'login-barbeiro-form').addEventListener(
+                'submit', function(e) {
+                e.preventDefault();
+                const email = document.getElementById(
+                    'email-barbeiro').value;
+                const senha = document.getElementById(
+                    'senha-barbeiro').value;
                 
-                // Desativar aba barbeiro
-                tabBarbeiro.classList.remove('border-blue-600', 'text-blue-600');
-                tabBarbeiro.classList.add('border-transparent', 'text-gray-500');
-                
-                // Mostrar formulário cliente
-                formCliente.classList.remove('hidden');
-                formCliente.classList.add('block');
-                
-                // Esconder formulário barbeiro
-                formBarbeiro.classList.remove('block');
-                formBarbeiro.classList.add('hidden');
+                // Credenciais fixas para Matheus Costa Barber
+                if (email === 'matheus@barber.com' && senha === 'matheus123') {
+                    const user = {
+                        id: 'barbeiro_matheus',
+                        email: email,
+                        nome: 'Matheus Costa',
+                        tipo: 'barbeiro'
+                    };
+                    localStorage.setItem(
+                        'barberpro_usuario_logado', JSON.stringify(user));
+                    
+                    window.location.href = 'barbeiro-dashboard.html';
+                } else {
+                    alert(
+                        'Email ou senha incorretos. Por favor, tente novamente.');
+                }
             });
-            
-            tabBarbeiro.addEventListener('click', function() {
-                // Ativar aba barbeiro
-                tabBarbeiro.classList.add('border-blue-600', 'text-blue-600');
-                tabBarbeiro.classList.remove('border-transparent', 'text-gray-500');
-                
-                // Desativar aba cliente
-                tabCliente.classList.remove('border-blue-600', 'text-blue-600');
-                tabCliente.classList.add('border-transparent', 'text-gray-500');
-                
-                // Mostrar formulário barbeiro
-                formBarbeiro.classList.remove('hidden');
-                formBarbeiro.classList.add('block');
-                
-                // Esconder formulário cliente
-                formCliente.classList.remove('block');
-                formCliente.classList.add('hidden');
-            });
-            
-            document.getElementById('login-cliente-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-cliente').value;
-    const senha = document.getElementById('senha-cliente').value;
-
-    // Buscar usuário cadastrado
-    const usuarioCadastrado = JSON.parse(localStorage.getItem('barberpro_user'));
-    
-if (
-    usuarioCadastrado &&
-    usuarioCadastrado.email === email &&
-    usuarioCadastrado.senha === senha &&
-    usuarioCadastrado.tipo === 'cliente'
-) {
-    window.location.href = '/cliente-dashboard.html';
-} else {
-    alert('Email ou senha incorretos!');
-}
-});
-
-            // Formulário de login barbeiro
-            document.getElementById('login-barbeiro-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-barbeiro').value;
-    const senha = document.getElementById('senha-barbeiro').value;
-
-    // Buscar barbeiro cadastrado
-    const barbeiroCadastrado = JSON.parse(localStorage.getItem('barberpro_barber'));
-
-    if (
-        barbeiroCadastrado &&
-        barbeiroCadastrado.email === email &&
-        barbeiroCadastrado.senha === senha
-    ) {
-        // Login válido
-        localStorage.setItem('barberpro_barber', JSON.stringify(barbeiroCadastrado));
-        window.location.href = '/barbeiro-dashboard.html';
-    } else {
-        alert('Email ou senha incorretos!');
-    }
-});
         });
     </script>
 </body>
