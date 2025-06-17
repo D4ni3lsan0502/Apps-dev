@@ -2,291 +2,33 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
+    <!-- Corrige o caminho do CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Matheus Costa Barber - Meus Agendamentos</title>
+    <title>BarberPro - Dashboard do Cliente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/styles.css">
-    <style>
-        body {
-            background-color: #000000;
-            color: #ffffff;
-        }
-        .bg-gray-100 {
-            background-color: #000000;
-        }
-        .bg-white {
-            background-color: #1a1a1a;
-        }
-        .text-gray-800 {
-            color: #ffffff;
-        }
-        .text-gray-700 {
-            color: #cccccc;
-        }
-        .hover\:bg-gray-100:hover {
-            background-color: #333333;
-        }
-        .bg-blue-600 {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .hover\:bg-blue-700:hover {
-            background-color: #cccccc;
-        }
-        .border-blue-500 {
-            border-color: #ffffff;
-        }
-        .text-yellow-400 {
-            color: #ffd700;
-        }
-        .text-gray-900 {
-            color: #ffffff;
-        }
-        .text-gray-600 {
-            color: #aaaaaa;
-        }
-        .border-gray-200 {
-            border-color: #333333;
-        }
-        .bg-gray-50 {
-            background-color: #1a1a1a;
-        }
-        .text-blue-600 {
-            color: #ffffff;
-        }
-        .bg-gray-400 {
-            background-color: #aaaaaa;
-        }
-        .bg-gray-200 {
-            background-color: #333333;
-        }
-        .bg-blue-600 {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .focus\:ring-blue-500:focus {
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
-        }
-        .focus\:border-blue-500:focus {
-            border-color: #ffffff;
-        }
-        .border-gray-300 {
-            border-color: #333333;
-        }
-        .bg-gray-300 {
-            background-color: #aaaaaa;
-        }
-        .bg-gray-500 {
-            background-color: #888888;
-        }
-        .bg-gray-600 {
-            background-color: #666666;
-        }
-        .bg-gray-700 {
-            background-color: #444444;
-        }
-        .bg-gray-800 {
-            background-color: #1a1a1a;
-        }
-        .bg-gray-900 {
-            background-color: #000000;
-        }
-        .text-gray-500 {
-            color: #aaaaaa;
-        }
-        .text-gray-400 {
-            color: #aaaaaa;
-        }
-        .text-gray-300 {
-            color: #cccccc;
-        }
-        .text-gray-200 {
-            color: #dddddd;
-        }
-        .text-gray-100 {
-            color: #eeeeee;
-        }
-        .text-black {
-            color: #000000;
-        }
-        .text-white {
-            color: #ffffff;
-        }
-        .bg-black {
-            background-color: #000000;
-        }
-        .bg-slate-800 {
-            background-color: #1a1a1a;
-        }
-        .bg-slate-900 {
-            background-color: #000000;
-        }
-        .border-slate-800 {
-            border-color: #333333;
-        }
-        .barber-card {
-            background-color: #1a1a1a;
-        }
-        .border-white {
-            border-color: #ffffff;
-        }
-        .text-blue-500 {
-            color: #ffffff;
-        }
-        .text-blue-600 {
-            color: #ffffff;
-        }
-        .hover\:bg-blue-700:hover {
-            background-color: #333333;
-        }
-        .focus\:ring-blue-500:focus {
-            box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.5);
-        }
-        .focus\:ring-offset-2:focus {
-            box-shadow: 0 0 0 2px #000000, 0 0 0 4px rgba(255, 255, 255, 0.5);
-        }
-        .text-blue-700 {
-            color: #ffffff;
-        }
-        .bg-blue-100 {
-            background-color: #1a1a1a;
-        }
-        .hover\:bg-blue-200:hover {
-            background-color: #333333;
-        }
-        .text-indigo-600 {
-            color: #ffffff;
-        }
-        .hover\:text-indigo-900:hover {
-            color: #cccccc;
-        }
-        .text-red-600 {
-            color: #ff4500;
-        }
-        .hover\:bg-red-700:hover {
-            background-color: #cc3700;
-        }
-        .focus\:ring-red-500:focus {
-            box-shadow: 0 0 0 3px rgba(255, 69, 0, 0.5);
-        }
-        .focus\:ring-offset-2:focus {
-            box-shadow: 0 0 0 2px #000000, 0 0 0 4px rgba(255, 69, 0, 0.5);
-        }
-        .bg-blue-600 {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .hover\:bg-blue-700:hover {
-            background-color: #cccccc;
-        }
-        .text-white {
-            color: #000000;
-        }
-        .bg-white {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .hover\:bg-gray-100:hover {
-            background-color: #cccccc;
-        }
-        .text-slate-800 {
-            color: #000000;
-        }
-        .bg-transparent {
-            background-color: transparent;
-        }
-        .border-white {
-            border-color: #ffffff;
-        }
-        .hover\:text-blue-600:hover {
-            color: #000000;
-        }
-        .text-blue-600 {
-            color: #ffffff;
-        }
-        .bg-gradient-to-r.from-blue-600.to-blue-800 {
-            background-image: none;
-            background-color: #000000;
-        }
-        .bg-gray-50 {
-            background-color: #1a1a1a;
-        }
-        .text-gray-400 {
-            color: #aaaaaa;
-        }
-        .hover\:text-white:hover {
-            color: #ffffff;
-        }
-        .text-blue-600 {
-            color: #ffffff;
-        }
-        .bg-blue-600 {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .hover\:bg-blue-700:hover {
-            background-color: #cccccc;
-        }
-        .text-white {
-            color: #000000;
-        }
-        .bg-white {
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .hover\:bg-gray-100:hover {
-            background-color: #cccccc;
-        }
-        .text-slate-800 {
-            color: #000000;
-        }
-        .bg-transparent {
-            background-color: transparent;
-        }
-        .border-white {
-            border-color: #ffffff;
-        }
-        .hover\:text-blue-600:hover {
-            color: #000000;
-        }
-        .text-blue-600 {
-            color: #ffffff;
-        }
-        .bg-gradient-to-r.from-blue-600.to-blue-800 {
-            background-image: none;
-            background-color: #000000;
-        }
-        .bg-gray-50 {
-            background-color: #1a1a1a;
-        }
-        .text-gray-400 {
-            color: #aaaaaa;
-        }
-        .hover\:text-white:hover {
-            color: #ffffff;
-        }
-    </style>
+    <link rel="stylesheet" href="public/css/styles.css">
 </head>
-<body class="bg-black">
+<body class="bg-gray-100">
     <!-- Navbar -->
-    <nav class="bg-black shadow-md">
+    <nav class="bg-white shadow-sm">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center h-16">
                 <div class="flex items-center">
-                    <img src="img/matheus_costa_barber_logo.png" alt="Matheus Costa Barber Logo" class="h-10 mr-2">
+                    <a href="index.html" class="text-xl font-bold text-gray-800">BarberPro</a>
                 </div>
                 <div class="flex items-center">
                     <div class="relative">
                         <button id="user-menu-button" class="flex items-center space-x-2 focus:outline-none">
-                            <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center text-black font-bold" id="user-avatar"></div>
-                            <span class="hidden md:block text-sm font-medium text-white" id="user-name">Carregando...</span>
+                            <div class="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold" id="user-avatar"></div>
+                            <span class="hidden md:block text-sm font-medium text-gray-700" id="user-name">Carregando...</span>
                             <i class="fas fa-chevron-down text-xs text-gray-500"></i>
                         </button>
-                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-slate-800 rounded-md shadow-lg py-1 z-50 hidden">
-                            <a href="cliente-perfil.html" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Meu Perfil</a>
-                            <a href="cliente-configuracoes.html" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Configurações</a>
-                            <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-white hover:bg-slate-900">Sair</a>
+                        <div id="user-menu" class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 hidden">
+                            <a href="cliente-perfil.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Meu Perfil</a>
+                            <a href="cliente-configuracoes.html" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Configurações</a>
+                            <a href="#" id="logout-button" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Sair</a>
                         </div>
                     </div>
                 </div>
@@ -296,11 +38,58 @@
 
     <!-- Main Content -->
     <div class="container mx-auto px-4 py-8">
+        <!-- Tabs -->
+        <div class="mb-6">
+            <div class="border-b border-gray-200">
+                <nav class="-mb-px flex space-x-8">
+                    <a href="#" id="tab-barbeiros" class="border-blue-500 text-blue-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Barbeiros
+                    </a>
+                    <a href="cliente-meus-agendamentos.html" id="tab-agendamentos" class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+                        Meus Agendamentos
+                    </a>
+                     <a href="cliente-favoritos.html" class="flex items-center px-4 py-3 text-sm font-medium rounded-md text-gray-300 hover:bg-slate-800">
+                        Favoritos
+                    </a>
+                </nav>
+            </div>
+        </div>
+
+        <!-- Search and Filters -->
+        <div class="mb-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="w-full md:w-1/2 mb-4 md:mb-0">
+                    <div class="relative">
+                        <input type="text" placeholder="Buscar barbeiros, serviços..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <i class="fas fa-search text-gray-400"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-filter mr-1"></i> Filtros
+                    </button>
+                    <button class="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-map-marker-alt mr-1"></i> Próximos
+                    </button>
+                    <button class="bg-white border border-gray-300 rounded-md px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">
+                        <i class="fas fa-sort mr-1"></i> Ordenar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Barbeiros -->
+        <div id="content-barbeiros" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Os barbeiros serão carregados dinamicamente -->
+        </div>
+
         <!-- Meus Agendamentos -->
-        <div id="content-agendamentos">
-            <div class="bg-slate-800 rounded-lg shadow-md overflow-hidden mb-6">
+        <div id="content-agendamentos" class="hidden">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
                 <div class="p-6">
-                    <h3 class="text-lg font-semibold text-white mb-4">Meus Agendamentos</h3>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Meus Agendamentos</h3>
                     <div id="agendamentos-list" class="space-y-4">
                         <!-- Os agendamentos serão carregados dinamicamente -->
                         <p id="no-agendamentos" class="text-gray-500 text-center py-4">Você ainda não possui agendamentos.</p>
@@ -308,110 +97,597 @@
                 </div>
             </div>
         </div>
+
+        <!-- Favoritos -->
+        <div id="content-favoritos" class="hidden">
+            <div class="bg-white rounded-lg shadow-md overflow-hidden mb-6">
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Meus Favoritos</h3>
+                    <div id="favoritos-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Os favoritos serão carregados dinamicamente -->
+                        <p id="no-favoritos" class="text-gray-500 text-center py-4 col-span-3">Você ainda não possui barbeiros favoritos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-black mt-12 border-t border-gray-700">
+    <footer class="bg-white mt-12 border-t border-gray-200">
         <div class="container mx-auto px-4 py-6">
             <div class="text-center text-sm text-gray-500">
-                <p>&copy; 2025 Matheus Costa Barber - Todos os direitos reservados</p>
+                <p>&copy; 2025 BarberPro - Todos os direitos reservados</p>
             </div>
         </div>
     </footer>
-
-    <!-- JavaScript -->
+   
     <script>
-        document.addEventListener(
-            'DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             // Verificar login
-            const userData = JSON.parse(localStorage.getItem(
-                'barberpro_user') || '{}');
-            if (!userData.id || userData.tipo !== 'cliente') {
-                // Redirecionar para login se não estiver logado ou não for cliente
-                window.location.href = 'login.html';
-                return;
-            }
-
-            // Exibir nome do usuário
-            document.getElementById(
-                'user-name').textContent = userData.nome || 'Cliente';
-
+            const novoUsuario = {
+  id: 'cliente_' + Date.now(), // ou outro id único
+  nome: nomeInput.value,
+  tipo: 'cliente',
+  // ...outros campos...
+};
+localStorage.setItem('barberpro_user', JSON.stringify(novoUsuario));
+window.location.href = 'cliente-dashboard.html'
+           const userData = JSON.parse(localStorage.getItem('usuario') || '{}');
+if (!userData.id || userData.tipo !== 'cliente') {
+    window.location.href = 'login.html';
+    return;
+}
+// Exibir nome do usuário
+document.getElementById('user-name').textContent = userData.nome || 'Cliente';
+            
             // Exibir inicial do avatar
             const userInitial = (userData.nome || 'C').charAt(0).toUpperCase();
-            document.getElementById(
-                'user-avatar').textContent = userInitial;
-
+            document.getElementById('user-avatar').textContent = userInitial;
+            
             // Toggle menu do usuário
-            const userMenuButton = document.getElementById(
-                'user-menu-button');
-            const userMenu = document.getElementById(
-                'user-menu');
-
-            userMenuButton.addEventListener(
-                'click', function() {
-                userMenu.classList.toggle(
-                    'hidden');
+            const userMenuButton = document.getElementById('user-menu-button');
+            const userMenu = document.getElementById('user-menu');
+            
+            userMenuButton.addEventListener('click', function() {
+                userMenu.classList.toggle('hidden');
             });
-
+            
             // Fechar menu ao clicar fora
-            document.addEventListener(
-                'click', function(event) {
+            document.addEventListener('click', function(event) {
                 if (!userMenuButton.contains(event.target) && !userMenu.contains(event.target)) {
-                    userMenu.classList.add(
-                        'hidden');
+                    userMenu.classList.add('hidden');
                 }
             });
-
+            
             // Logout
-            document.getElementById(
-                'logout-button').addEventListener(
-                'click', function(e) {
+            document.getElementById('logout-button').addEventListener('click', function(e) {
                 e.preventDefault();
-                localStorage.removeItem(
-                    'barberpro_user');
+                localStorage.removeItem('barberpro_user');
                 window.location.href = 'login.html';
             });
+            
+            // Tabs de navegação
+            const tabBarbeiros = document.getElementById('tab-barbeiros');
+            const tabAgendamentos = document.getElementById('tab-agendamentos');
+            const tabFavoritos = document.getElementById('tab-favoritos');
+            
+            const contentBarbeiros = document.getElementById('content-barbeiros');
+            const contentAgendamentos = document.getElementById('content-agendamentos');
+            const contentFavoritos = document.getElementById('content-favoritos');
+            
+            tabBarbeiros.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Ativar tab
+                tabBarbeiros.classList.add('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Desativar outras tabs
+                tabAgendamentos.classList.remove('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.add('border-transparent', 'text-gray-500');
+                
+                tabFavoritos.classList.remove('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.add('border-transparent', 'text-gray-500');
+                
+                // Mostrar conteúdo
+                contentBarbeiros.classList.remove('hidden');
+                contentAgendamentos.classList.add('hidden');
+                contentFavoritos.classList.add('hidden');
+            });
+            tabAgendamentos.addEventListener('click', function(e) {
+                e.preventDefault();
 
-            // Carregar agendamentos
-            carregarAgendamentos();
+                // Ativar tab
+                tabAgendamentos.classList.add('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.remove('border-transparent', 'text-gray-500');
 
-            // Função para carregar agendamentos (simplificada para um único barbeiro)
-            function carregarAgendamentos() {
-                const agendamentos = JSON.parse(localStorage.getItem(
-                    'agendamentos') || '[]');
-                const agendamentosList = document.getElementById(
-                    'agendamentos-list');
-                agendamentosList.innerHTML = ''; // Limpar agendamentos existentes
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
 
-                const agendamentosDoCliente = agendamentos.filter(agendamento => agendamento.cliente.email === userData.email);
+                tabFavoritos.classList.remove('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.add('border-transparent', 'text-gray-500');
 
-                if (agendamentosDoCliente.length === 0) {
-                    agendamentosList.innerHTML = 
-                        '<p id="no-agendamentos" class="text-gray-500 text-center py-4">Você ainda não possui agendamentos.</p>';
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.remove('hidden');
+                contentFavoritos.classList.add('hidden');
+
+                // Carregar agendamentos
+                carregarAgendamentos();
+            });
+
+            tabFavoritos.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // Ativar tab
+                tabFavoritos.classList.add('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.remove('border-transparent', 'text-gray-500');
+
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
+
+                tabAgendamentos.classList.remove('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.add('border-transparent', 'text-gray-500');
+
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.add('hidden');
+                contentFavoritos.classList.remove('hidden');
+
+                // Carregar favoritos
+                carregarFavoritos();
+            });
+
+            // Integração entre arquivos do app
+            // Redirecionamento para páginas de perfil/configurações
+            document.querySelector('a[href="cliente-perfil.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'cliente-perfil.html';
+            });
+            document.querySelector('a[href="cliente-configuracoes.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'cliente-configuracoes.html';
+            });
+
+            // Navbar link para home
+            document.querySelector('a[href="index.html"]').addEventListener('click', function(e) {
+                e.preventDefault();
+                window.location.href = 'index.html';
+            });
+            tabAgendamentos.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Ativar tab
+                tabAgendamentos.classList.add('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
+                
+                tabFavoritos.classList.remove('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.add('border-transparent', 'text-gray-500');
+                
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.remove('hidden');
+                contentFavoritos.classList.add('hidden');
+                
+                // Carregar agendamentos
+                carregarAgendamentos();
+            });
+            
+            tabFavoritos.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Ativar tab
+                tabFavoritos.classList.add('border-blue-500', 'text-blue-600');
+                tabFavoritos.classList.remove('border-transparent', 'text-gray-500');
+                
+                // Desativar outras tabs
+                tabBarbeiros.classList.remove('border-blue-500', 'text-blue-600');
+                tabBarbeiros.classList.add('border-transparent', 'text-gray-500');
+                
+                tabAgendamentos.classList.remove('border-blue-500', 'text-blue-600');
+                tabAgendamentos.classList.add('border-transparent', 'text-gray-500');
+                
+                // Mostrar conteúdo
+                contentBarbeiros.classList.add('hidden');
+                contentAgendamentos.classList.add('hidden');
+                contentFavoritos.classList.remove('hidden');
+                
+                // Carregar favoritos
+                carregarFavoritos();
+            });
+            
+            // Carregar barbeiros
+            carregarBarbeiros();
+            
+            // Função para carregar barbeiros
+            function carregarBarbeiros() {
+                // Em um app real, isso viria de uma API
+                // Para este exemplo, usaremos dados simulados
+                const barbeiros = [
+                    {
+                        id: 'barb1',
+                        nome: 'Carlos Silva',
+                        foto: 'https://randomuser.me/api/portraits/men/32.jpg',
+                        avaliacao: 4.5,
+                        avaliacoes: 48,
+                        localizacao: 'Bela Vista, São Paulo - SP',
+                        servicos: 'Corte, Barba, Degradê',
+                        atendeBarbearia: true,
+                        atendeDomicilio: true,
+                        preco: 40.00,
+                        imagem: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                    },
+                    {
+                        id: 'barb2',
+                        nome: 'Pedro Santos',
+                        foto: 'https://randomuser.me/api/portraits/men/22.jpg',
+                        avaliacao: 5.0,
+                        avaliacoes: 62,
+                        localizacao: 'Pinheiros, São Paulo - SP',
+                        servicos: 'Corte, Barba, Sobrancelha',
+                        atendeBarbearia: true,
+                        atendeDomicilio: false,
+                        preco: 45.00,
+                        imagem: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                    },
+                    {
+                        id: 'barb3',
+                        nome: 'Lucas Oliveira',
+                        foto: 'https://randomuser.me/api/portraits/men/55.jpg',
+                        avaliacao: 4.0,
+                        avaliacoes: 35,
+                        localizacao: 'Vila Mariana, São Paulo - SP',
+                        servicos: 'Corte, Degradê, Coloração',
+                        atendeBarbearia: false,
+                        atendeDomicilio: true,
+                        preco: 50.00,
+                        imagem: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80'
+                    }
+                ];
+                
+                // Limpar conteúdo atual
+                contentBarbeiros.innerHTML = '';
+                
+                // Verificar se há barbeiros
+                if (barbeiros.length === 0) {
+                    contentBarbeiros.innerHTML = '<p class="text-gray-500 text-center py-4 col-span-3">Nenhum barbeiro encontrado.</p>';
                     return;
                 }
-
-                agendamentosDoCliente.forEach(agendamento => {
-                    const agendamentoItem = document.createElement(
-                        'div');
-                    agendamentoItem.className = 'bg-slate-900 p-4 rounded-lg shadow-md mb-4';
-                    agendamentoItem.innerHTML = `
-                        <div class="flex justify-between items-center mb-2">
-                            <h4 class="text-lg font-semibold text-white">${agendamento.servicos.map(s => s.nome).join(', ')}</h4>
-                            <span class="status-badge ${agendamento.status}">${agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1)}</span>
+                
+                // Favoritos do usuário
+                const favoritos = JSON.parse(localStorage.getItem('barberpro_favoritos_' + userData.id) || '[]');
+                
+                // Renderizar barbeiros
+                barbeiros.forEach(barbeiro => {
+                    const isFavorito = favoritos.includes(barbeiro.id);
+                    
+                    const barbeiroDom = document.createElement('div');
+                    barbeiroDom.className = 'bg-white rounded-lg shadow overflow-hidden';
+                    barbeiroDom.innerHTML = `
+                        <div class="relative">
+                            <img src="${barbeiro.imagem}" alt="Barbearia" class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2">
+                                <button class="favorito-btn bg-white rounded-full p-2 shadow hover:bg-gray-100" data-id="${barbeiro.id}">
+                                    <i class="fa${isFavorito ? 's' : 'r'} fa-heart ${isFavorito ? 'text-red-500' : 'text-gray-600'}"></i>
+                                </button>
+                            </div>
                         </div>
-                        <p class="text-gray-400 mb-1">Data: ${agendamento.data}</p>
-                        <p class="text-gray-400 mb-1">Horário: ${agendamento.horario}</p>
-                        <p class="text-gray-400 mb-1">Local: ${agendamento.local === 'barbearia' ? 'Na Barbearia' : 'A Domicílio'}</p>
-                        <p class="text-gray-400 mb-1">Total: R$ ${agendamento.precoTotal.toFixed(2).replace('.', ',')}</p>
-                        ${agendamento.local === 'domicilio' ? `<p class="text-gray-400 mb-1">Endereço: ${agendamento.endereco.rua}, ${agendamento.endereco.numero} - ${agendamento.endereco.bairro}, ${agendamento.endereco.cidade} - ${agendamento.endereco.estado}</p>` : ''}
+                        <div class="p-4">
+                            <div class="flex items-center mb-3">
+                                <img src="${barbeiro.foto}" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                                <div class="ml-3">
+                                    <h3 class="text-lg font-semibold text-gray-900">${barbeiro.nome}</h3>
+                                    <div class="flex items-center">
+                                        <div class="flex text-yellow-400">
+                                            ${renderEstrelas(barbeiro.avaliacao)}
+                                        </div>
+                                        <span class="text-xs text-gray-500 ml-1">(${barbeiro.avaliacoes} avaliações)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex items-center text-sm text-gray-500 mb-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>
+                                    <span>${barbeiro.localizacao}</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-cut mr-1"></i>
+                                    <span>${barbeiro.servicos}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                ${barbeiro.atendeBarbearia ? '<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Atende na barbearia</span>' : ''}
+                                ${barbeiro.atendeDomicilio ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded">Atende a domicílio</span>' : ''}
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-gray-500">A partir de</span>
+                                    <p class="text-lg font-semibold text-gray-900">R$ ${barbeiro.preco.toFixed(2).replace('.', ',')}</p>
+                                </div>
+                                <button class="ver-perfil-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300" data-id="${barbeiro.id}">
+                                    Ver Perfil
+                                </button>
+                            </div>
+                        </div>
                     `;
-                    agendamentosList.appendChild(agendamentoItem);
+                    
+                    contentBarbeiros.appendChild(barbeiroDom);
+                });
+                
+                // Adicionar eventos aos botões de favorito
+                document.querySelectorAll('.favorito-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const barbeiroId = this.getAttribute('data-id');
+                        toggleFavorito(barbeiroId, this);
+                    });
+                });
+                
+                // Adicionar eventos aos botões de ver perfil
+                document.querySelectorAll('.ver-perfil-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const barbeiroId = this.getAttribute('data-id');
+                        localStorage.setItem('barberpro_barbeiro_atual', barbeiroId);
+                        window.location.href = 'barbeiro-perfil.html';
+                    });
+                });
+            }
+            
+            // Função para renderizar estrelas de avaliação
+            function renderEstrelas(avaliacao) {
+                let estrelas = '';
+                
+                // Estrelas cheias
+                for (let i = 1; i <= Math.floor(avaliacao); i++) {
+                    estrelas += '<i class="fas fa-star text-sm"></i>';
+                }
+                
+                // Meia estrela
+                if (avaliacao % 1 >= 0.5) {
+                    estrelas += '<i class="fas fa-star-half-alt text-sm"></i>';
+                }
+                
+                // Estrelas vazias
+                for (let i = Math.ceil(avaliacao); i < 5; i++) {
+                    estrelas += '<i class="far fa-star text-sm"></i>';
+                }
+                
+                return estrelas;
+            }
+            
+            // Função para alternar favorito
+            function toggleFavorito(barbeiroId, button) {
+                const favoritos = JSON.parse(localStorage.getItem('barberpro_favoritos_' + userData.id) || '[]');
+                const index = favoritos.indexOf(barbeiroId);
+                
+                if (index === -1) {
+                    // Adicionar aos favoritos
+                    favoritos.push(barbeiroId);
+                    button.innerHTML = '<i class="fas fa-heart text-red-500"></i>';
+                } else {
+                    // Remover dos favoritos
+                    favoritos.splice(index, 1);
+                    button.innerHTML = '<i class="far fa-heart text-gray-600"></i>';
+                }
+                
+                localStorage.setItem('barberpro_favoritos_' + userData.id, JSON.stringify(favoritos));
+            }
+            
+            // Função para carregar agendamentos
+            function carregarAgendamentos() {
+                const agendamentosList = document.getElementById('agendamentos-list');
+                const noAgendamentos = document.getElementById('no-agendamentos');
+                
+                // Em um app real, isso viria de uma API
+                // Para este exemplo, usaremos dados simulados do localStorage
+                const agendamentos = JSON.parse(localStorage.getItem('barberpro_agendamentos_' + userData.id) || '[]');
+                
+                // Limpar conteúdo atual
+                agendamentosList.innerHTML = '';
+                
+                // Verificar se há agendamentos
+                if (agendamentos.length === 0) {
+                    noAgendamentos.classList.remove('hidden');
+                    return;
+                }
+                
+                // Esconder mensagem de "sem agendamentos"
+                noAgendamentos.classList.add('hidden');
+                
+                // Renderizar agendamentos
+                agendamentos.forEach(agendamento => {
+                    const agendamentoDom = document.createElement('div');
+                    agendamentoDom.className = 'bg-gray-50 rounded-lg p-4 border border-gray-200';
+                    
+                    // Formatar data
+                    const data = new Date(agendamento.data);
+                    const dataFormatada = data.toLocaleDateString('pt-BR');
+                    
+                    agendamentoDom.innerHTML = `
+                        <div class="flex items-center justify-between mb-3">
+                            <div class="flex items-center">
+                                <img src="${agendamento.barbeiro.foto}" alt="Barbeiro" class="w-10 h-10 rounded-full border-2 border-blue-500">
+                                <div class="ml-3">
+                                    <h4 class="font-semibold text-gray-900">${agendamento.barbeiro.nome}</h4>
+                                    <p class="text-sm text-gray-500">${agendamento.servico}</p>
+                                </div>
+                            </div>
+                            <div class="text-right">
+                                <p class="font-semibold text-gray-900">R$ ${agendamento.valor.toFixed(2).replace('.', ',')}</p>
+                                <span class="text-xs text-gray-500">${agendamento.status}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-between text-sm">
+                            <div>
+                                <p class="text-gray-700"><i class="far fa-calendar mr-1"></i> ${dataFormatada}</p>
+                                <p class="text-gray-700"><i class="far fa-clock mr-1"></i> ${agendamento.horario}</p>
+                            </div>
+                            <div>
+                                <button class="text-blue-600 hover:underline">Ver detalhes</button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    agendamentosList.appendChild(agendamentoDom);
+                });
+            }
+            
+            // Função para carregar favoritos
+            function carregarFavoritos() {
+                const favoritosList = document.getElementById('favoritos-list');
+                const noFavoritos = document.getElementById('no-favoritos');
+                
+                // Obter IDs dos favoritos
+                const favoritosIds = JSON.parse(localStorage.getItem('barberpro_favoritos_' + userData.id) || '[]');
+                
+                // Limpar conteúdo atual
+                favoritosList.innerHTML = '';
+                
+                // Verificar se há favoritos
+                if (favoritosIds.length === 0) {
+                    noFavoritos.classList.remove('hidden');
+                    return;
+                }
+                
+                // Esconder mensagem de "sem favoritos"
+                noFavoritos.classList.add('hidden');
+                
+                // Em um app real, isso viria de uma API
+                // Para este exemplo, usaremos dados simulados
+                const todosBarbeiros = [
+                    {
+                        id: 'barb1',
+                        nome: 'Carlos Silva',
+                        foto: 'https://randomuser.me/api/portraits/men/32.jpg',
+                        avaliacao: 4.5,
+                        avaliacoes: 48,
+                        localizacao: 'Bela Vista, São Paulo - SP',
+                        servicos: 'Corte, Barba, Degradê',
+                        atendeBarbearia: true,
+                        atendeDomicilio: true,
+                        preco: 40.00,
+                        imagem: 'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                    },
+                    {
+                        id: 'barb2',
+                        nome: 'Pedro Santos',
+                        foto: 'https://randomuser.me/api/portraits/men/22.jpg',
+                        avaliacao: 5.0,
+                        avaliacoes: 62,
+                        localizacao: 'Pinheiros, São Paulo - SP',
+                        servicos: 'Corte, Barba, Sobrancelha',
+                        atendeBarbearia: true,
+                        atendeDomicilio: false,
+                        preco: 45.00,
+                        imagem: 'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80'
+                    },
+                    {
+                        id: 'barb3',
+                        nome: 'Lucas Oliveira',
+                        foto: 'https://randomuser.me/api/portraits/men/55.jpg',
+                        avaliacao: 4.0,
+                        avaliacoes: 35,
+                        localizacao: 'Vila Mariana, São Paulo - SP',
+                        servicos: 'Corte, Degradê, Coloração',
+                        atendeBarbearia: false,
+                        atendeDomicilio: true,
+                        preco: 50.00,
+                        imagem: 'https://images.unsplash.com/photo-1585747860715-2ba37e788b70?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80'
+                    }
+                ];
+                
+                // Filtrar barbeiros favoritos
+                const favoritos = todosBarbeiros.filter(barbeiro => favoritosIds.includes(barbeiro.id));
+                
+                // Renderizar favoritos
+                favoritos.forEach(barbeiro => {
+                    const barbeiroDom = document.createElement('div');
+                    barbeiroDom.className = 'bg-white rounded-lg shadow overflow-hidden';
+                    barbeiroDom.innerHTML = `
+                        <div class="relative">
+                            <img src="${barbeiro.imagem}" alt="Barbearia" class="w-full h-48 object-cover">
+                            <div class="absolute top-2 right-2">
+                                <button class="favorito-btn bg-white rounded-full p-2 shadow hover:bg-gray-100" data-id="${barbeiro.id}">
+                                    <i class="fas fa-heart text-red-500"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex items-center mb-3">
+                                <img src="${barbeiro.foto}" alt="Barbeiro" class="w-12 h-12 rounded-full border-2 border-blue-500">
+                                <div class="ml-3">
+                                    <h3 class="text-lg font-semibold text-gray-900">${barbeiro.nome}</h3>
+                                    <div class="flex items-center">
+                                        <div class="flex text-yellow-400">
+                                            ${renderEstrelas(barbeiro.avaliacao)}
+                                        </div>
+                                        <span class="text-xs text-gray-500 ml-1">(${barbeiro.avaliacoes} avaliações)</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <div class="flex items-center text-sm text-gray-500 mb-1">
+                                    <i class="fas fa-map-marker-alt mr-1"></i>
+                                    <span>${barbeiro.localizacao}</span>
+                                </div>
+                                <div class="flex items-center text-sm text-gray-500">
+                                    <i class="fas fa-cut mr-1"></i>
+                                    <span>${barbeiro.servicos}</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap gap-1 mb-3">
+                                ${barbeiro.atendeBarbearia ? '<span class="bg-blue-100 text-blue-800 text-xs font-medium px-2 py-0.5 rounded">Atende na barbearia</span>' : ''}
+                                ${barbeiro.atendeDomicilio ? '<span class="bg-green-100 text-green-800 text-xs font-medium px-2 py-0.5 rounded">Atende a domicílio</span>' : ''}
+                            </div>
+                            <div class="flex justify-between items-center">
+                                <div>
+                                    <span class="text-xs text-gray-500">A partir de</span>
+                                    <p class="text-lg font-semibold text-gray-900">R$ ${barbeiro.preco.toFixed(2).replace('.', ',')}</p>
+                                </div>
+                                <button class="ver-perfil-btn bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-300" data-id="${barbeiro.id}">
+                                    Ver Perfil
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                    
+                    favoritosList.appendChild(barbeiroDom);
+                });
+                
+                // Adicionar eventos aos botões de favorito
+                document.querySelectorAll('#favoritos-list .favorito-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const barbeiroId = this.getAttribute('data-id');
+                        
+                        // Remover dos favoritos
+                        const favoritos = JSON.parse(localStorage.getItem('barberpro_favoritos_' + userData.id) || '[]');
+                        const index = favoritos.indexOf(barbeiroId);
+                        
+                        if (index !== -1) {
+                            favoritos.splice(index, 1);
+                            localStorage.setItem('barberpro_favoritos_' + userData.id, JSON.stringify(favoritos));
+                        }
+                        
+                        // Recarregar favoritos
+                        carregarFavoritos();
+                    });
+                });
+                
+                // Adicionar eventos aos botões de ver perfil
+                document.querySelectorAll('#favoritos-list .ver-perfil-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const barbeiroId = this.getAttribute('data-id');
+                        localStorage.setItem('barberpro_barbeiro_atual', barbeiroId);
+                        window.location.href = 'barbeiro-perfil.html';
+                    });
                 });
             }
         });
     </script>
 </body>
 </html>
-
-
