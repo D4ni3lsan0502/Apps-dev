@@ -30,6 +30,18 @@
                     </div>
                     <div class="mb-4">
                         <label for="cep" class="block text-sm font-medium text-gray-700 mb-1">CEP*</label>
+                        <input type="text" id="cep" maxlength="9" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2">
+
+                        <div class="flex space-x-2 mb-2">
+                            <div class="flex-1">
+                                <label for="numero" class="block text-sm font-medium text-gray-700 mb-1">Número*</label>
+                                <input type="text" id="numero" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div class="flex-1">
+                                <label for="complemento" class="block text-sm font-medium text-gray-700 mb-1">Complemento</label>
+                                <input type="text" id="complemento" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                        </div>
                         <input type="text" id="cep" maxlength="9" required class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500">
                     </div>
                     <div class="mb-4">
@@ -141,7 +153,29 @@
             atendimento: atendBarbearia.checked ? 'barbearia' : 'domicilio'
         };
 
-        // Recupera usuários existentes ou inicializa um array vazio
+        // Envia os dados para o backend (Node.js/Express) que salva no MongoDB
+        fetch('/api/clientes', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(usuario)
+        })
+        .then(response => {
+            if (!response.ok) throw new Error('Erro ao cadastrar no banco de dados');
+            return response.json();
+        })
+        .then(data => {
+            // Cadastro localStorage (opcional, pode remover se não quiser duplicidade)
+            const usuarios = JSON.parse(localStorage.getItem('barberpro_user')) || [];
+            usuarios.push(usuario);
+            localStorage.setItem('barberpro_user', JSON.stringify(usuarios));
+            alert('Cadastro realizado com sucesso!');
+            window.location.href = 'cliente-dashboard.html';
+        })
+        .catch(error => {
+            alert('Erro ao cadastrar: ' + error.message);
+        });
         const usuarios = JSON.parse(localStorage.getItem('barberpro_user')) || [];
         usuarios.push(usuario);
         localStorage.setItem('barberpro_user', JSON.stringify(usuarios));

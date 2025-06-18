@@ -506,13 +506,80 @@ const progressBar = document.getElementById('progress-bar');
                 concluirButton.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Concluindo...';
 
                 // Coleta de dados completa
-                const barbeiroData = { /* ... a lógica de coleta de dados continua a mesma ... */ };
+                // Monta o objeto barbeiroData com todos os campos do formulário
+                const barbeiroData = {
+                    nome: document.getElementById('nome').value,
+                    telefone: document.getElementById('telefone').value,
+                    email: document.getElementById('email').value,
+                    senha: document.getElementById('senha').value,
+                    foto: document.getElementById('preview-foto').src || '',
+                    tipoAtendimento: {
+                        barbearia: document.getElementById('atend-barbearia').checked,
+                        domicilio: document.getElementById('atend-domicilio').checked
+                    },
+                    endereco: document.getElementById('atend-barbearia').checked ? {
+                        cep: document.getElementById('cep').value,
+                        rua: document.getElementById('rua').value,
+                        numero: document.getElementById('numero').value,
+                        complemento: document.getElementById('complemento').value,
+                        bairro: document.getElementById('bairro').value,
+                        cidade: document.getElementById('cidade').value,
+                        estado: document.getElementById('estado').value
+                    } : null,
+                    servicos: Array.from(document.querySelectorAll('.servico-item')).map(item => ({
+                        nome: item.querySelector('.servico-nome').value,
+                        preco: item.querySelector('.servico-preco').value,
+                        descricao: item.querySelector('.servico-descricao').value,
+                        duracao: item.querySelector('.servico-duracao').value
+                    })),
+                    pagamentos: {
+                        dinheiro: document.getElementById('pag-dinheiro').checked,
+                        credito: document.getElementById('pag-credito').checked,
+                        debito: document.getElementById('pag-debito').checked,
+                        pix: document.getElementById('pag-pix').checked,
+                        transferencia: document.getElementById('pag-transferencia').checked,
+                        pixDados: document.getElementById('pag-pix').checked ? {
+                            tipo: document.getElementById('pix-tipo').value,
+                            chave: document.getElementById('pix-chave').value
+                        } : null,
+                        transferenciaDados: document.getElementById('pag-transferencia').checked ? {
+                            banco: document.getElementById('banco').value,
+                            tipoConta: document.getElementById('tipo-conta').value,
+                            agencia: document.getElementById('agencia').value,
+                            conta: document.getElementById('conta').value,
+                            digito: document.getElementById('digito').value
+                        } : null
+                    },
+                    horarios: [
+                        'segunda', 'terca', 'quarta', 'quinta', 'sexta', 'sabado', 'domingo'
+                    ].map(dia => ({
+                        dia,
+                        ativo: document.getElementById(`dia-${dia}`).checked,
+                        inicio: document.getElementById(`${dia}-inicio`).value,
+                        fim: document.getElementById(`${dia}-fim`).value
+                    }))
+                };
+
+                // Envia os dados para a API backend (Node.js/Express) que salva no MongoDB
+                try {
+                    const response = await fetch('/api/barbeiros', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(barbeiroData)
+                    });
+                    if (!response.ok) throw new Error('Erro ao salvar cadastro no banco de dados.');
+                } catch (err) {
+                    alert('Erro ao salvar cadastro: ' + err.message);
+                    concluirButton.disabled = false;
+                    concluirButton.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Concluir Cadastro';
+                    return;
+                }
                 console.log("DADOS FINAIS PARA ENVIO:", JSON.stringify(barbeiroData, null, 2));
 
                 // Simulação de sucesso
                 setTimeout(() => {
                     alert('Cadastro realizado com sucesso!');
-                    window.location.href = 'barbeiro-dashboard-v2.html';
+                    window.location.href = 'barbeiro-dashboard.html';
                 }, 1000);
             });
 
