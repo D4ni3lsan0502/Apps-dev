@@ -1,12 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #000000; /* Fundo preto */
-    color: #ffffff; /* Texto branco */
+    background-color: #f5f5f5;
 }
 
 .barber-card {
-    background: #1a1a1a; /* Cinza escuro para cards */
-    box-shadow: none; /* Remover sombras */
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
 .service-card:hover {
@@ -19,16 +20,16 @@ body {
 }
 
 .calendar-day:hover:not(.disabled):not(.selected) {
-    background-color: #333333; /* Cinza mais claro no hover */
+    background-color: #e2e8f0;
 }
 
 .selected {
-    background-color: #ffffff; /* Branco para seleção */
-    color: #000000; /* Texto preto na seleção */
+    background-color: #1e40af;
+    color: white;
 }
 
 .disabled {
-    color: #aaaaaa;
+    color: #cbd5e1;
     cursor: not-allowed;
 }
 
@@ -37,12 +38,12 @@ body {
 }
 
 .time-slot:hover:not(.booked) {
-    background-color: #ffffff; /* Branco no hover */
-    color: #000000; /* Texto preto no hover */
+    background-color: #1e40af;
+    color: white;
 }
 
 .booked {
-    background-color: #ff4500; /* Laranja avermelhado para agendado */
+    background-color: #ef4444;
     color: white;
     cursor: not-allowed;
 }
@@ -71,18 +72,18 @@ body {
 }
 
 .paid {
-    background-color: #90ee90; /* Verde claro */
-    color: #000000; /* Texto preto */
+    background-color: #dcfce7;
+    color: #166534;
 }
 
 .pending {
-    background-color: #ffd700; /* Amarelo dourado */
-    color: #000000; /* Texto preto */
+    background-color: #fef3c7;
+    color: #92400e;
 }
 
 .canceled {
-    background-color: #ff4500; /* Laranja avermelhado */
-    color: #ffffff; /* Texto branco */
+    background-color: #fee2e2;
+    color: #991b1b;
 }
 
 /* Mobile menu animation */
@@ -109,6 +110,3 @@ body {
         margin-top: 1.5rem;
     }
 }
-
-
-/* Dark mode adjustments */
