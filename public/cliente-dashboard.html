@@ -9,6 +9,32 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="public/css/styles.css">
+    <script>
+        // Corrige o fechamento do menu ao clicar nos links de menu
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                // Configurações
+                const configLink = document.querySelector('a[href="cliente-configuracoes.html"]');
+                if (configLink) {
+                    configLink.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.getElementById('user-menu').classList.add('hidden');
+                        window.location.href = 'cliente-configuracoes.html';
+                    });
+                }
+                // Logout
+                const logoutBtn = document.getElementById('logout-button');
+                if (logoutBtn) {
+                    logoutBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        document.getElementById('user-menu').classList.add('hidden');
+                        localStorage.removeItem('barberpro_user');
+                        window.location.href = 'login.html';
+                    });
+                }
+            }, 100);
+        });
+    </script>
 </head>
 <body class="bg-gray-100">
     <!-- Navbar -->
