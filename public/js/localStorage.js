@@ -1,23 +1,23 @@
 // Salvar usuário
-function salvarUsuario(usuario) {
+function salvarUsuario(cliente) {
   localStorage.setItem('barberpro_user', JSON.stringify(usuarios));
 }
-function cadastrarUsuario(usuario) {
+function cadastrarUsuario(cliente) {
   localStorage.setItem('barberpro_user', JSON.stringify(usuario));
 }
-function obterUsuario() {
+function obterUsuario(cliente) {
   return JSON.parse(localStorage.getItem('barberpro_user'));
 }
 
 // Remover usuário
-function removerUsuario() {
+function removerUsuario(cliente) {
   localStorage.removeItem('barberpro_user');
 }
-function obterBarbeiros() {
+function obterBarbeiros(cliente) {
   return JSON.parse(localStorage.getItem('barberpro_barber')) || [];
 }
 
-function removerBarbeiros() {
+function removerBarbeiros(barbeiro) {
   localStorage.removeItem('barberpro_barber');
 }
 // Adicionar barbeiro
