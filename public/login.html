@@ -135,8 +135,18 @@
             
             document.getElementById('login-cliente-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const email = document.getElementById('email-cliente').value;
-    const senha = document.getElementById('senha-cliente').value;
+    const email = document.getElementById('email-cliente').value.trim();
+    const senha = document.getElementById('senha-cliente').value.trim();
+
+    const usuarios = JSON.parse(localStorage.getItem('barberpro_user')) || [];
+    const usuarioCadastrado = usuarios.find(u => u.email === email && u.senha === senha);
+
+    if (usuarioCadastrado && usuarioCadastrado.atendimento) {
+        window.location.href = 'cliente-dashboard.html';
+    } else {
+        alert('Email ou senha incorretos!');
+    }
+});
 
     // Buscar usuário cadastrado
     const usuarioCadastrado = JSON.parse(localStorage.getItem('cliente'));
@@ -174,7 +184,6 @@ if (
         alert('Email ou senha incorretos!');
     }
 });
-        });
     </script>
 </body>
 </html>
