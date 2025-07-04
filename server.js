@@ -6,6 +6,8 @@ const jwt = require('jsonwebtoken');
 const cors = require('cors');
 const User = require('./models/User');
 const path = require('path');
+const Client = require('./models/Client');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -85,6 +87,51 @@ app.get('/usuarios', async (req, res) => {
     res.json(usuarios);
   } catch (err) {
     res.status(500).json({ error: 'Erro ao buscar usuários' });
+  }
+});
+
+// Cadastro de cliente (enviado pelo formulário HTML)
+app.post('/api/clientes', async (req, res) => {
+  try {
+    const {
+      nome,
+      email,
+      senha,
+      cep,
+      rua,
+      bairro,
+      cidade,
+      estado,
+      atendimento
+    } = req.body;
+
+    if (!nome || !email || !senha) {
+      return res.status(400).json({ message: 'Nome, email e senha são obrigatórios.' });
+    }
+
+    const existe = await Client.findOne({ email });
+    if (existe) {
+      return res.status(400).json({ message: 'Cliente com este email já existe.' });
+    }
+
+    const hash = await bcrypt.hash(senha, 10);
+
+    const novoCliente = await Client.create({
+      nome,
+      email,
+      senha: hash,
+      cep,
+      rua,
+      bairro,
+      cidade,
+      estado,
+      atendimento
+    });
+
+    res.status(201).json({ message: 'Cliente cadastrado com sucesso!', cliente: novoCliente });
+  } catch (err) {
+    console.error('Erro ao cadastrar cliente:', err);
+    res.status(500).json({ message: 'Erro ao cadastrar no banco de dados.' });
   }
 });
 
