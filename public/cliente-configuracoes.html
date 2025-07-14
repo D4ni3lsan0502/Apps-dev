@@ -291,8 +291,9 @@
             });
             
             // Load user data
+            const token = localStorage.getItem('barberpro_token');
             const userData = JSON.parse(localStorage.getItem('barberpro_user') || '{}');
-            if (!userData.id) {
+            if (!token || !userData.nome) {
                 // Redirect to login if not logged in
                 window.location.href = 'login.html';
                 return;

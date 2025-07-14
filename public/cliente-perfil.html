@@ -6,7 +6,7 @@
     <title>BarberPro - Perfil do Cliente</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-gray-100">
     <!-- Navbar -->
@@ -212,8 +212,9 @@
             });
             
             // Load user data
+            const token = localStorage.getItem('barberpro_token');
             const userData = JSON.parse(localStorage.getItem('barberpro_user') || '{}');
-            if (!userData.id) {
+            if (!token || !userData.nome) {
                 // Redirect to login if not logged in
                 window.location.href = 'login.html';
                 return;
@@ -234,14 +235,11 @@
             document.getElementById('data_nascimento').value = userData.data_nascimento || '';
             
             // Address fields
-            // ...código existente...
-
-// Após carregar os campos do usuário, adicione:
-const cepInput = document.getElementById('cep');
-const cidadeInput = document.getElementById('cidade');
-const bairroInput = document.getElementById('bairro');
-const estadoInput = document.getElementById('estado');
-const enderecoInput = document.getElementById('endereco');
+            const cepInput = document.getElementById('cep');
+            const cidadeInput = document.getElementById('cidade');
+            const bairroInput = document.getElementById('bairro');
+            const estadoInput = document.getElementById('estado');
+            const enderecoInput = document.getElementById('endereco');
 
 cepInput.addEventListener('blur', function() {
     const cep = cepInput.value.replace(/\D/g, '');

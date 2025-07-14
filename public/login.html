@@ -6,7 +6,7 @@
     <title>BarberPro - Login</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="public/css/styles.css"> <!-- Corrigido caminho CSS -->
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="bg-gray-100 min-h-screen flex items-center justify-center">
     <div class="container mx-auto px-4 py-8">
@@ -34,9 +34,12 @@
                             <label for="email-cliente" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input type="email" id="email-cliente" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="seu@email.com" required>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-2">
                             <label for="senha-cliente" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
                             <input type="password" id="senha-cliente" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required>
+                        </div>
+                        <div class="mb-4 text-right">
+                            <a href="esqueci-senha.html" class="text-xs text-blue-600 hover:underline">Esqueci minha senha</a>
                         </div>
                         <div class="mb-6">
                             <button type="submit" class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-300">
@@ -59,9 +62,12 @@
                             <label for="email-barbeiro" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                             <input type="email" id="email-barbeiro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="seu@email.com" required>
                         </div>
-                        <div class="mb-6">
+                        <div class="mb-2">
                             <label for="senha-barbeiro" class="block text-sm font-medium text-gray-700 mb-1">Senha</label>
                             <input type="password" id="senha-barbeiro" class="w-full border border-gray-300 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="••••••••" required>
+                        </div>
+                        <div class="mb-4 text-right">
+                            <a href="esqueci-senha.html" class="text-xs text-blue-600 hover:underline">Esqueci minha senha</a>
                         </div>
                         <div class="mb-6">
                             <button type="submit" class="w-full bg-slate-800 text-white py-2 px-4 rounded-md hover:bg-slate-900 transition duration-300">
@@ -133,46 +139,46 @@
                 formCliente.classList.add('hidden');
             });
             
+            async function handleLogin(email, senha, userType) {
+                try {
+                    const response = await fetch('/api/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email, senha, tipo: userType })
+                    });
+
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        localStorage.setItem('barberpro_token', data.token);
+                        localStorage.setItem('barberpro_user', JSON.stringify(data.user));
+                        if (data.user.roles.includes('cliente') && data.user.tipo === 'cliente') {
+                            window.location.href = '/cliente-dashboard.html';
+                        } else if (data.user.roles.includes('barbeiro') && data.user.tipo === 'barbeiro') {
+                            window.location.href = '/barbeiro-dashboard.html';
+                        }
+                    } else {
+                        alert(data.message);
+                    }
+                } catch (error) {
+                    console.error('Erro no login:', error);
+                    alert('Ocorreu um erro. Tente novamente.');
+                }
+            }
+
             document.getElementById('login-cliente-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-cliente').value;
-    const senha = document.getElementById('senha-cliente').value;
-    // Buscar usuário cadastrado
-    const usuarioCadastrado = JSON.parse(localStorage.getItem('cliente'));
-    
-if (
-    usuarioCadastrado &&
-    usuarioCadastrado.email === email &&
-    usuarioCadastrado.senha === senha &&
-    usuarioCadastrado.tipo === 'cliente'
-) {
-    window.location.href = '/cliente-dashboard.html';
-} else {
-    alert('Email ou senha incorretos!');
-}
-});
+                e.preventDefault();
+                const email = document.getElementById('email-cliente').value;
+                const senha = document.getElementById('senha-cliente').value;
+                handleLogin(email, senha, 'cliente');
+            });
 
-            // Formulário de login barbeiro
             document.getElementById('login-barbeiro-form').addEventListener('submit', function(e) {
-    e.preventDefault();
-    const email = document.getElementById('email-barbeiro').value;
-    const senha = document.getElementById('senha-barbeiro').value;
-
-    // Buscar barbeiro cadastrado
-    const barbeiroCadastrado = JSON.parse(localStorage.getItem('barberpro_barber'));
-
-    if (
-        barbeiroCadastrado &&
-        barbeiroCadastrado.email === email &&
-        barbeiroCadastrado.senha === senha
-    ) {
-        // Login válido
-        localStorage.setItem('barberpro_barber', JSON.stringify(barbeiroCadastrado));
-        window.location.href = '/barbeiro-dashboard.html';
-    } else {
-        alert('Email ou senha incorretos!');
-    }
-});
+                e.preventDefault();
+                const email = document.getElementById('email-barbeiro').value;
+                const senha = document.getElementById('senha-barbeiro').value;
+                handleLogin(email, senha, 'barbeiro');
+            });
         });
     </script>
 </body>

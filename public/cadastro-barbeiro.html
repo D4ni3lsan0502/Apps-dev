@@ -16,6 +16,11 @@
             <div class="text-center mb-8">
                 <h1 class="text-3xl font-bold text-gray-800">BarberPro</h1>
                 <p class="text-gray-600 mt-2">Cadastro de Barbeiro</p>
+                <div class="mt-4 text-center">
+                    <a href="login.html" class="text-blue-600 hover:underline">
+                        <i class="fas fa-arrow-left mr-2"></i>Voltar ao Login
+                    </a>
+                </div>
             </div>
 
             <div class="bg-white rounded-lg shadow-lg p-6">
@@ -194,6 +199,11 @@
                                                 (min)*</label><input type="number"
                                                 class="servico-duracao w-full border border-gray-300 rounded-md px-3 py-2"
                                                 value="30" required></div>
+                                    </div>
+                                    <div class="text-right mt-2">
+                                        <button type="button" class="text-red-500 hover:text-red-700 text-sm font-medium btn-remover-servico">
+                                            <i class="fas fa-trash-alt mr-1"></i>Excluir Serviço
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -560,32 +570,54 @@ const progressBar = document.getElementById('progress-bar');
                     }))
                 };
 
+                const finalBarbeiroData = {
+                    nome: barbeiroData.nome,
+                    email: barbeiroData.email,
+                    senha: barbeiroData.senha,
+                    tipo: 'barbeiro',
+                    cep: barbeiroData.endereco ? barbeiroData.endereco.cep : undefined,
+                    rua: barbeiroData.endereco ? barbeiroData.endereco.rua : undefined,
+                    bairro: barbeiroData.endereco ? barbeiroData.endereco.bairro : undefined,
+                    cidade: barbeiroData.endereco ? barbeiroData.endereco.cidade : undefined,
+                    estado: barbeiroData.endereco ? barbeiroData.endereco.estado : undefined,
+                    atendimento: barbeiroData.tipoAtendimento.domicilio ? 'domicilio' : 'barbearia'
+                };
+
                 // Envia os dados para a API backend (Node.js/Express) que salva no MongoDB
                 try {
-                    const response = await fetch('/api/barbeiros', {
+                    const response = await fetch('/api/cadastro', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify(barbeiroData)
+                        body: JSON.stringify(finalBarbeiroData)
                     });
-                    if (!response.ok) throw new Error('Erro ao salvar cadastro no banco de dados.');
+                    if (!response.ok) {
+                        const errorData = await response.json();
+                        throw new Error(errorData.message || 'Erro ao salvar cadastro no banco de dados.');
+                    }
+                     alert('Cadastro realizado com sucesso!');
+                    window.location.href = 'login.html';
                 } catch (err) {
                     alert('Erro ao salvar cadastro: ' + err.message);
                     concluirButton.disabled = false;
                     concluirButton.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Concluir Cadastro';
                     return;
                 }
-                console.log("DADOS FINAIS PARA ENVIO:", JSON.stringify(barbeiroData, null, 2));
-
-                // Simulação de sucesso
-                setTimeout(() => {
-                    alert('Cadastro realizado com sucesso!');
-                    window.location.href = 'barbeiro-dashboard.html';
-                }, 1000);
             });
 
             // --- LÓGICAS AUXILIARES (PAGAMENTOS, SERVIÇOS, HORÁRIOS) ---
             document.getElementById('pag-pix').addEventListener('change', (e) => document.getElementById('pix-fields').classList.toggle('hidden', !e.target.checked));
             document.getElementById('pag-transferencia').addEventListener('change', (e) => document.getElementById('transferencia-fields').classList.toggle('hidden', !e.target.checked));
+
+            function handleServicoButtons(container) {
+                container.addEventListener('click', function(e) {
+                    if (e.target.closest('.btn-remover-servico')) {
+                        e.target.closest('.servico-item').remove();
+                    }
+                });
+            }
+
+            const servicosContainer = document.getElementById('servicos-container');
+            handleServicoButtons(servicosContainer);
 
             document.getElementById('btn-add-servico').addEventListener('click', () => {
                 const container = document.getElementById('servicos-container');
