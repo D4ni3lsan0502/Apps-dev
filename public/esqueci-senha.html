@@ -22,17 +22,17 @@
         </div>
         <div class="form-group">
           <label for="email">E-mail:</label>
-          <input type="email" id="email" name="email" class="input" required>
+          <input type="email" id="email" name="email" class="input" required autocomplete="email">
         </div>
         <div class="form-group">
           <label for="nova-senha">Nova senha:</label>
-          <input type="password" id="nova-senha" name="nova-senha" class="input" required>
+          <input type="password" id="nova-senha" name="nova-senha" class="input" required autocomplete="new-password">
         </div>
         <div class="form-group">
           <label for="confirmar-senha">Confirmar nova senha:</label>
-          <input type="password" id="confirmar-senha" name="confirmar-senha" class="input" required>
+          <input type="password" id="confirmar-senha" name="confirmar-senha" class="input" required autocomplete="new-password">
         </div>
-        <button type="submit" class="btn btn-primary btn-block">Redefinir Senha</button>
+        <button type="submit" class="btn btn-primary btn-block" id="btn-redefinir">Redefinir Senha</button>
       </form>
       <div id="mensagem" class="mensagem" aria-live="polite"></div>
       <div class="form-footer">
@@ -41,20 +41,31 @@
     </div>
   </div>
   <script>
-    // Exemplo simples de validação de senha
-    document.getElementById('reset-password-form').addEventListener('submit', async function(e) {
+    const form = document.getElementById('reset-password-form');
+    const mensagem = document.getElementById('mensagem');
+    const btnRedefinir = document.getElementById('btn-redefinir');
+
+    // Limpa mensagem ao digitar
+    form.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('input', () => {
+        mensagem.textContent = '';
+      });
+    });
+
+    form.addEventListener('submit', async function(e) {
       e.preventDefault();
+      btnRedefinir.disabled = true;
       const tipoUsuario = document.getElementById('tipo-usuario').value;
       const email = document.getElementById('email').value;
       const senha = document.getElementById('nova-senha').value;
       const confirmar = document.getElementById('confirmar-senha').value;
-      const mensagem = document.getElementById('mensagem');
-      mensagem.textContent = ''; // Limpa mensagem anterior
+      mensagem.textContent = '';
 
       // Validação de campos obrigatórios
       if (!tipoUsuario || !email || !senha || !confirmar) {
         mensagem.textContent = 'Preencha todos os campos.';
         mensagem.style.color = 'red';
+        btnRedefinir.disabled = false;
         return;
       }
 
@@ -62,12 +73,14 @@
       if (senha.length < 6) {
         mensagem.textContent = 'A senha deve ter pelo menos 6 caracteres.';
         mensagem.style.color = 'red';
+        btnRedefinir.disabled = false;
         return;
       }
 
       if (senha !== confirmar) {
         mensagem.textContent = 'As senhas não coincidem.';
         mensagem.style.color = 'red';
+        btnRedefinir.disabled = false;
         return;
       }
       try {
@@ -84,6 +97,7 @@
         if (resposta.ok) {
           mensagem.textContent = resultado.mensagem || 'Senha redefinida com sucesso!';
           mensagem.style.color = 'green';
+          form.reset();
         } else {
           mensagem.textContent = resultado.erro 
             ? `Erro ao redefinir senha: ${resultado.erro}` 
@@ -94,6 +108,7 @@
         mensagem.textContent = 'Erro de conexão com o servidor.';
         mensagem.style.color = 'red';
       }
+      btnRedefinir.disabled = false;
     });
   </script>
   <!-- ...existing code... -->
