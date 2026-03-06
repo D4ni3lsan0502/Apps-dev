@@ -47,6 +47,56 @@ describe('API Validation Tests', () => {
   });
 });
 
+describe('Authentication & Cadastro Tests', () => {
+  let User;
+  beforeAll(() => {
+    User = require('../models/User');
+    // Mock the Mongoose save and find operations for User
+    User.prototype.save = jest.fn().mockResolvedValue({});
+    User.findOne = jest.fn().mockResolvedValue(null); // Simulate no existing user
+    User.create = jest.fn().mockResolvedValue({ _id: 'mock_user_id', nome: 'Mock User', email: 'mock@test.com' });
+  });
+
+  it('should successfully register a Barbeiro', async () => {
+     const payload = {
+        nome: 'Test Barbeiro',
+        email: 'barbeiro@test.com',
+        senha: 'password123',
+        tipo: 'barbeiro'
+     };
+
+     const res = await request(app)
+        .post('/api/cadastro')
+        .send(payload);
+
+     expect(res.statusCode).toEqual(201);
+     expect(res.body.message).toContain('sucesso');
+     expect(User.create).toHaveBeenCalled();
+  });
+
+  it('should successfully register a Cliente', async () => {
+     const payload = {
+        nome: 'Test Cliente',
+        email: 'cliente@test.com',
+        senha: 'password123',
+        cep: '01001000',
+        rua: 'Rua Teste',
+        bairro: 'Centro',
+        cidade: 'São Paulo',
+        estado: 'SP',
+        atendimento: 'barbearia'
+     };
+
+     const res = await request(app)
+        .post('/api/clientes')
+        .send(payload);
+
+     expect(res.statusCode).toEqual(201);
+     expect(res.body.message).toContain('sucesso');
+     expect(User.create).toHaveBeenCalled();
+  });
+});
+
 describe('Agendamento Controller Mock Tests', () => {
   let Agendamento;
   beforeAll(() => {

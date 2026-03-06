@@ -24,14 +24,41 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 // Middleware
-app.use(cors());
+const allowedOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  process.env.FRONTEND_URL // URL de produção (Railway, Vercel, etc)
+].filter(Boolean); // Remove falsy values if FRONTEND_URL is undefined
+
+app.use(cors({
+  origin: function(origin, callback) {
+    // Permitir requisições sem origin (como ferramentas do mesmo servidor ou cURL)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.indexOf(origin) === -1) {
+      const msg = 'A política de CORS deste site não permite o acesso a partir da Origem especificada.';
+      return callback(new Error(msg), false);
+    }
+    return callback(null, true);
+  },
+  credentials: true
+}));
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Conectar ao MongoDB (sem opções deprecated)
-mongoose.connect(process.env.MONGODB_URI)
-  .then(() => console.log('✅ MongoDB conectado!'))
-  .catch(err => console.error('❌ Erro ao conectar ao MongoDB:', err));
+if (process.env.USE_MEMORY_DB === 'true') {
+  const { MongoMemoryServer } = require('mongodb-memory-server');
+  MongoMemoryServer.create().then((mongoServer) => {
+    mongoose.connect(mongoServer.getUri())
+      .then(() => console.log('✅ MongoDB em Memória conectado!'))
+      .catch(err => console.error('❌ Erro ao conectar ao MongoDB em Memória:', err));
+  });
+} else {
+  mongoose.connect(process.env.MONGODB_URI)
+    .then(() => console.log('✅ MongoDB conectado!'))
+    .catch(err => console.error('❌ Erro ao conectar ao MongoDB:', err));
+}
 
 // Rotas
 const authRoutes = require('./src/routes/authRoutes');
