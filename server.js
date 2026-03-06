@@ -55,9 +55,19 @@ if (process.env.USE_MEMORY_DB === 'true') {
       .catch(err => console.error('❌ Erro ao conectar ao MongoDB em Memória:', err));
   });
 } else {
+  // Tentativa de conectar ao MongoDB Atlas
   mongoose.connect(process.env.MONGODB_URI)
     .then(() => console.log('✅ MongoDB conectado!'))
-    .catch(err => console.error('❌ Erro ao conectar ao MongoDB:', err));
+    .catch(err => {
+      console.error('❌ Erro ao conectar ao MongoDB. Iniciando MongoDB em Memória como fallback...', err);
+      // Fallback para memória se o Atlas falhar (Ex: ENOTFOUND DNS resolution)
+      const { MongoMemoryServer } = require('mongodb-memory-server');
+      MongoMemoryServer.create().then((mongoServer) => {
+        mongoose.connect(mongoServer.getUri())
+          .then(() => console.log('✅ MongoDB em Memória (Fallback) conectado!'))
+          .catch(err2 => console.error('❌ Erro ao conectar ao Fallback MongoDB em Memória:', err2));
+      });
+    });
 }
 
 // Rotas
