@@ -1,3 +1,14 @@
+// Helper: Função para escapar HTML (Prevenção de XSS)
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // Script para visualização completa de agendamentos do barbeiro
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar componentes
@@ -156,42 +167,42 @@ function renderizarTabelaAgendamentos(agendamentos) {
             <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="${clienteFoto}" alt="">
+                        <img class="h-10 w-10 rounded-full" src="${escapeHTML(clienteFoto)}" alt="">
                     </div>
                     <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">${clienteNome}</div>
-                        <div class="text-sm text-gray-500">${clienteTelefone}</div>
+                        <div class="text-sm font-medium text-gray-900">${escapeHTML(clienteNome)}</div>
+                        <div class="text-sm text-gray-500">${escapeHTML(clienteTelefone)}</div>
                     </div>
                 </div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${servicoNome}</div>
-                <div class="text-sm text-gray-500">${servicoDuracao}</div>
+                <div class="text-sm text-gray-900">${escapeHTML(servicoNome)}</div>
+                <div class="text-sm text-gray-500">${escapeHTML(servicoDuracao)}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${dataExibicao}, ${agendamento.horario}</div>
+                <div class="text-sm text-gray-900">${escapeHTML(dataExibicao)}, ${escapeHTML(agendamento.horario)}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${agendamento.local || 'Barbearia'}</div>
+                <div class="text-sm text-gray-900">${escapeHTML(agendamento.local || 'Barbearia')}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${valorFormatado}</div>
+                <div class="text-sm text-gray-900">${escapeHTML(valorFormatado)}</div>
             </td>
             <td class="px-6 py-4 whitespace-nowrap">
-                <span class="${statusClass}">${agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1)}</span>
+                <span class="${escapeHTML(statusClass)}">${escapeHTML(agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1))}</span>
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 ${agendamento.status === 'pendente' ? `
-                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${agendamentoID}">
+                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${escapeHTML(agendamentoID)}">
                         <i class="fas fa-check"></i>
                     </button>
                 ` : ''}
                 ${agendamento.status !== 'cancelado' && agendamento.status !== 'concluido' ? `
-                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${agendamentoID}">
+                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${escapeHTML(agendamentoID)}">
                         <i class="fas fa-times"></i>
                     </button>
                 ` : ''}
-                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${agendamentoID}">
+                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${escapeHTML(agendamentoID)}">
                     <i class="fas fa-eye"></i>
                 </button>
             </td>
