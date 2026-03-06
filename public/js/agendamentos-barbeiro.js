@@ -163,50 +163,108 @@ function renderizarTabelaAgendamentos(agendamentos) {
         const clienteTelefone = (agendamento.clienteId && agendamento.clienteId.telefone) ? agendamento.clienteId.telefone : (cliente.telefone || '');
         const clienteFoto = (agendamento.clienteId && agendamento.clienteId.foto) ? agendamento.clienteId.foto : (cliente.foto || 'https://randomuser.me/api/portraits/men/1.jpg');
         
-        tr.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="${escapeHTML(clienteFoto)}" alt="">
-                    </div>
-                    <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">${escapeHTML(clienteNome)}</div>
-                        <div class="text-sm text-gray-500">${escapeHTML(clienteTelefone)}</div>
-                    </div>
-                </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${escapeHTML(servicoNome)}</div>
-                <div class="text-sm text-gray-500">${escapeHTML(servicoDuracao)}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${escapeHTML(dataExibicao)}, ${escapeHTML(agendamento.horario)}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${escapeHTML(agendamento.local || 'Barbearia')}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${escapeHTML(valorFormatado)}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <span class="${escapeHTML(statusClass)}">${escapeHTML(agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1))}</span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                ${agendamento.status === 'pendente' ? `
-                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${escapeHTML(agendamentoID)}">
-                        <i class="fas fa-check"></i>
-                    </button>
-                ` : ''}
-                ${agendamento.status !== 'cancelado' && agendamento.status !== 'concluido' ? `
-                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${escapeHTML(agendamentoID)}">
-                        <i class="fas fa-times"></i>
-                    </button>
-                ` : ''}
-                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${escapeHTML(agendamentoID)}">
-                    <i class="fas fa-eye"></i>
-                </button>
-            </td>
-        `;
+        // Helper block builder
+        function td(content) {
+            const el = document.createElement('td');
+            el.className = "px-6 py-4 whitespace-nowrap";
+            el.appendChild(content);
+            return el;
+        }
+
+        // Col 1: Cliente
+        const divClienteContainer = document.createElement('div');
+        divClienteContainer.className = "flex items-center";
+
+        const divFoto = document.createElement('div');
+        divFoto.className = "flex-shrink-0 h-10 w-10";
+        const imgFoto = document.createElement('img');
+        imgFoto.className = "h-10 w-10 rounded-full";
+        imgFoto.src = clienteFoto;
+        imgFoto.alt = "";
+        divFoto.appendChild(imgFoto);
+
+        const divInfo = document.createElement('div');
+        divInfo.className = "ml-4";
+        const divNome = document.createElement('div');
+        divNome.className = "text-sm font-medium text-gray-900";
+        divNome.textContent = clienteNome;
+        const divTelefone = document.createElement('div');
+        divTelefone.className = "text-sm text-gray-500";
+        divTelefone.textContent = clienteTelefone;
+        divInfo.appendChild(divNome);
+        divInfo.appendChild(divTelefone);
+
+        divClienteContainer.appendChild(divFoto);
+        divClienteContainer.appendChild(divInfo);
+        tr.appendChild(td(divClienteContainer));
+
+        // Col 2: Serviços
+        const divServico = document.createElement('div');
+        const divServNome = document.createElement('div');
+        divServNome.className = "text-sm text-gray-900";
+        divServNome.textContent = servicoNome;
+        const divServDur = document.createElement('div');
+        divServDur.className = "text-sm text-gray-500";
+        divServDur.textContent = servicoDuracao;
+        divServico.appendChild(divServNome);
+        divServico.appendChild(divServDur);
+        tr.appendChild(td(divServico));
+
+        // Col 3: Data e Horário
+        const divData = document.createElement('div');
+        divData.className = "text-sm text-gray-900";
+        divData.textContent = `${dataExibicao}, ${agendamento.horario}`;
+        tr.appendChild(td(divData));
+
+        // Col 4: Local
+        const divLocal = document.createElement('div');
+        divLocal.className = "text-sm text-gray-900";
+        divLocal.textContent = agendamento.local || 'Barbearia';
+        tr.appendChild(td(divLocal));
+
+        // Col 5: Valor Formatado
+        const divValor = document.createElement('div');
+        divValor.className = "text-sm text-gray-900";
+        divValor.textContent = valorFormatado;
+        tr.appendChild(td(divValor));
+
+        // Col 6: Status
+        const spanStatus = document.createElement('span');
+        // Usar escapeHTML por segurança no classname, ou reatribuir com split
+        spanStatus.className = escapeHTML(statusClass);
+        spanStatus.textContent = agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1);
+        tr.appendChild(td(spanStatus));
+
+        // Col 7: Ações
+        const divAcoes = document.createElement('div');
+        divAcoes.className = "text-sm font-medium";
+
+        if (agendamento.status === 'pendente') {
+            const btnConf = document.createElement('button');
+            btnConf.className = "text-blue-600 hover:text-blue-900 mr-3 btn-confirmar";
+            btnConf.setAttribute('data-id', agendamentoID);
+            btnConf.innerHTML = '<i class="fas fa-check"></i>'; // FontAwesome uses static classes, not user input
+            divAcoes.appendChild(btnConf);
+        }
+
+        if (agendamento.status !== 'cancelado' && agendamento.status !== 'concluido') {
+            const btnCanc = document.createElement('button');
+            btnCanc.className = "text-red-600 hover:text-red-900 mr-3 btn-cancelar";
+            btnCanc.setAttribute('data-id', agendamentoID);
+            btnCanc.innerHTML = '<i class="fas fa-times"></i>';
+            divAcoes.appendChild(btnCanc);
+        }
+
+        const btnDet = document.createElement('button');
+        btnDet.className = "text-gray-600 hover:text-gray-900 btn-detalhes";
+        btnDet.setAttribute('data-id', agendamentoID);
+        btnDet.innerHTML = '<i class="fas fa-eye"></i>';
+        divAcoes.appendChild(btnDet);
+
+        const tdAcoes = document.createElement('td');
+        tdAcoes.className = "px-6 py-4 whitespace-nowrap text-sm font-medium";
+        tdAcoes.appendChild(divAcoes);
+        tr.appendChild(tdAcoes);
         
         tabelaBody.appendChild(tr);
     });
