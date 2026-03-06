@@ -36,9 +36,11 @@ mongoose.connect(process.env.MONGODB_URI)
 // Rotas
 const authRoutes = require('./src/routes/authRoutes');
 const userRoutes = require('./src/routes/userRoutes');
+const agendamentoRoutes = require('./src/routes/agendamentoRoutes');
 
 app.use('/api', authRoutes);
 app.use('/api', userRoutes);
+app.use('/api/agendamentos', agendamentoRoutes);
 
 const auth = require('./src/middlewares/authMiddleware');
 const userController = require('./src/controllers/userController');

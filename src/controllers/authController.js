@@ -69,7 +69,7 @@ exports.login = async (req, res) => {
     if (!valid) return res.status(400).json({ message: 'Senha incorreta.' });
 
     const token = jwt.sign({ id: user._id, roles: user.roles }, process.env.JWT_SECRET, { expiresIn: '1d' });
-    res.json({ token, user: { nome: user.nome, email: user.email, roles: user.roles } });
+    res.json({ token, user: { id: user._id.toString(), nome: user.nome, email: user.email, roles: user.roles, tipo: tipo } });
 };
 
 // Cadastro de cliente (enviado pelo formulário HTML)

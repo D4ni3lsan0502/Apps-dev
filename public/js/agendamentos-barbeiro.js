@@ -53,12 +53,12 @@ function atualizarInfoBarbeiro(barbeiro) {
 }
 
 // Função para carregar agendamentos do barbeiro
-function carregarAgendamentos() {
+async function carregarAgendamentos() {
     const usuarioAtual = obterUsuarioLogado();
     if (!usuarioAtual || !usuarioAtual.id) return;
     
     // Usar o AgendamentoStorage para buscar agendamentos do barbeiro logado
-    const agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
+    const agendamentos = await window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
     
     // Renderizar tabela de agendamentos
     renderizarTabelaAgendamentos(agendamentos);
@@ -145,16 +145,22 @@ function renderizarTabelaAgendamentos(agendamentos) {
         const valorFormatado = agendamento.valorTotal ? 
             `R$ ${agendamento.valorTotal.toFixed(2).replace('.', ',')}` : 
             'R$ 0,00';
+
+        // Na API real, clienteId pode vir preenchido e _id é o identificador
+        const agendamentoID = agendamento._id || agendamento.id;
+        const clienteNome = (agendamento.clienteId && agendamento.clienteId.nome) ? agendamento.clienteId.nome : (cliente.nome || 'Cliente');
+        const clienteTelefone = (agendamento.clienteId && agendamento.clienteId.telefone) ? agendamento.clienteId.telefone : (cliente.telefone || '');
+        const clienteFoto = (agendamento.clienteId && agendamento.clienteId.foto) ? agendamento.clienteId.foto : (cliente.foto || 'https://randomuser.me/api/portraits/men/1.jpg');
         
         tr.innerHTML = `
             <td class="px-6 py-4 whitespace-nowrap">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="${cliente.foto || 'https://randomuser.me/api/portraits/men/1.jpg'}" alt="">
+                        <img class="h-10 w-10 rounded-full" src="${clienteFoto}" alt="">
                     </div>
                     <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">${cliente.nome || 'Cliente'}</div>
-                        <div class="text-sm text-gray-500">${cliente.telefone || ''}</div>
+                        <div class="text-sm font-medium text-gray-900">${clienteNome}</div>
+                        <div class="text-sm text-gray-500">${clienteTelefone}</div>
                     </div>
                 </div>
             </td>
@@ -176,16 +182,16 @@ function renderizarTabelaAgendamentos(agendamentos) {
             </td>
             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 ${agendamento.status === 'pendente' ? `
-                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${agendamento.id}">
+                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${agendamentoID}">
                         <i class="fas fa-check"></i>
                     </button>
                 ` : ''}
                 ${agendamento.status !== 'cancelado' && agendamento.status !== 'concluido' ? `
-                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${agendamento.id}">
+                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${agendamentoID}">
                         <i class="fas fa-times"></i>
                     </button>
                 ` : ''}
-                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${agendamento.id}">
+                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${agendamentoID}">
                     <i class="fas fa-eye"></i>
                 </button>
             </td>
@@ -238,17 +244,17 @@ function adicionarEventListenersAcoes() {
 }
 
 // Função para confirmar agendamento
-function confirmarAgendamento(agendamentoId) {
+async function confirmarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'confirmado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento confirmado com sucesso!', 'success');
@@ -258,20 +264,20 @@ function confirmarAgendamento(agendamentoId) {
 }
 
 // Função para cancelar agendamento
-function cancelarAgendamento(agendamentoId) {
+async function cancelarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Confirmar cancelamento
     if (!confirm('Tem certeza que deseja cancelar este agendamento?')) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'cancelado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento cancelado com sucesso!', 'success');
@@ -281,12 +287,12 @@ function cancelarAgendamento(agendamentoId) {
 }
 
 // Função para mostrar detalhes do agendamento
-function mostrarDetalhesAgendamento(agendamentoId) {
+async function mostrarDetalhesAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Buscar agendamento
-    const agendamentos = window.BarberPro.AgendamentoStorage.getAll();
-    const agendamento = agendamentos.find(a => a.id === agendamentoId);
+    const agendamentos = await window.BarberPro.AgendamentoStorage.getAll();
+    const agendamento = agendamentos.find(a => a._id === agendamentoId || a.id === agendamentoId);
     
     if (!agendamento) {
         exibirNotificacao('Agendamento não encontrado.', 'error');
@@ -467,17 +473,17 @@ function mostrarDetalhesAgendamento(agendamentoId) {
 }
 
 // Função para concluir agendamento
-function concluirAgendamento(agendamentoId) {
+async function concluirAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'concluido'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento concluído com sucesso!', 'success');
@@ -599,7 +605,7 @@ function configurarEventListeners() {
 }
 
 // Função para aplicar filtros
-function aplicarFiltros() {
+async function aplicarFiltros() {
     const filtroStatus = document.getElementById('filtro-status');
     const filtroData = document.getElementById('filtro-data');
     
@@ -610,7 +616,7 @@ function aplicarFiltros() {
     if (!usuarioAtual || !usuarioAtual.id) return;
     
     // Buscar todos os agendamentos do barbeiro
-    let agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
+    let agendamentos = await window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
     
     // Filtrar por status
     if (statusSelecionado !== 'todos') {

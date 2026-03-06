@@ -48,12 +48,12 @@ function atualizarInfoBarbeiro(barbeiro) {
 }
 
 // Função para carregar agendamentos do barbeiro
-function carregarAgendamentos() {
+async function carregarAgendamentos() {
     const usuarioAtual = obterUsuarioLogado();
     if (!usuarioAtual || !usuarioAtual.id) return;
     
     // Usar o AgendamentoStorage para buscar agendamentos do barbeiro logado
-    const agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
+    const agendamentos = await window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
     
     // Atualizar estatísticas
     atualizarEstatisticas(agendamentos);
@@ -261,17 +261,17 @@ function adicionarEventListenersAcoes() {
 }
 
 // Função para confirmar agendamento
-function confirmarAgendamento(agendamentoId) {
+async function confirmarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'confirmado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento confirmado com sucesso!', 'success');
@@ -281,20 +281,20 @@ function confirmarAgendamento(agendamentoId) {
 }
 
 // Função para cancelar agendamento
-function cancelarAgendamento(agendamentoId) {
+async function cancelarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Confirmar cancelamento
     if (!confirm('Tem certeza que deseja cancelar este agendamento?')) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'cancelado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento cancelado com sucesso!', 'success');
