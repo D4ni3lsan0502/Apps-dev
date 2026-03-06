@@ -23,6 +23,10 @@
                 </div>
             </div>
 
+            <!-- Mensagem de Erro Geral -->
+            <div id="error-message" class="hidden mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
+            </div>
+
             <div class="bg-white rounded-lg shadow-lg p-6">
                 <form id="cadastro-barbeiro-form">
                     <div class="mb-8">
@@ -506,9 +510,22 @@ const progressBar = document.getElementById('progress-bar');
                 }
             });
 
+            function showError(message) {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = message;
+                errorDiv.classList.remove('hidden');
+                window.scrollTo(0, 0);
+            }
+
+            function hideError() {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.classList.add('hidden');
+            }
+
             // --- LÓGICA DO FORMULÁRIO FINAL ---
             form.addEventListener('submit', async function (e) {
                 e.preventDefault();
+                hideError();
                 if (!validateStep(4)) return;
 
                 const concluirButton = document.getElementById('btn-concluir');
@@ -594,10 +611,10 @@ const progressBar = document.getElementById('progress-bar');
                         const errorData = await response.json();
                         throw new Error(errorData.message || 'Erro ao salvar cadastro no banco de dados.');
                     }
-                     alert('Cadastro realizado com sucesso!');
+                    alert('Cadastro realizado com sucesso!');
                     window.location.href = 'login.html';
                 } catch (err) {
-                    alert('Erro ao salvar cadastro: ' + err.message);
+                    showError('Erro ao salvar cadastro: ' + err.message);
                     concluirButton.disabled = false;
                     concluirButton.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Concluir Cadastro';
                     return;

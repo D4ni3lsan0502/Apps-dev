@@ -13,9 +13,9 @@ async function addRoleOrCreateUser({ nome, email, senha, tipo, extraFields = {} 
             user.roles.push(tipo);
             Object.assign(user, extraFields); // Atualiza campos extras se fornecidos
             await user.save();
-            return { status: 200, message: 'Role added successfully!', user };
+            return { status: 200, message: 'Nova função adicionada com sucesso!', user };
         } else {
-            return { status: 400, message: 'User with this role already exists.' };
+            return { status: 400, message: 'Um usuário com este e-mail já está cadastrado nesta função.' };
         }
     } else {
         // User does not exist, create new user

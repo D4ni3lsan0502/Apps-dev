@@ -95,6 +95,42 @@ describe('Authentication & Cadastro Tests', () => {
      expect(res.body.message).toContain('sucesso');
      expect(User.create).toHaveBeenCalled();
   });
+
+  it('should fail login with wrong email', async () => {
+     User.findOne.mockResolvedValueOnce(null); // No user found
+     const res = await request(app).post('/api/login').send({ email: 'wrong@test.com', senha: '123', tipo: 'cliente' });
+     expect(res.statusCode).toEqual(400);
+     expect(res.body.message).toContain('Usuário não encontrado');
+  });
+
+  it('should fail login if user lacks required role', async () => {
+     User.findOne.mockResolvedValueOnce({ roles: ['barbeiro'] });
+     const res = await request(app).post('/api/login').send({ email: 'barbeiro@test.com', senha: '123', tipo: 'cliente' });
+     expect(res.statusCode).toEqual(403);
+     expect(res.body.message).toContain('Usuário não possui a função necessária');
+  });
+});
+
+describe('User Protected Routes Mock Tests', () => {
+  let User;
+  beforeAll(() => {
+    User = require('../models/User');
+    User.findById = jest.fn().mockReturnValue({
+        select: jest.fn().mockResolvedValue({ _id: 'mock_user_id', nome: 'Mock User' })
+    });
+  });
+
+  it('should allow fetching perfil', async () => {
+      const userRoutes = require('../src/routes/userRoutes');
+      app.use('/api/users', userRoutes);
+
+      const res = await request(app)
+        .get('/api/users/perfil')
+        .set('Authorization', 'Bearer fake_token');
+
+      expect(res.statusCode).toEqual(200);
+      expect(res.body.nome).toBe('Mock User');
+  });
 });
 
 describe('Agendamento Controller Mock Tests', () => {

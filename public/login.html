@@ -27,6 +27,10 @@
                     </button>
                 </div>
                 
+                <!-- Mensagem de Erro Geral -->
+                <div id="error-message" class="hidden mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
+                </div>
+
                 <!-- Formulário de Login Cliente -->
                 <div id="form-cliente" class="block">
                     <form id="login-cliente-form">
@@ -139,7 +143,19 @@
                 formCliente.classList.add('hidden');
             });
             
+            function showError(message) {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = message;
+                errorDiv.classList.remove('hidden');
+            }
+
+            function hideError() {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.classList.add('hidden');
+            }
+
             async function handleLogin(email, senha, userType) {
+                hideError();
                 try {
                     const response = await fetch('/api/login', {
                         method: 'POST',
@@ -158,11 +174,11 @@
                             window.location.href = '/barbeiro-dashboard.html';
                         }
                     } else {
-                        alert(data.message);
+                        showError(data.message || 'Erro de validação, verifique seus dados.');
                     }
                 } catch (error) {
                     console.error('Erro no login:', error);
-                    alert('Ocorreu um erro. Tente novamente.');
+                    showError('Ocorreu um erro ao conectar ao servidor. Tente novamente.');
                 }
             }
 
