@@ -161,22 +161,27 @@ document.addEventListener('DOMContentLoaded', function() {
         agendamentoTemp.clienteId = userData.id || 'cliente_temp';
         agendamentoTemp.clienteNome = userData.nome || 'Cliente Temporário';
         
+        // Fix para a API: 'hora' no storage temp vai para 'horario' na API
+        if (agendamentoTemp.hora && !agendamentoTemp.horario) {
+           agendamentoTemp.horario = agendamentoTemp.hora;
+        }
+
         // Salvar agendamento permanentemente
         if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
-          const salvo = window.BarberPro.AgendamentoStorage.add(agendamentoTemp);
-          
-          if (salvo) {
-            // Limpar agendamento temporário
-            sessionStorage.removeItem('agendamento_temp');
-            
-            // Mostrar mensagem de sucesso
-            alert('Agendamento confirmado com sucesso!');
-            
-            // Redirecionar para dashboard
-            window.location.href = 'cliente-dashboard.html';
-          } else {
-            alert('Erro ao salvar agendamento. Tente novamente.');
-          }
+          window.BarberPro.AgendamentoStorage.add(agendamentoTemp).then(salvo => {
+            if (salvo) {
+              // Limpar agendamento temporário
+              sessionStorage.removeItem('agendamento_temp');
+
+              // Mostrar mensagem de sucesso
+              alert('Agendamento confirmado com sucesso!');
+
+              // Redirecionar para dashboard
+              window.location.href = 'cliente-dashboard.html';
+            } else {
+              alert('Erro ao salvar agendamento. Tente novamente.');
+            }
+          });
         } else {
           console.error('Sistema de armazenamento não encontrado');
           alert('Erro no sistema. Tente novamente mais tarde.');
@@ -197,10 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Carregar agendamentos do barbeiro
     if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
-      const agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(barbeiroId);
-      
-      // Renderizar agendamentos
-      renderizarTabelaAgendamentos(agendamentos, tabelaAgendamentos);
+      window.BarberPro.AgendamentoStorage.getByBarbeiro(barbeiroId).then(agendamentos => {
+         // Renderizar agendamentos
+         renderizarTabelaAgendamentos(agendamentos, tabelaAgendamentos);
+      });
     }
   }
   
@@ -216,10 +221,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Carregar agendamentos do cliente
     if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
-      const agendamentos = window.BarberPro.AgendamentoStorage.getByCliente(clienteId);
-      
-      // Renderizar agendamentos
-      renderizarListaAgendamentos(agendamentos, listaAgendamentos);
+      window.BarberPro.AgendamentoStorage.getByCliente(clienteId).then(agendamentos => {
+         // Renderizar agendamentos
+         renderizarListaAgendamentos(agendamentos, listaAgendamentos);
+      });
     }
   }
   
@@ -488,7 +493,7 @@ document.addEventListener('DOMContentLoaded', function() {
         <tr class="border-t border-gray-200">
           <td class="py-3 px-4">${agendamento.clienteNome || 'Cliente'}</td>
           <td class="py-3 px-4">${servicosHtml}</td>
-          <td class="py-3 px-4">${formatarData(agendamento.data)} ${agendamento.hora || ''}</td>
+          <td class="py-3 px-4">${formatarData(agendamento.data)} ${agendamento.horario || agendamento.hora || ''}</td>
           <td class="py-3 px-4">R$ ${agendamento.valorTotal ? agendamento.valorTotal.toFixed(2) : '0.00'}</td>
           <td class="py-3 px-4">
             <span class="status-badge ${getStatusClass(agendamento.status)}">
@@ -531,12 +536,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const id = this.getAttribute('data-id');
         // Implementar confirmação
         if (window.BarberPro && window.BarberPro.AgendamentoStorage) {
-          const atualizado = window.BarberPro.AgendamentoStorage.update(id, { status: 'confirmado' });
-          if (atualizado) {
-            alert('Agendamento confirmado com sucesso!');
-            // Recarregar página
-            window.location.reload();
-          }
+          window.BarberPro.AgendamentoStorage.update(id, { status: 'confirmado' }).then(atualizado => {
+            if (atualizado) {
+              alert('Agendamento confirmado com sucesso!');
+              // Recarregar página
+              window.location.reload();
+            }
+          });
         }
       });
     });
@@ -572,8 +578,8 @@ document.addEventListener('DOMContentLoaded', function() {
         <div class="bg-white rounded-lg shadow-md p-4 mb-4">
           <div class="flex justify-between items-start">
             <div>
-              <h3 class="text-lg font-semibold text-gray-800">Agendamento #${agendamento.id.substring(0, 8)}</h3>
-              <p class="text-gray-600 mt-1">${formatarData(agendamento.data)} às ${agendamento.hora || 'horário não definido'}</p>
+              <h3 class="text-lg font-semibold text-gray-800">Agendamento #${agendamento.id ? agendamento.id.substring(0, 8) : (agendamento._id ? agendamento._id.substring(0,8) : '000')}</h3>
+              <p class="text-gray-600 mt-1">${formatarData(agendamento.data)} às ${agendamento.horario || agendamento.hora || 'horário não definido'}</p>
             </div>
             <span class="status-badge ${getStatusClass(agendamento.status)}">
               ${formatarStatus(agendamento.status)}

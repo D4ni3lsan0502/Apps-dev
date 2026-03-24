@@ -1,103 +1,83 @@
-// Sistema de armazenamento persistente para agendamentos
+// Sistema de armazenamento persistente para agendamentos via API real
 const AgendamentoStorage = {
-  // Chave para armazenamento local
-  STORAGE_KEY: 'barberpro_agendamentos',
-  
-  // Obter todos os agendamentos
-  getAll: function() {
+  // Obter todos os agendamentos do usuário logado (cliente ou barbeiro)
+  getAll: async function() {
     try {
-      const data = localStorage.getItem(this.STORAGE_KEY);
-      return data ? JSON.parse(data) : [];
+      const token = localStorage.getItem('barberpro_token');
+      if (!token) return [];
+
+      const response = await fetch('/api/agendamentos', {
+        headers: { 'Authorization': `Bearer ${token}` }
+      });
+      if (!response.ok) return [];
+
+      const data = await response.json();
+      return data;
     } catch (e) {
-      console.error('Erro ao recuperar agendamentos:', e);
+      console.error('Erro ao recuperar agendamentos da API:', e);
       return [];
     }
   },
   
-  // Obter agendamentos por ID do barbeiro
-  getByBarbeiro: function(barbeiroId) {
-    return this.getAll().filter(item => item.barbeiroId === barbeiroId);
+  // Alias for backward compatibility on frontend logic (now handled server-side securely)
+  getByBarbeiro: async function(barbeiroId) {
+    return await this.getAll();
   },
   
-  // Obter agendamentos por ID do cliente
-  getByCliente: function(clienteId) {
-    return this.getAll().filter(item => item.clienteId === clienteId);
+  // Alias for backward compatibility
+  getByCliente: async function(clienteId) {
+    return await this.getAll();
   },
   
   // Adicionar novo agendamento
-  add: function(agendamento) {
+  add: async function(agendamento) {
     if (!agendamento) return false;
     
-    // Garantir que o agendamento tenha um ID único
-    if (!agendamento.id) {
-      agendamento.id = 'agd_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
-    }
-    
-    // Garantir que tenha data de criação
-    if (!agendamento.createdAt) {
-      agendamento.createdAt = new Date().toISOString();
-    }
-    
-    // Adicionar à lista
-    const agendamentos = this.getAll();
-    agendamentos.push(agendamento);
-    
-    // Salvar no localStorage
     try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(agendamentos));
-      return true;
+      const token = localStorage.getItem('barberpro_token');
+      const response = await fetch('/api/agendamentos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(agendamento)
+      });
+      return response.ok;
     } catch (e) {
-      console.error('Erro ao salvar agendamento:', e);
+      console.error('Erro ao salvar agendamento na API:', e);
       return false;
     }
   },
   
-  // Atualizar agendamento existente
-  update: function(id, dadosAtualizados) {
-    const agendamentos = this.getAll();
-    const index = agendamentos.findIndex(item => item.id === id);
-    
-    if (index === -1) return false;
-    
-    // Atualizar dados
-    agendamentos[index] = { ...agendamentos[index], ...dadosAtualizados, updatedAt: new Date().toISOString() };
-    
-    // Salvar no localStorage
+  // Atualizar status do agendamento existente
+  update: async function(id, dadosAtualizados) {
     try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(agendamentos));
-      return true;
+      const token = localStorage.getItem('barberpro_token');
+      // No novo backend, focamos em atualizar status
+      const response = await fetch(`/api/agendamentos/${id}/status`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(dadosAtualizados)
+      });
+      return response.ok;
     } catch (e) {
-      console.error('Erro ao atualizar agendamento:', e);
+      console.error('Erro ao atualizar agendamento na API:', e);
       return false;
     }
   },
   
-  // Remover agendamento
-  remove: function(id) {
-    const agendamentos = this.getAll();
-    const filtrados = agendamentos.filter(item => item.id !== id);
-    
-    if (filtrados.length === agendamentos.length) return false;
-    
-    // Salvar no localStorage
-    try {
-      localStorage.setItem(this.STORAGE_KEY, JSON.stringify(filtrados));
-      return true;
-    } catch (e) {
-      console.error('Erro ao remover agendamento:', e);
-      return false;
-    }
+  // Apenas simula a interface antiga, na vida real seria uma API pra DELETE
+  remove: async function(id) {
+      return await this.update(id, { status: 'cancelado' });
   },
   
-  // Limpar todos os agendamentos (cuidado!)
   clear: function() {
-    try {
-      localStorage.removeItem(this.STORAGE_KEY);
-      return true;
-    } catch (e) {
-      console.error('Erro ao limpar agendamentos:', e);
-      return false;
-    }
+     console.warn('Clear não suportado via API publicamente.');
+     return false;
   }
 };
 

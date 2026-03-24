@@ -1,9 +1,9 @@
 // Salvar usuário
 function salvarUsuario(cliente) {
-  localStorage.setItem('barberpro_user', JSON.stringify(usuarios));
+  localStorage.setItem('barberpro_user', JSON.stringify(cliente));
 }
 function cadastrarUsuario(cliente) {
-  localStorage.setItem('barberpro_user', JSON.stringify(usuario));
+  localStorage.setItem('barberpro_user', JSON.stringify(cliente));
 }
 function obterUsuario(cliente) {
   return JSON.parse(localStorage.getItem('barberpro_user'));

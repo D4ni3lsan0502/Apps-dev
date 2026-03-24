@@ -1,3 +1,14 @@
+// Helper: Função para escapar HTML (Prevenção de XSS)
+function escapeHTML(str) {
+    if (!str) return '';
+    return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+}
+
 // Script para visualização completa de agendamentos do barbeiro
 document.addEventListener('DOMContentLoaded', function() {
     // Inicializar componentes
@@ -53,12 +64,12 @@ function atualizarInfoBarbeiro(barbeiro) {
 }
 
 // Função para carregar agendamentos do barbeiro
-function carregarAgendamentos() {
+async function carregarAgendamentos() {
     const usuarioAtual = obterUsuarioLogado();
     if (!usuarioAtual || !usuarioAtual.id) return;
     
     // Usar o AgendamentoStorage para buscar agendamentos do barbeiro logado
-    const agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
+    const agendamentos = await window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
     
     // Renderizar tabela de agendamentos
     renderizarTabelaAgendamentos(agendamentos);
@@ -145,51 +156,115 @@ function renderizarTabelaAgendamentos(agendamentos) {
         const valorFormatado = agendamento.valorTotal ? 
             `R$ ${agendamento.valorTotal.toFixed(2).replace('.', ',')}` : 
             'R$ 0,00';
+
+        // Na API real, clienteId pode vir preenchido e _id é o identificador
+        const agendamentoID = agendamento._id || agendamento.id;
+        const clienteNome = (agendamento.clienteId && agendamento.clienteId.nome) ? agendamento.clienteId.nome : (cliente.nome || 'Cliente');
+        const clienteTelefone = (agendamento.clienteId && agendamento.clienteId.telefone) ? agendamento.clienteId.telefone : (cliente.telefone || '');
+        const clienteFoto = (agendamento.clienteId && agendamento.clienteId.foto) ? agendamento.clienteId.foto : (cliente.foto || 'https://randomuser.me/api/portraits/men/1.jpg');
         
-        tr.innerHTML = `
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="flex items-center">
-                    <div class="flex-shrink-0 h-10 w-10">
-                        <img class="h-10 w-10 rounded-full" src="${cliente.foto || 'https://randomuser.me/api/portraits/men/1.jpg'}" alt="">
-                    </div>
-                    <div class="ml-4">
-                        <div class="text-sm font-medium text-gray-900">${cliente.nome || 'Cliente'}</div>
-                        <div class="text-sm text-gray-500">${cliente.telefone || ''}</div>
-                    </div>
-                </div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${servicoNome}</div>
-                <div class="text-sm text-gray-500">${servicoDuracao}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${dataExibicao}, ${agendamento.horario}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${agendamento.local || 'Barbearia'}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <div class="text-sm text-gray-900">${valorFormatado}</div>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap">
-                <span class="${statusClass}">${agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1)}</span>
-            </td>
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                ${agendamento.status === 'pendente' ? `
-                    <button class="text-blue-600 hover:text-blue-900 mr-3 btn-confirmar" data-id="${agendamento.id}">
-                        <i class="fas fa-check"></i>
-                    </button>
-                ` : ''}
-                ${agendamento.status !== 'cancelado' && agendamento.status !== 'concluido' ? `
-                    <button class="text-red-600 hover:text-red-900 mr-3 btn-cancelar" data-id="${agendamento.id}">
-                        <i class="fas fa-times"></i>
-                    </button>
-                ` : ''}
-                <button class="text-gray-600 hover:text-gray-900 btn-detalhes" data-id="${agendamento.id}">
-                    <i class="fas fa-eye"></i>
-                </button>
-            </td>
-        `;
+        // Helper block builder
+        function td(content) {
+            const el = document.createElement('td');
+            el.className = "px-6 py-4 whitespace-nowrap";
+            el.appendChild(content);
+            return el;
+        }
+
+        // Col 1: Cliente
+        const divClienteContainer = document.createElement('div');
+        divClienteContainer.className = "flex items-center";
+
+        const divFoto = document.createElement('div');
+        divFoto.className = "flex-shrink-0 h-10 w-10";
+        const imgFoto = document.createElement('img');
+        imgFoto.className = "h-10 w-10 rounded-full";
+        imgFoto.src = clienteFoto;
+        imgFoto.alt = "";
+        divFoto.appendChild(imgFoto);
+
+        const divInfo = document.createElement('div');
+        divInfo.className = "ml-4";
+        const divNome = document.createElement('div');
+        divNome.className = "text-sm font-medium text-gray-900";
+        divNome.textContent = clienteNome;
+        const divTelefone = document.createElement('div');
+        divTelefone.className = "text-sm text-gray-500";
+        divTelefone.textContent = clienteTelefone;
+        divInfo.appendChild(divNome);
+        divInfo.appendChild(divTelefone);
+
+        divClienteContainer.appendChild(divFoto);
+        divClienteContainer.appendChild(divInfo);
+        tr.appendChild(td(divClienteContainer));
+
+        // Col 2: Serviços
+        const divServico = document.createElement('div');
+        const divServNome = document.createElement('div');
+        divServNome.className = "text-sm text-gray-900";
+        divServNome.textContent = servicoNome;
+        const divServDur = document.createElement('div');
+        divServDur.className = "text-sm text-gray-500";
+        divServDur.textContent = servicoDuracao;
+        divServico.appendChild(divServNome);
+        divServico.appendChild(divServDur);
+        tr.appendChild(td(divServico));
+
+        // Col 3: Data e Horário
+        const divData = document.createElement('div');
+        divData.className = "text-sm text-gray-900";
+        divData.textContent = `${dataExibicao}, ${agendamento.horario}`;
+        tr.appendChild(td(divData));
+
+        // Col 4: Local
+        const divLocal = document.createElement('div');
+        divLocal.className = "text-sm text-gray-900";
+        divLocal.textContent = agendamento.local || 'Barbearia';
+        tr.appendChild(td(divLocal));
+
+        // Col 5: Valor Formatado
+        const divValor = document.createElement('div');
+        divValor.className = "text-sm text-gray-900";
+        divValor.textContent = valorFormatado;
+        tr.appendChild(td(divValor));
+
+        // Col 6: Status
+        const spanStatus = document.createElement('span');
+        // Usar escapeHTML por segurança no classname, ou reatribuir com split
+        spanStatus.className = escapeHTML(statusClass);
+        spanStatus.textContent = agendamento.status.charAt(0).toUpperCase() + agendamento.status.slice(1);
+        tr.appendChild(td(spanStatus));
+
+        // Col 7: Ações
+        const divAcoes = document.createElement('div');
+        divAcoes.className = "text-sm font-medium";
+
+        if (agendamento.status === 'pendente') {
+            const btnConf = document.createElement('button');
+            btnConf.className = "text-blue-600 hover:text-blue-900 mr-3 btn-confirmar";
+            btnConf.setAttribute('data-id', agendamentoID);
+            btnConf.innerHTML = '<i class="fas fa-check"></i>'; // FontAwesome uses static classes, not user input
+            divAcoes.appendChild(btnConf);
+        }
+
+        if (agendamento.status !== 'cancelado' && agendamento.status !== 'concluido') {
+            const btnCanc = document.createElement('button');
+            btnCanc.className = "text-red-600 hover:text-red-900 mr-3 btn-cancelar";
+            btnCanc.setAttribute('data-id', agendamentoID);
+            btnCanc.innerHTML = '<i class="fas fa-times"></i>';
+            divAcoes.appendChild(btnCanc);
+        }
+
+        const btnDet = document.createElement('button');
+        btnDet.className = "text-gray-600 hover:text-gray-900 btn-detalhes";
+        btnDet.setAttribute('data-id', agendamentoID);
+        btnDet.innerHTML = '<i class="fas fa-eye"></i>';
+        divAcoes.appendChild(btnDet);
+
+        const tdAcoes = document.createElement('td');
+        tdAcoes.className = "px-6 py-4 whitespace-nowrap text-sm font-medium";
+        tdAcoes.appendChild(divAcoes);
+        tr.appendChild(tdAcoes);
         
         tabelaBody.appendChild(tr);
     });
@@ -238,17 +313,17 @@ function adicionarEventListenersAcoes() {
 }
 
 // Função para confirmar agendamento
-function confirmarAgendamento(agendamentoId) {
+async function confirmarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'confirmado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento confirmado com sucesso!', 'success');
@@ -258,20 +333,20 @@ function confirmarAgendamento(agendamentoId) {
 }
 
 // Função para cancelar agendamento
-function cancelarAgendamento(agendamentoId) {
+async function cancelarAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Confirmar cancelamento
     if (!confirm('Tem certeza que deseja cancelar este agendamento?')) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'cancelado'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento cancelado com sucesso!', 'success');
@@ -281,12 +356,12 @@ function cancelarAgendamento(agendamentoId) {
 }
 
 // Função para mostrar detalhes do agendamento
-function mostrarDetalhesAgendamento(agendamentoId) {
+async function mostrarDetalhesAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Buscar agendamento
-    const agendamentos = window.BarberPro.AgendamentoStorage.getAll();
-    const agendamento = agendamentos.find(a => a.id === agendamentoId);
+    const agendamentos = await window.BarberPro.AgendamentoStorage.getAll();
+    const agendamento = agendamentos.find(a => a._id === agendamentoId || a.id === agendamentoId);
     
     if (!agendamento) {
         exibirNotificacao('Agendamento não encontrado.', 'error');
@@ -467,17 +542,17 @@ function mostrarDetalhesAgendamento(agendamentoId) {
 }
 
 // Função para concluir agendamento
-function concluirAgendamento(agendamentoId) {
+async function concluirAgendamento(agendamentoId) {
     if (!agendamentoId) return;
     
     // Atualizar status do agendamento
-    const atualizado = window.BarberPro.AgendamentoStorage.update(agendamentoId, {
+    const atualizado = await window.BarberPro.AgendamentoStorage.update(agendamentoId, {
         status: 'concluido'
     });
     
     if (atualizado) {
         // Recarregar agendamentos
-        carregarAgendamentos();
+        await carregarAgendamentos();
         
         // Exibir notificação
         exibirNotificacao('Agendamento concluído com sucesso!', 'success');
@@ -599,7 +674,7 @@ function configurarEventListeners() {
 }
 
 // Função para aplicar filtros
-function aplicarFiltros() {
+async function aplicarFiltros() {
     const filtroStatus = document.getElementById('filtro-status');
     const filtroData = document.getElementById('filtro-data');
     
@@ -610,7 +685,7 @@ function aplicarFiltros() {
     if (!usuarioAtual || !usuarioAtual.id) return;
     
     // Buscar todos os agendamentos do barbeiro
-    let agendamentos = window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
+    let agendamentos = await window.BarberPro.AgendamentoStorage.getByBarbeiro(usuarioAtual.id);
     
     // Filtrar por status
     if (statusSelecionado !== 'todos') {

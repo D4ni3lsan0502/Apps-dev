@@ -13,6 +13,11 @@
     <div class="container mx-auto px-4 py-8">
         <div class="max-w-xl mx-auto bg-white rounded-lg shadow-md p-8">
             <h1 class="text-2xl font-bold mb-6 text-center">Cadastro de Cliente</h1>
+
+            <!-- Mensagem de Erro Geral -->
+            <div id="error-message" class="hidden mb-4 p-3 bg-red-100 border border-red-400 text-red-700 rounded-md text-sm">
+            </div>
+
             <form id="cadastro-cliente-form">
                 <!-- Etapa 1: Dados Pessoais -->
                 <div id="etapa-1">
@@ -134,9 +139,22 @@
         }
     });
 
+    function showError(message) {
+        const errorDiv = document.getElementById('error-message');
+        errorDiv.textContent = message;
+        errorDiv.classList.remove('hidden');
+        window.scrollTo(0, 0);
+    }
+
+    function hideError() {
+        const errorDiv = document.getElementById('error-message');
+        errorDiv.classList.add('hidden');
+    }
+
     // Cadastro
     document.getElementById('cadastro-cliente-form').addEventListener('submit', function(e) {
         e.preventDefault();
+        hideError();
 
         const usuario = {
             nome: document.getElementById('nome').value,
@@ -159,16 +177,19 @@
             },
             body: JSON.stringify(usuario)
         })
-        .then(response => {
-            if (!response.ok) throw new Error('Erro ao cadastrar no banco de dados');
-            return response.json();
+        .then(async response => {
+            const data = await response.json();
+            if (!response.ok) {
+                throw new Error(data.message || 'Erro ao cadastrar no banco de dados');
+            }
+            return data;
         })
         .then(data => {
             alert('Cadastro realizado com sucesso!');
             window.location.href = 'login.html';
         })
         .catch(error => {
-            alert('Erro ao cadastrar: ' + error.message);
+            showError('Erro ao cadastrar: ' + error.message);
         });
     });
     </script>
